@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/AkayaKanadaka-Regular.ttf",
+      "sha1": "3a576193dbe4cddfb9d523acb299eac96fefd9fc"
+    },
+    {
+      "path": "src/assets/fonts/OFL.txt",
+      "sha1": "2f3544db1202545205c33e7be81a1b579a06b318"
+    }
+  ]
+}
