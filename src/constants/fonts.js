@@ -61,7 +61,7 @@ export default fonts = {
       fontStyle: 'normal',
       fontWeight: 400,
       fontSize: 35,
-      lineHeight: 42,
+      lineHeight: 40,
     },
     subscriptionTrial_head: {
       fontFamily: 'Akaya Kanadaka',

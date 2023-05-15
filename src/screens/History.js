@@ -6,22 +6,27 @@ import {
   StyleSheet,
   ScrollView,
 } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import {BackSvg, DeleteSvg} from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
 import FlatlistHistory from '../components/FlatlistHistory';
+import { MainHeading } from '../components';
 
 const History = () => {
+  const [deleteHistory, setDeleteHistory] = useState(false)
   return (
     <ImageBackground
       source={require('../assets/images/Rectangle.png')}
       resizeMode="stretch"
-      style={{flex: 1, justifyContent: 'center'}}>
+      style={{flex: 1,alignItems:'center'}}>
       <TouchableOpacity style={styles.icon}>
         <BackSvg width={20} height={20} />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.uploadIcon}>
+      <TouchableOpacity style={styles.uploadIcon}
+      onPress={()=>{
+        setDeleteHistory(true)
+      }}>
         <DeleteSvg width={16} height={18} />
         <Text
           style={{
@@ -33,10 +38,8 @@ const History = () => {
         </Text>
       </TouchableOpacity>
 
-      <View style={{alignItems: 'center',marginTop:moderateScale(80)}}>
-        <Text style={{...fonts.HeadAuth, color: colors.white}}>History</Text>
-      </View>
-      <ScrollView
+    <MainHeading name={'History'} marginTop={moderateScale(90)}/>
+      {deleteHistory ? null :  <ScrollView
         style={{marginVertical: moderateScale(20),marginBottom:moderateScale(50)}}
         showsVerticalScrollIndicator={false}>
         <FlatlistHistory />
@@ -50,7 +53,8 @@ const History = () => {
         <FlatlistHistory />
         <FlatlistHistory />
         <FlatlistHistory />
-      </ScrollView>
+      </ScrollView>}
+    
     </ImageBackground>
   );
 };

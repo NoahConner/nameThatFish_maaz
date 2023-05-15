@@ -15,6 +15,8 @@ import Trial from '../screens/Trial';
 import Home from '../screens/Home';
 import FlatlistHistory from '../components/FlatlistHistory';
 import History from '../screens/History';
+import Notifications from '../screens/Notifications';
+import Result from '../screens/Result';
 
 const AppContainer = () => {
     useEffect(() => {
@@ -34,10 +36,12 @@ const AppContainer = () => {
       {/* <ChangePassword/> */}
       {/* <Trial/> */}
       {/* <Home/> */}
-      <History/>
+      {/* <History/> */}
       {/* <FlatlistHistory/> */}
       {/* <Signup/> */}
       {/* <MainHeading/> */}
+      {/* <Notifications/> */}
+      <Result/>
     </View>
   )
 }
