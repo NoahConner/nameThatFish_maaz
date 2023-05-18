@@ -20,21 +20,24 @@ import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
 import {Button, CustomInput, MainHeading} from '../components';
 import Icon from 'react-native-vector-icons/Entypo';
-const ResetPassword = () => {
+const ResetPassword = ({navigation}) => {
   const [password, setPassword] = useState(null);
-  const [eyeIconName, setEyeIconName] = useState(true);
+  const [eyeIconName, setEyeIconName] = useState(false);
   return (
     <KeyboardAvoidingView style={{flex: 1}}>
       <ImageBackground
         source={require('../assets/images/Rectangle.png')}
         resizeMode="stretch"
         style={{flex: 1, alignItems: 'center'}}>
-        <TouchableOpacity style={styles.icon}>
+        <TouchableOpacity style={styles.icon}
+          onPress={() => {
+            navigation.goBack()
+          }}>
           <BackSvg width={20} height={20} />
         </TouchableOpacity>
         <MainHeading
           name={'Reset Password'}
-          marginTop={moderateScale(70)}
+          marginTop={moderateScale(100)}
           marginBottom={moderateScale(85)}
         />
         <TouchableOpacity
@@ -42,12 +45,12 @@ const ResetPassword = () => {
             setEyeIconName(!eyeIconName);
           }}
           style={{
-            top: moderateScale(34),
+            top: moderateScale(30),
             left: moderateScale(130),
             zIndex: 1,
           }}>
           <Icon
-            name={eyeIconName ? 'eye' : 'eye-with-line'}
+            name={eyeIconName ? 'eye-with-line' : 'eye'}
             size={20}
             color={colors.white}
           />
@@ -57,11 +60,11 @@ const ResetPassword = () => {
           placeholder={'Reset Password'}
           value={password}
           setValue={e => setPassword(e)}
-          secureTextEntry={true}
+          secureTextEntry={eyeIconName}
         />
         <Button
           onPress={() => {
-            console.warn('Pressed');
+            navigation.navigate('ChangePassword')
           }}
           text={'Update'}
           width={moderateScale(95)}

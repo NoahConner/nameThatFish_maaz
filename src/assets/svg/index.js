@@ -29,3 +29,8 @@ export {default as PasswordSvg} from './password.svg'
 export {default as EyeSvg} from './email.svg'
 export {default as EmailSvg} from './emailll.svg'
 export {default as GoogleSvg} from './google.svg'
+export {default as ResultFlatlist} from './resultFlatlist.svg'
+export {default as Slider4ResultSvg} from './Slider4ResultSvg.svg'
+export {default as Slider3NewFinalSvg} from './Slider3NewFinalSvg.svg'
+export {default as Bell} from './bell.svg'
+

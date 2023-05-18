@@ -20,7 +20,7 @@ import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
 import {Button, CustomInput, MainHeading} from '../components';
 
-const ForgotPassword = () => {
+const ForgotPassword = ({navigation}) => {
   const [email, setemail] = useState(null);
   return (
     <KeyboardAvoidingView style={{flex: 1}}>
@@ -28,7 +28,10 @@ const ForgotPassword = () => {
         source={require('../assets/images/Rectangle.png')}
         resizeMode='stretch'
         style={{flex: 1, alignItems: 'center'}}>
-        <TouchableOpacity style={styles.icon}>
+        <TouchableOpacity style={styles.icon}
+         onPress={() => {
+          navigation.goBack()
+        }}>
           <BackSvg width={20} height={20} />
         </TouchableOpacity>
         <MainHeading
@@ -36,7 +39,7 @@ const ForgotPassword = () => {
           marginTop={moderateScale(100)}
           marginBottom={moderateScale(70)}
         />
-        <View style={{right: moderateScale(130), top: moderateScale(30)}}>
+        <View style={{right: moderateScale(130), top: moderateScale(27)}}>
           <EmailSvg width={18} height={15} />
         </View>
      
@@ -51,7 +54,7 @@ const ForgotPassword = () => {
      
         <Button
           onPress={() => {
-            console.warn('Pressed');
+            navigation.navigate('ResetPassword')
           }}
           text={'Send'}
           width={moderateScale(95)}

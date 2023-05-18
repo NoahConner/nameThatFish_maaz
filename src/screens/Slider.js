@@ -18,18 +18,20 @@ import {
   Slider3Svg,
   Slider4Svg,
   BackgroundeSvg,
+  Slider3NewFinalSvg,
 } from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
+import { Slider4 } from '../components';
 
-const Slider = () => {
+const Slider = ({navigation}) => {
   const [showRealApp, setShowRealApp] = useState(false);
 
   const onDone = () => {
-    setShowRealApp(true);
+    navigation.navigate('Intro')
   };
   const onSkip = () => {
-    setShowRealApp(true);
+    navigation.navigate('Intro')
   };
 
   const RenderNextButton = () => {
@@ -39,7 +41,7 @@ const Slider = () => {
           
           position: 'absolute',
           right: moderateScale(0),
-          bottom: moderateScale(20),
+          bottom: moderateScale(0),
         }}>
         <Text
           style={{
@@ -59,7 +61,7 @@ const Slider = () => {
         borderColor: colors.white,
         position: 'absolute',
         left: moderateScale(0),
-        bottom: moderateScale(17),
+        bottom: moderateScale(0),
         
       }}>
       <Text
@@ -80,7 +82,7 @@ const Slider = () => {
           
           position: 'absolute',
           right: moderateScale(0),
-          bottom: moderateScale(20),
+          bottom: moderateScale(0),
         }}>
         <Text
           style={{
@@ -94,10 +96,15 @@ const Slider = () => {
   };
 
   const RenderItem = ({item}) => {
+    
     return (
+      <>
+      {item.key==='s4' ?
+      <Slider4/>
+      :
       <ImageBackground
         source={require('../assets/images/Rectangle.png')}
-        resizeMode="cover"
+        resizeMode='stretch'
         style={{
           flex: 1,
           alignItems: 'center',
@@ -105,15 +112,24 @@ const Slider = () => {
         }}>
         <View style={styles.container}>
           <View style={{marginBottom: moderateScale(20)}}>
-            <item.image
-              width={moderateScale(280)}
-              height={moderateScale(321)}
+            {item.key==='s3' ?<Image source={require('../assets/images/slider4Image.png')} 
+            resizeMode='contain'
+            style={{marginTop:moderateScale(140)}}
             />
+             :<item.image
+              width={moderateScale(332)}
+              height={moderateScale(360)}
+            />
+            }
+            
           </View>
           <Text style={styles.introTextStyle}>{item.text}</Text>
           <Text style={styles.introBodyStyle}>{item.body}</Text>
         </View>
-      </ImageBackground>
+      </ImageBackground>}
+        
+      </>
+   
     );
   };
 
@@ -139,11 +155,11 @@ const Slider = () => {
         <AppIntroSlider
           activeDotStyle={{
             backgroundColor: colors.white,
-            marginBottom: moderateScale(100),
+            marginBottom: moderateScale(60),
           }}
           dotStyle={{
             backgroundColor: colors.pagination,
-            marginBottom: moderateScale(100),
+            marginBottom: moderateScale(60),
           }}
           renderNextButton={RenderNextButton}
           renderSkipButton={renderSkipButton}
@@ -207,6 +223,6 @@ const slides = [
     key: 's4',
     text: 'Lorem ipsum dolor sit amet',
     body: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-    image: Slider4Svg,
+    image: Slider3NewFinalSvg,
   },
 ];

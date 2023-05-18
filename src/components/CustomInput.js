@@ -10,11 +10,13 @@ const CustomInput = ({
   placeholder,
   keyboardType,
   autoCapitalize,
-  paddingLeft=moderateScale(10)
+  paddingLeft=moderateScale(10),
+  paddingBottom=moderateScale(2),
+  maxLength
 }) => (
     
   <TextInput
-    style={{ ...style.inpurText, paddingLeft}}
+    style={{ ...style.inpurText, paddingLeft,paddingBottom}}
     placeholderTextColor={colors.white}
     value={value}
     onChangeText={setValue}
@@ -22,12 +24,13 @@ const CustomInput = ({
     placeholder={placeholder}
     keyboardType={keyboardType} 
     autoCapitalize={autoCapitalize}
+    maxLength={maxLength}
   />
 );
 
 const style = StyleSheet.create({
   inpurText: {
-    borderBottomWidth: 1,
+    borderBottomWidth: 2,
     color: colors.white,
     ...fonts.placeHolder,
     borderColor: colors.white,

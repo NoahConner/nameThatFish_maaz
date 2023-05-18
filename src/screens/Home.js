@@ -7,23 +7,57 @@ import {
   KeyboardAvoidingView,
   TextInput,
 } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import {BackSvg, ManWithFishSvg, ScannerSvg, UploadPhotoSvg} from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
 import {Button} from '../components';
+import ImagePicker from 'react-native-image-crop-picker';
 import FlatlistHistory from '../components/FlatlistHistory';
 
-const Home = () => {
+const Home = ({navigation}) => {
+  const [imgUri, setImgUri] = useState(null);
+ 
+
+ 
+  const openCamera = () => {
+    
+    ImagePicker.openCamera({
+      cropping: true,
+      includeBase64: true,
+      freeStyleCropEnabled: true,
+    }).then(image => {
+      setModalVisible(false);
+      setImgUri(image?.path);
+      console.log(imgUri, 'Image uri');
+    });
+  };
+  const openGallery = () => {
+    
+    ImagePicker.openPicker({
+      cropping: true,
+      includeBase64: true,
+      freeStyleCropEnabled: true,
+    }).then(image => {
+      setModalVisible(false);
+      setImgUri(image?.path);
+      console.log(imgUri, 'Image uri');
+    });
+  };
+
   return (
     <ImageBackground
       source={require('../assets/images/Rectangle.png')}
-      resizeMode="stretch"
-      style={{flex: 1, justifyContent: 'center'}}>
-      <TouchableOpacity style={styles.icon}>
+      resizeMode='stretch'
+      style={{flex: 1, justifyContent: 'center',}}>
+      <TouchableOpacity style={styles.icon}
+       onPress={() => {
+        navigation.goBack()
+      }}>
         <BackSvg width={20} height={20} />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.uploadIcon}>
+      <TouchableOpacity style={styles.uploadIcon}
+      onPress={()=>{openGallery()}}>
         <UploadPhotoSvg width={30} height={23} />
         <Text
           style={{
@@ -35,13 +69,14 @@ const Home = () => {
         </Text>
       </TouchableOpacity>
       
-        <TouchableOpacity style={{alignItems:'center'}}>
+        <TouchableOpacity style={{alignItems:'center',marginTop:moderateScale(40)}}
+        onPress={()=>{openCamera()}}>
           <ScannerSvg width={140} height={140} />
         </TouchableOpacity>
         <View style={styles.container}>
         <Button
           onPress={() => {
-            console.warn('Pressed');
+            navigation.navigate('Result')
           }}
           text={'Scan'}
         />
@@ -54,9 +89,9 @@ const Home = () => {
         </View>
         <View style={{...styles.container}}>
         <Button
-        marginTop={moderateScale(0)}
+        marginTop={moderateScale(20)}
           onPress={() => {
-            console.warn('Pressed');
+            navigation.navigate('History')
           }}
           text={'View More'}
         />

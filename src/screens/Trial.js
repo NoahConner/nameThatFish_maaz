@@ -13,17 +13,21 @@ import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
 import {Button} from '../components';
 
-const Trial = () => {
+const Trial = ({navigation}) => {
   return (
     <ImageBackground
       source={require('../assets/images/Rectangle.png')}
       resizeMode="stretch"
       style={{flex: 1, justifyContent: 'center'}}>
-      <TouchableOpacity style={styles.icon}>
+      <TouchableOpacity style={styles.icon}
+        onPress={() => {
+          navigation.goBack();
+        }}>
         <BackSvg width={20} height={20} />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.fishIcon}>
-        <ManWithFishSvg width={190} height={310} />
+      <TouchableOpacity style={styles.fishIcon}
+      >
+        <ManWithFishSvg width={200} height={300} />
       </TouchableOpacity>
       <View style={styles.container}>
         <Text style={{...styles.text}}>14 Days{'\n'}Free Trial</Text>
@@ -40,7 +44,7 @@ const Trial = () => {
         <Button
         marginTop={moderateScale(20)}
           onPress={() => {
-            console.warn('Pressed');
+            navigation.navigate('Subscription');
           }}
           text={'Buy Now'}
         />
@@ -55,7 +59,7 @@ const Trial = () => {
         marginBottom={moderateScale(5)}
         marginTop={moderateScale(5)}
           onPress={() => {
-            console.warn('Pressed');
+            navigation.navigate('Home');
           }}
           text={'Start'}
         />

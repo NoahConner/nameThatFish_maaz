@@ -13,14 +13,17 @@ import {moderateScale} from 'react-native-size-matters';
 import FlatlistHistory from '../components/FlatlistHistory';
 import { MainHeading } from '../components';
 
-const History = () => {
+const History = ({navigation}) => {
   const [deleteHistory, setDeleteHistory] = useState(false)
   return (
     <ImageBackground
       source={require('../assets/images/Rectangle.png')}
       resizeMode="stretch"
       style={{flex: 1,alignItems:'center'}}>
-      <TouchableOpacity style={styles.icon}>
+      <TouchableOpacity style={styles.icon}
+       onPress={() => {
+        navigation.goBack()
+      }}>
         <BackSvg width={20} height={20} />
       </TouchableOpacity>
       <TouchableOpacity style={styles.uploadIcon}

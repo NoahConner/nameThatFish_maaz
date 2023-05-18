@@ -8,55 +8,45 @@ import {
   FlatList,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {BackSvg, FishDetailsSvg, ResultFlatlist} from '../assets/svg';
+import {
+  BackSvg,
+  FishDetailsSvg,
+  ResultFlatlist,
+  Slider4ResultSvg,
+  Slider4Svg,
+} from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
+import MainHeading from './MainHeading';
 
-const Result = ({navigation}) => {
+const Slider4 = () => {
   const DATA = [
     {
       id: 1,
-      image: ResultFlatlist,
+      image: Slider4ResultSvg,
       fishName: 'Fish Details',
       text1: 'Lorem ipsum dolor sit amet,',
       text2:
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.Lorem ipsum dolor sit amet, consectetuer adipiscing elit,',
+        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt',
     },
     {
       id: 2,
-      image: ResultFlatlist,
+      image: Slider4ResultSvg,
       fishName: 'Fish Details',
       text1: 'Lorem ipsum dolor sit amet,',
       text2:
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.Lorem ipsum dolor sit amet, consectetuer adipiscing elit,',
+        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt',
     },
-    {
-      id: 3,
-      image: ResultFlatlist,
-      fishName: 'Fish Details',
-      text1: 'Lorem ipsum dolor sit amet,',
-      text2:
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.Lorem ipsum dolor sit amet, consectetuer adipiscing elit,',
-    },
-    {
-      id: 4,
-      image: ResultFlatlist,
-      fishName: 'Fish Details',
-      text1: 'Lorem ipsum dolor sit amet,',
-      text2:
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.Lorem ipsum dolor sit amet, consectetuer adipiscing elit,',
-    },
- 
   ];
 
   const renderItem = ({item}) => {
     return (
-      <TouchableOpacity style={{flex: 1,marginTop:moderateScale(20)}}>
-        <item.image width={150} height={144} />
-        <View style={{marginLeft: moderateScale(5),width:moderateScale(133)}}>
+      <View style={{flex: 1, marginTop: moderateScale(20)}}>
+        <item.image width={165} height={147} />
+        <View style={{marginLeft: moderateScale(5), width: moderateScale(170)}}>
           <Text
             style={{
-              color: colors.black,
+              color: colors.white,
               ...fonts.buttonText,
               marginTop: moderateScale(5),
             }}>
@@ -64,7 +54,7 @@ const Result = ({navigation}) => {
           </Text>
           <Text
             style={{
-              color: colors.light_black,
+              color: colors.white,
               ...fonts.placeHolder2,
               marginTop: moderateScale(6),
             }}>
@@ -72,38 +62,41 @@ const Result = ({navigation}) => {
           </Text>
           <Text
             style={{
-              color: colors.light_black,
+              color: colors.white,
               ...fonts.sub_head_small,
               marginTop: moderateScale(6),
             }}>
             {item?.text2}
           </Text>
         </View>
-      </TouchableOpacity>
+      </View>
     );
   };
   return (
     <ImageBackground
-      source={require('../assets/images/bg2.png')}
+      source={require('../assets/images/Rectangle.png')}
       resizeMode="stretch"
       style={{flex: 1}}>
-  
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={{margin:moderateScale(20),marginBottom:moderateScale(40)}}>
-        <TouchableOpacity 
-         onPress={() => {
-          navigation.goBack()
+      <View
+        style={{
+          margin: moderateScale(10),
+          marginBottom: moderateScale(40),
+          marginTop: moderateScale(20),
         }}>
-        <BackSvg width={20} height={20} />
-      </TouchableOpacity>
+        <TouchableOpacity>
+          <BackSvg width={20} height={20} />
+        </TouchableOpacity>
+        <MainHeading
+          name={'Show Result'}
+          marginBottom={moderateScale(10)}
+          marginTop={moderateScale(10)}
+        />
         <View style={styles.containerView}>
-          <FishDetailsSvg width={270} height={150} />
+          <Slider4Svg width={270} height={150} />
           <View style={{marginLeft: moderateScale(5)}}>
-
             <Text
               style={{
-                color: colors.black,
+                color: colors.white,
                 ...fonts.fishDetail,
                 marginTop: moderateScale(6),
               }}>
@@ -112,7 +105,7 @@ const Result = ({navigation}) => {
 
             <Text
               style={{
-                color: colors.light_black,
+                color: colors.white,
                 ...fonts.subscriptionTrial_head,
                 marginTop: moderateScale(6),
               }}>
@@ -120,7 +113,7 @@ const Result = ({navigation}) => {
             </Text>
             <Text
               style={{
-                color: colors.light_black,
+                color: colors.white,
                 ...fonts.text,
                 marginTop: moderateScale(6),
               }}>
@@ -131,20 +124,18 @@ const Result = ({navigation}) => {
           </View>
         </View>
         <FlatList renderItem={renderItem} data={DATA} numColumns={2} />
-      </ScrollView>
+      </View>
     </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
   containerView: {
-    
     width: '77%',
     marginTop: moderateScale(10),
   },
 
   icon: {
-    
     left: moderateScale(15),
     top: moderateScale(15),
   },
@@ -160,4 +151,4 @@ const styles = StyleSheet.create({
     width: moderateScale(290),
   },
 });
-export default Result;
+export default Slider4;

@@ -20,36 +20,39 @@ import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
 import {Button, CustomInput, MainHeading} from '../components';
 import Icon from 'react-native-vector-icons/Entypo';
-const ChangePassword = () => {
+const ChangePassword = ({navigation}) => {
   const [changePassword, setChangePassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
-  const [eyeIconName, setEyeIconName] = useState(true);
-  const [eyeIconName2, setEyeIconName2] = useState(true);
+  const [eyeIconName, setEyeIconName] = useState(false);
+  const [eyeIconName2, setEyeIconName2] = useState(false);
   return (
     <KeyboardAvoidingView style={{flex: 1}}>
       <ImageBackground
         source={require('../assets/images/Rectangle.png')}
         resizeMode="stretch"
         style={{flex: 1, alignItems: 'center'}}>
-        <TouchableOpacity style={styles.icon}>
+        <TouchableOpacity style={styles.icon}
+         onPress={() => {
+          navigation.goBack()
+        }}>
           <BackSvg width={20} height={20} />
         </TouchableOpacity>
         <MainHeading
           name={'Change Password'}
-          marginTop={moderateScale(70)}
-          marginBottom={moderateScale(85)}
+          marginTop={moderateScale(100)}
+          marginBottom={moderateScale(75)}
         />
         <TouchableOpacity
           onPress={() => {
             setEyeIconName(!eyeIconName);
           }}
           style={{
-            top: moderateScale(54),
+            top: moderateScale(50),
             left: moderateScale(130),
             zIndex: 1,
           }}>
           <Icon
-            name={eyeIconName ? 'eye' : 'eye-with-line'}
+            name={eyeIconName ? 'eye-with-line' : 'eye'}
             size={20}
             color={colors.white}
           />
@@ -60,12 +63,12 @@ const ChangePassword = () => {
             setEyeIconName2(!eyeIconName2);
           }}
           style={{
-            top: moderateScale(100),
+            top: moderateScale(93),
             left: moderateScale(130),
             zIndex: 1,
           }}>
           <Icon
-            name={eyeIconName2 ? 'eye' : 'eye-with-line'}
+            name={eyeIconName2 ? 'eye-with-line' : 'eye'}
             size={20}
             color={colors.white}
           />
@@ -75,18 +78,18 @@ const ChangePassword = () => {
           placeholder={'Change Password'}
           value={changePassword}
           setValue={e => setChangePassword(e)}
-          secureTextEntry={true}
+          secureTextEntry={eyeIconName}
         />
         <CustomInput
           placeholder={'Confirm Password'}
           value={confirmPassword}
           setValue={e => setConfirmPassword(e)}
-          secureTextEntry={true}
+          secureTextEntry={eyeIconName2}
         />
 
         <Button
           onPress={() => {
-            console.warn('Pressed');
+            navigation.navigate('SignIn')
           }}
           text={'Update'}
           width={moderateScale(95)}

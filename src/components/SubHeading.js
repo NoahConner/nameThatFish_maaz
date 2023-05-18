@@ -11,7 +11,7 @@ marginBottom
     
       <Text style={{
         ...fonts.headSettings,
-        color:colors.white,
+        color:colors.black,
         marginTop:marginTop,
         marginBottom:marginBottom
       }}>{name}</Text>

@@ -5,7 +5,7 @@ import {Button, MainHeading} from '../components';
 import {moderateScale} from 'react-native-size-matters';
 import {colors} from '../constants';
 
-const Intro = () => {
+const Intro = ({navigation}) => {
   return (
     <View style={{flex: 1}}>
       <ImageBackground
@@ -20,7 +20,7 @@ const Intro = () => {
           <LogoSvg width={270} height={120} />
         </View>
         <MainHeading name={'Welcome'}/>
-        <Button onPress={()=>{console.warn('Pressed')}}
+        <Button onPress={()=>{navigation.navigate('SignIn')}}
         text={'Get Started'}
         width={moderateScale(123)}
         />

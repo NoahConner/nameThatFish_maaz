@@ -20,17 +20,21 @@ import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
 import {Button, CustomInput, MainHeading} from '../components';
 import Icon from 'react-native-vector-icons/Entypo';
-const SignIn = () => {
+
+const SignIn = ({navigation}) => {
   const [email, setemail] = useState(null);
   const [password, setPassword] = useState(null);
-  const [eyeIconName, setEyeIconName] = useState(true);
+  const [eyeIconName, setEyeIconName] = useState(false);
   return (
     <KeyboardAvoidingView style={{flex: 1}}>
       <ImageBackground
         source={require('../assets/images/Rectangle.png')}
         resizeMode='stretch'
         style={{flex: 1, alignItems: 'center'}}>
-        <TouchableOpacity style={styles.icon}>
+        <TouchableOpacity style={styles.icon}
+         onPress={() => {
+          navigation.goBack()
+        }}>
           <BackSvg width={20} height={20} />
         </TouchableOpacity>
         <MainHeading
@@ -38,24 +42,23 @@ const SignIn = () => {
           marginTop={moderateScale(100)}
           marginBottom={moderateScale(10)}
         />
-        <View style={{right: moderateScale(130), top: moderateScale(65)}}>
+        <View style={{right: moderateScale(130), top: moderateScale(60)}}>
           <EmailSvg width={18} height={15} />
         </View>
-        <View style={{right: moderateScale(130), top: moderateScale(115)}}>
+        <View style={{right: moderateScale(130), top: moderateScale(105)}}>
           <PasswordSvg width={18} height={15} />
         </View>
         <TouchableOpacity
           onPress={() => {
-            // console.warn('press');
             setEyeIconName(!eyeIconName);
           }}
           style={{
-            top: moderateScale(100),
+            top: moderateScale(90),
             left: moderateScale(130),
             zIndex: 1,
           }}>
           <Icon
-            name={eyeIconName ? 'eye' : 'eye-with-line'}
+            name={eyeIconName ? 'eye-with-line' : 'eye'}
             size={20}
             color={colors.white}
           />
@@ -72,23 +75,29 @@ const SignIn = () => {
           placeholder={'Password'}
           value={password}
           setValue={e => setPassword(e)}
-          secureTextEntry={true}
+          secureTextEntry={eyeIconName}
         />
         <Button
           onPress={() => {
-            console.warn('Pressed');
+            navigation.navigate('Home')
           }}
           text={'Log in'}
           width={moderateScale(95)}
         />
-        <TouchableOpacity>
+        <TouchableOpacity
+         onPress={() => {
+          navigation.navigate('ForgotPassword')
+        }}>
           <Text style={styles.text}>
             Forget{' '}
             <Text style={{...styles.text, color: colors.white}}>Password</Text>
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{marginTop: moderateScale(110)}}>
+        <TouchableOpacity style={{marginTop: moderateScale(110)}}
+         onPress={() => {
+          navigation.navigate('Signup')
+        }}>
           <Text style={styles.textBottom}>
             Don’t Have An Account?{' '}
             <Text style={{...styles.textBottom, color: colors.black}}>
@@ -101,7 +110,7 @@ const SignIn = () => {
             right: moderateScale(127),
             top: moderateScale(50),
             zIndex: 1,
-            // position: 'absolute',
+            
           }}>
           <GoogleSvg width={20} height={23} />
         </View>

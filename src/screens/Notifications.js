@@ -12,14 +12,17 @@ import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
 import { MainHeading } from '../components';
 
-const Notifications = () => {
+const Notifications = ({navigation}) => {
   
   return (
     <ImageBackground
       source={require('../assets/images/Rectangle.png')}
       resizeMode="stretch"
       style={{flex: 1,alignItems:'center'}}>
-      <TouchableOpacity style={styles.icon}>
+      <TouchableOpacity style={styles.icon}
+      onPress={()=>{
+        navigation.goBack()
+      }}>
         <BackSvg width={20} height={20} />
       </TouchableOpacity>
     <MainHeading name={'Notifications'} marginTop={moderateScale(60)}/>

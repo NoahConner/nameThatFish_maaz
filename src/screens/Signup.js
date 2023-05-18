@@ -21,22 +21,26 @@ import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
 import {Button, CustomInput, MainHeading} from '../components';
 import Icon from 'react-native-vector-icons/Entypo';
-const SignIn = () => {
+const Signup = ({navigation}) => {
   const [email, setemail] = useState(null);
   const [password, setPassword] = useState(null);
   const [fullname, setFullname] = useState(null);
   const [contact, setContact] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
-  const [eyeIconName, setEyeIconName] = useState(true);
-  const [eyeIconName2, setEyeIconName2] = useState(true);
+  const [eyeIconName, setEyeIconName] = useState(false);
+  const [eyeIconName2, setEyeIconName2] = useState(false);
   return (
-    <KeyboardAvoidingView style={{flex: 1}}>
-      <ScrollView style={{flex:1}} showsVerticalScrollIndicator={false}>
+    
+  <KeyboardAvoidingView style={{flex: 1}}>
+      <ScrollView  showsVerticalScrollIndicator={false}>
       <ImageBackground
         source={require('../assets/images/Rectangle.png')}
         resizeMode='stretch'
-        style={{ alignItems: 'center'}}>
-        <TouchableOpacity style={styles.icon}>
+        style={{ alignItems: 'center',flex:1}}>
+        <TouchableOpacity style={styles.icon}
+         onPress={() => {
+          navigation.goBack()
+        }}>
           <BackSvg width={20} height={20} />
         </TouchableOpacity>
 
@@ -52,12 +56,12 @@ const SignIn = () => {
             setEyeIconName(!eyeIconName);
           }}
           style={{
-            top: moderateScale(255),
+            top: moderateScale(230),
             left: moderateScale(130),
             zIndex: 1,
           }}>
           <Icon
-            name={eyeIconName ? 'eye' : 'eye-with-line'}
+            name={eyeIconName ? 'eye-with-line' : 'eye'}
             size={20}
             color={colors.white}
           />
@@ -69,12 +73,12 @@ const SignIn = () => {
             setEyeIconName2(!eyeIconName2);
           }}
           style={{
-            top: moderateScale(300),
+            top: moderateScale(270),
             left: moderateScale(130),
             zIndex: 1,
           }}>
           <Icon
-            name={eyeIconName2 ? 'eye' : 'eye-with-line'}
+            name={eyeIconName2 ? 'eye-with-line' : 'eye'}
             size={20}
             color={colors.white}
           />
@@ -95,6 +99,7 @@ const SignIn = () => {
         />
         
           <CustomInput
+          maxLength={11}
           placeholder={'Contact No'}
           value={contact}
           setValue={e => setContact(e)}
@@ -104,18 +109,18 @@ const SignIn = () => {
           placeholder={'Create Password'}
           value={password}
           setValue={e => setPassword(e)}
-          secureTextEntry={true}
+          secureTextEntry={eyeIconName}
         />
           <CustomInput
           
           placeholder={'Confirm Password'}
           value={confirmPassword}
           setValue={e => setConfirmPassword(e)}
-          secureTextEntry={true}
+          secureTextEntry={eyeIconName2}
         />
         <Button
           onPress={() => {
-            console.warn('Pressed');
+            navigation.navigate('SignIn')
           }}
           text={'Register'}
           marginBottom={moderateScale(40)}
@@ -157,6 +162,8 @@ const SignIn = () => {
       </ImageBackground>
         </ScrollView>
     </KeyboardAvoidingView>
+    
+  
   );
 };
 
@@ -184,9 +191,9 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     justifyContent: 'space-between',
     flexDirection: 'row',
-    height: moderateScale(45),
+    height: moderateScale(150),
     marginTop:moderateScale(10),
-    paddingBottom:moderateScale(105)
+    paddingBottom:moderateScale(60)
   },
 });
-export default SignIn;
+export default Signup;

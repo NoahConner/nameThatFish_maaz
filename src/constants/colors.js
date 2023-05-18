@@ -7,6 +7,7 @@ export default colors={
     light_black:'#232323',
     text:'#020D4F',
     gray_100:'#A9A9A9',
-    pagination:'#8D8A8A'
+    pagination:'#8D8A8A',
+    light_blue:'#3183FF'
     
 }

@@ -10,7 +10,8 @@ const Button = ({
   height=moderateScale(28),
   width=moderateScale(99),
   marginTop=moderateScale(40),
-  marginBottom=moderateScale(20)
+  marginBottom=moderateScale(20),
+  borderRadius=25
 }) => {
   return (
     <TouchableOpacity
@@ -21,10 +22,11 @@ const Button = ({
         height:height,
         width:width,
         marginTop:marginTop,
-        marginBottom:marginBottom
+        marginBottom:marginBottom,
+        borderRadius:borderRadius
         
       }}>
-      <Text style={{ ...styles.btntext,color:colors.white }}>{text}</Text>
+      <Text style={{ ...fonts.buttonText,color:colors.white, }}>{text}</Text>
     </TouchableOpacity>
   );
 };
@@ -34,10 +36,7 @@ const styles = StyleSheet.create({
     
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 25,
-  btntext: {
-    ...fonts.buttonText,
     
-  },
+ 
 }});
 export default Button;
