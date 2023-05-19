@@ -14,14 +14,17 @@ import {colors, fonts} from '../constants';
 
 
 
-const TermsCondition = () => {
+const TermsCondition = ({navigation}) => {
   
   return (
     <ImageBackground
       source={require('../assets/images/bg2.png')}
       resizeMode="stretch"
       style={{flex: 1}}>
-      <TouchableOpacity style={styles.icon}>
+      <TouchableOpacity style={styles.icon}
+      onPress={()=>{
+        navigation.goBack()
+      }}>
         <BackSvg width={20} height={20} />
       </TouchableOpacity>
 

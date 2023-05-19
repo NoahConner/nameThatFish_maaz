@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
     marginRight:'auto'
   },
   btnV: {
-    
     alignItems: 'center',
     width: '100%',
     justifyContent: 'center',

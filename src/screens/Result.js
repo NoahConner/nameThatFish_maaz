@@ -90,7 +90,7 @@ const Result = ({navigation}) => {
   
       <ScrollView
         showsVerticalScrollIndicator={false}
-        style={{margin:moderateScale(20),marginBottom:moderateScale(40)}}>
+        style={{margin:moderateScale(20),marginBottom:moderateScale(50)}}>
         <TouchableOpacity 
          onPress={() => {
           navigation.goBack()

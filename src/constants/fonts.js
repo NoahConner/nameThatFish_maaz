@@ -79,17 +79,17 @@ export default fonts = {
       lineHeight: 23,
     },
     trial_head: {
-      fontFamily: 'Montserrat-Bold',
+      fontFamily: 'Montserrat-Regular',
       fontStyle: 'normal',
       fontWeight: 600,
-      fontSize: 50,
-      lineHeight: 61,
+      fontSize: 46,
+      lineHeight: 57,
     },
     trial_head_sub: {
-      fontFamily: 'Montserrat-Bold',
+      fontFamily: 'Montserrat-Regular',
       fontStyle: 'normal',
       fontWeight: 600,
-      fontSize: 25,
+      fontSize: 23,
       lineHeight: 30,
     },
 

@@ -1,14 +1,21 @@
-
-import React from 'react'
-import { AuthContext } from './src/context'
-import AppContainer from './src/navigation'
+import React, {useState} from 'react';
+import AppContext from './src/context/AuthContext';
+import AppContainer from './src/navigation';
 
 const App = () => {
-  return (
-    <AuthContext.AuthProvider>
-    <AppContainer />
-  </AuthContext.AuthProvider>
-  )
-}
+  const [userToken, setuserToken] = useState(null);
+  const [userId, setuserId] = useState(null);
 
-export default App
+  const userSettings = {
+    userToken,
+    setuserToken,
+  };
+
+  return (
+    <AppContext.Provider value={userSettings}>
+      <AppContainer />
+    </AppContext.Provider>
+  );
+};
+
+export default App;

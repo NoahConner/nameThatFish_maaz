@@ -44,7 +44,7 @@ const BottomTab = () => {
             // focused ? (Icon = FocusedUsersquareSvg) : (Icon = ContactsSvg);
             Icon=SubscriptionBottomSvg
           }
-          else if (route.name == 'Home') {
+          else if (route.name == 'HomeStack') {
             // focused ? (Icon = FocusedUsersquareSvg) : (Icon = ContactsSvg);
             Icon=HomeSvg
           }

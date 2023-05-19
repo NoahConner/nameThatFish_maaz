@@ -41,9 +41,9 @@ const History = ({navigation}) => {
         </Text>
       </TouchableOpacity>
 
-    <MainHeading name={'History'} marginTop={moderateScale(90)}/>
+    <MainHeading name={'History'} marginTop={moderateScale(50)}/>
       {deleteHistory ? null :  <ScrollView
-        style={{marginVertical: moderateScale(20),marginBottom:moderateScale(50)}}
+        style={{marginVertical: moderateScale(20),marginBottom:moderateScale(55)}}
         showsVerticalScrollIndicator={false}>
         <FlatlistHistory />
         <FlatlistHistory />
@@ -54,8 +54,7 @@ const History = ({navigation}) => {
         <FlatlistHistory />
         <FlatlistHistory />
         <FlatlistHistory />
-        <FlatlistHistory />
-        <FlatlistHistory />
+        
       </ScrollView>}
     
     </ImageBackground>

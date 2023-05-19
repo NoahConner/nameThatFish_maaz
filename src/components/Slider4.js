@@ -83,9 +83,7 @@ const Slider4 = () => {
           marginBottom: moderateScale(40),
           marginTop: moderateScale(20),
         }}>
-        <TouchableOpacity>
-          <BackSvg width={20} height={20} />
-        </TouchableOpacity>
+   
         <MainHeading
           name={'Show Result'}
           marginBottom={moderateScale(10)}

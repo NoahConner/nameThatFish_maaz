@@ -19,15 +19,11 @@ const Trial = ({navigation}) => {
       source={require('../assets/images/Rectangle.png')}
       resizeMode="stretch"
       style={{flex: 1, justifyContent: 'center'}}>
-      <TouchableOpacity style={styles.icon}
-        onPress={() => {
-          navigation.goBack();
-        }}>
-        <BackSvg width={20} height={20} />
-      </TouchableOpacity>
+     
+      
       <TouchableOpacity style={styles.fishIcon}
       >
-        <ManWithFishSvg width={200} height={300} />
+        <ManWithFishSvg width={200} height={290} />
       </TouchableOpacity>
       <View style={styles.container}>
         <Text style={{...styles.text}}>14 Days{'\n'}Free Trial</Text>
@@ -49,6 +45,7 @@ const Trial = ({navigation}) => {
           text={'Buy Now'}
         />
         <Text style={{...styles.text,...fonts.trial_head_sub}}>Start Your Free Trial</Text>
+        
         <Text style={{...styles.text,...fonts.text,marginVertical:moderateScale(20)}}>
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
           nonummy nibh euismod tincidunt.Lorem ipsum dolor sit amet,

@@ -78,22 +78,12 @@ const Subscription = ({navigation}) => {
             nonummy nibh euismod tincidunt.Lorem ipsum dolor sit amet,
             consectetuer adipiscing elit,
           </Text>
-          <Button
-          onPress={()=>{
-            navigation.navigate('Trial')
-          }}
-            width={moderateScale(270)}
-            height={moderateScale(45)}
-            text={'Start Your 14 Days Free Trial'}
-            marginTop={moderateScale(20)}
-            marginBottom={moderateScale(10)}
-            borderRadius={15}
-          />
+        
           <Button
             width={moderateScale(270)}
             height={moderateScale(45)}
             text={'$499.00 Per Year Subscriptions'}
-            marginTop={moderateScale(0)}
+            marginTop={moderateScale(30)}
             borderRadius={15}
           />
         </View>

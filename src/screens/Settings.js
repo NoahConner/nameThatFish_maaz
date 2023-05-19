@@ -5,18 +5,19 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {BackSvg, BubbleSvg, ProfileRoundSvg, ProfileSvg} from '../assets/svg';
 import {moderateScale} from 'react-native-size-matters';
 import ImagePicker from 'react-native-image-crop-picker';
 import {Bubbles, Button, CustomModal, SubHeading} from '../components';
 import {Image} from 'react-native-svg';
 import {colors, fonts} from '../constants';
+import AppContext from '../context/AuthContext';
 
 const Settings = ({navigation}) => {
   const [imgUri, setImgUri] = useState(null);
   const [isModalVisible, setModalVisible] = useState(false);
-
+  const context = useContext(AppContext);
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
@@ -108,18 +109,19 @@ const Settings = ({navigation}) => {
           <ProfileRoundSvg width={119} height={119} />
         </View>
         <TouchableOpacity onPress={toggleModal} style={styles.imgCircle}>
-          {imgUri ? (
+          {/* {imgUri !==null ? (
             <Image source={{uri: imgUri}} />
           ) : (
             <ProfileSvg width={108} height={108} />
-          )}
+          )} */}
+          <ProfileSvg width={108} height={108} />
         </TouchableOpacity>
         <Text style={{...fonts.trial_head_sub, color: colors.primary}}>
           David Junior
         </Text>
       </View>
 
-      <View style={{marginVertical: moderateScale(30)}}>
+      <View style={{marginTop: moderateScale(15),marginBottom:moderateScale(5)}}>
         <TouchableOpacity
           style={styles.items}
           onPress={() => navigation.navigate('PersonalInformation')}>
@@ -182,7 +184,15 @@ const Settings = ({navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.items}
-          onPress={() => navigation.navigate('ChangePassword')}>
+          onPress={() => {
+            context.setuserToken(null)
+            setTimeout(() => {
+              navigation.navigate('ChangePassword')
+            });
+          }
+            
+          }
+          >
           <Text
             style={{
               ...fonts.subscriptionTrial_head,
@@ -195,10 +205,25 @@ const Settings = ({navigation}) => {
       </View>
       <View style={{alignItems: 'center'}}>
         <Button
-          onPress={() => navigation.navigate('Home')}
-          text={'Save'}
+          onPress={() => {
+            context.setuserToken(null)
+            setTimeout(() => {
+              navigation.navigate('SignIn')
+            });
+          }
+            
+          }
+          text={'Logout'}
           backgroundColor={colors.primary}
           marginTop={moderateScale(0)}
+        />
+         <Button
+          
+          text={'Delete Account'}
+          width={moderateScale(150)}
+          backgroundColor={colors.primary}
+          marginTop={moderateScale(0)}
+          marginBottom={moderateScale(30)}
         />
       </View>
     </ImageBackground>

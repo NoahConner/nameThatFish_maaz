@@ -7,7 +7,7 @@ import {
   KeyboardAvoidingView,
   TextInput,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   AppleSvg,
   BackSvg,
@@ -20,11 +20,14 @@ import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
 import {Button, CustomInput, MainHeading} from '../components';
 import Icon from 'react-native-vector-icons/Entypo';
+import AppContext from '../context/AuthContext';
 
 const SignIn = ({navigation}) => {
   const [email, setemail] = useState(null);
   const [password, setPassword] = useState(null);
   const [eyeIconName, setEyeIconName] = useState(false);
+  const context = useContext(AppContext);
+
   return (
     <KeyboardAvoidingView style={{flex: 1}}>
       <ImageBackground
@@ -79,7 +82,7 @@ const SignIn = ({navigation}) => {
         />
         <Button
           onPress={() => {
-            navigation.navigate('Home')
+            context.setuserToken('122345')
           }}
           text={'Log in'}
           width={moderateScale(95)}
