@@ -11,6 +11,7 @@ import React, {useEffect, useState} from 'react';
 import {BackSvg, FishDetailsSvg, ResultFlatlist} from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
+import { screenHeight } from '../constants/screenResolution';
 
 const Result = ({navigation}) => {
   const DATA = [
@@ -86,7 +87,7 @@ const Result = ({navigation}) => {
     <ImageBackground
       source={require('../assets/images/bg2.png')}
       resizeMode="stretch"
-      style={{flex: 1}}>
+      style={{flex: 1,height:screenHeight}}>
   
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -95,6 +96,7 @@ const Result = ({navigation}) => {
          onPress={() => {
           navigation.goBack()
         }}>
+          
         <BackSvg width={20} height={20} />
       </TouchableOpacity>
         <View style={styles.containerView}>

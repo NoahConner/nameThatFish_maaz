@@ -5,46 +5,65 @@ import {
   TouchableOpacity,
   StyleSheet,
   KeyboardAvoidingView,
-  TextInput,
+  Animated,
 } from 'react-native';
-import React, {useState, useContext} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   AppleSvg,
   BackSvg,
-  BubbleSvg,
   EmailSvg,
   GoogleSvg,
   PasswordSvg,
 } from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
-import {Button, CustomInput, MainHeading} from '../components';
+import {Button, CustomInput, MainHeading, WavesAnimated, } from '../components';
 import Icon from 'react-native-vector-icons/Entypo';
-import AppContext from '../context/AuthContext';
+import {screenWidth} from '../constants/screenResolution';
+
 
 const SignIn = ({navigation}) => {
   const [email, setemail] = useState(null);
   const [password, setPassword] = useState(null);
-  const [eyeIconName, setEyeIconName] = useState(false);
-  const context = useContext(AppContext);
+  const [eyeIconName, setEyeIconName] = useState(true);
+  const GirlAnimation = new Animated.Value(screenWidth + 250);
+  const MobileAnimation = new Animated.Value(screenWidth + 250);
+
+  useEffect(() => {
+    startAnimations();
+  }, []);
+
+  const startAnimations = () => {
+    Animated.timing(GirlAnimation, {
+      toValue: 0,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+
+    Animated.timing(MobileAnimation, {
+      toValue: 1,
+      duration: 2000,
+      useNativeDriver: true,
+    }).start();
+  };
 
   return (
+    
+    
     <KeyboardAvoidingView style={{flex: 1}}>
-      <ImageBackground
-        source={require('../assets/images/Rectangle.png')}
-        resizeMode='stretch'
-        style={{flex: 1, alignItems: 'center'}}>
-        <TouchableOpacity style={styles.icon}
-         onPress={() => {
-          navigation.goBack()
-        }}>
-          <BackSvg width={20} height={20} />
-        </TouchableOpacity>
+<ImageBackground
+    source={require('../assets/images/Rectangle.png')}
+    resizeMode="stretch"
+    style={{flex:1,alignItems:'center'}}>
+
+{/* <WavesAnimated/> */}
+    
         <MainHeading
           name={'Sign In'}
-          marginTop={moderateScale(100)}
+          marginTop={moderateScale(110)}
           marginBottom={moderateScale(10)}
         />
+
         <View style={{right: moderateScale(130), top: moderateScale(60)}}>
           <EmailSvg width={18} height={15} />
         </View>
@@ -82,66 +101,77 @@ const SignIn = ({navigation}) => {
         />
         <Button
           onPress={() => {
-            context.setuserToken('122345')
+            navigation.navigate('Trial');
           }}
           text={'Log in'}
           width={moderateScale(95)}
         />
         <TouchableOpacity
-         onPress={() => {
-          navigation.navigate('ForgotPassword')
-        }}>
+          onPress={() => {
+            navigation.navigate('ForgotPassword');
+          }}>
           <Text style={styles.text}>
-            Forget{' '}
+            Forgot{' '}
             <Text style={{...styles.text, color: colors.white}}>Password</Text>
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{marginTop: moderateScale(110)}}
-         onPress={() => {
-          navigation.navigate('Signup')
-        }}>
+        <TouchableOpacity
+          style={{marginTop: moderateScale(110)}}
+          onPress={() => {
+            navigation.navigate('Signup');
+          }}>
           <Text style={styles.textBottom}>
-            Don’t Have An Account?{' '}
+            Don’t have an account?{' '}
             <Text style={{...styles.textBottom, color: colors.black}}>
-              Sign Up Now
+              Sign up now
             </Text>
           </Text>
         </TouchableOpacity>
-        <View
+
+        <Animated.View
           style={{
-            right: moderateScale(127),
-            top: moderateScale(50),
-            zIndex: 1,
-            
+            ...styles.socialLogins,
+            transform: [{translateY: MobileAnimation}],
           }}>
-          <GoogleSvg width={20} height={23} />
-        </View>
-        <View
-          style={{
-            left: moderateScale(32),
-            top: moderateScale(28),
-            zIndex: 1,
-            // position: 'absolute',
-          }}>
-          <AppleSvg width={20} height={23} />
-        </View>
-        <View style={styles.socialLogins}>
+          <View
+            style={{
+              left: moderateScale(32),
+              top: moderateScale(9),
+              zIndex: 1,
+            }}>
+            <GoogleSvg width={20} height={23} />
+          </View>
           <Button
             text={'Sign In'}
             backgroundColor={colors.black}
             height={moderateScale(32)}
             width={moderateScale(135)}
           />
+          <View
+            style={{
+              left: moderateScale(32),
+              top: moderateScale(9),
+              zIndex: 1,
+              // position: 'absolute',
+            }}>
+            <AppleSvg width={20} height={23} />
+          </View>
           <Button
             text={'Sign In'}
             backgroundColor={colors.black}
             height={moderateScale(32)}
             width={moderateScale(137)}
           />
-        </View>
-      </ImageBackground>
+        </Animated.View>
+    {/* </View> */}
+        </ImageBackground>
+          
+          
+          
+
     </KeyboardAvoidingView>
+    
   );
 };
 
@@ -169,8 +199,7 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     justifyContent: 'space-between',
     flexDirection: 'row',
-    height: moderateScale(15),
-    // marginTop:moderateScale(15)
+    // marginBottom:'20%'
   },
 });
 export default SignIn;

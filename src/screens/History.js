@@ -11,7 +11,8 @@ import {BackSvg, DeleteSvg} from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
 import FlatlistHistory from '../components/FlatlistHistory';
-import { MainHeading } from '../components';
+import { MainHeading, WavesAnimated } from '../components';
+import { screenHeight } from '../constants/screenResolution';
 
 const History = ({navigation}) => {
   const [deleteHistory, setDeleteHistory] = useState(false)
@@ -19,7 +20,8 @@ const History = ({navigation}) => {
     <ImageBackground
       source={require('../assets/images/Rectangle.png')}
       resizeMode="stretch"
-      style={{flex: 1,alignItems:'center'}}>
+      style={{flex: 1,alignItems:'center',height:screenHeight}}>
+        {/* <WavesAnimated/> */}
       <TouchableOpacity style={styles.icon}
        onPress={() => {
         navigation.goBack()

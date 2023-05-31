@@ -11,6 +11,7 @@ import {BackSvg} from '../assets/svg';
 import {moderateScale} from 'react-native-size-matters';
 import {Bubbles, Button, CustomTexts, SubHeading} from '../components';
 import {colors, fonts} from '../constants';
+import { screenHeight } from '../constants/screenResolution';
 
 
 
@@ -20,7 +21,7 @@ const AboutUs = ({navigation}) => {
     <ImageBackground
       source={require('../assets/images/bg1.png')}
       resizeMode="stretch"
-      style={{flex: 1}}>
+      style={{flex: 1,height:screenHeight}}>
       <TouchableOpacity style={styles.icon}
        onPress={()=>{
         navigation.goBack()

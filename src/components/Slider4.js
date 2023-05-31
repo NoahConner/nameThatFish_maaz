@@ -2,22 +2,22 @@ import {
   View,
   Text,
   ImageBackground,
-  TouchableOpacity,
+  
   StyleSheet,
-  ScrollView,
+  
   FlatList,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {
-  BackSvg,
-  FishDetailsSvg,
-  ResultFlatlist,
+  
   Slider4ResultSvg,
   Slider4Svg,
 } from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
 import MainHeading from './MainHeading';
+import { WavesAnimated } from '.';
+
 
 const Slider4 = () => {
   const DATA = [
@@ -77,10 +77,11 @@ const Slider4 = () => {
       source={require('../assets/images/Rectangle.png')}
       resizeMode="stretch"
       style={{flex: 1}}>
+        {/* <WavesAnimated /> */}
       <View
         style={{
           margin: moderateScale(10),
-          marginBottom: moderateScale(40),
+          marginBottom: moderateScale(110),
           marginTop: moderateScale(20),
         }}>
    

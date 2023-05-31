@@ -16,14 +16,13 @@ import {
   Slider1Svg,
   Slider2Svg,
   Slider3Svg,
-  Slider4Svg,
-  BackgroundeSvg,
   Slider3NewFinalSvg,
 } from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
-import { Slider4 } from '../components';
-
+import { WavesAnimated } from '../components';
+import { screenHeight } from '../constants/screenResolution';
+import Slider4 from '../components/Slider4';
 const Slider = ({navigation}) => {
   const [showRealApp, setShowRealApp] = useState(false);
 
@@ -98,7 +97,8 @@ const Slider = ({navigation}) => {
   const RenderItem = ({item}) => {
     
     return (
-      <>
+      <View style={{flex:1}}>
+      
       {item.key==='s4' ?
       <Slider4/>
       :
@@ -108,9 +108,14 @@ const Slider = ({navigation}) => {
         style={{
           flex: 1,
           alignItems: 'center',
-          
+          height:screenHeight
         }}>
+          
+          
+          {/* <WavesAnimated/> */}
         <View style={styles.container}>
+          
+          
           <View style={{marginBottom: moderateScale(20)}}>
             {item.key==='s3' ?<Image source={require('../assets/images/slider4Image.png')} 
             resizeMode='contain'
@@ -128,13 +133,14 @@ const Slider = ({navigation}) => {
         </View>
       </ImageBackground>}
         
-      </>
+      </View>
    
     );
   };
 
   return (
     <>
+    
       {showRealApp ? (
         <SafeAreaView style={styles.container}>
           <View style={styles.container}>
@@ -152,7 +158,8 @@ const Slider = ({navigation}) => {
           </View>
         </SafeAreaView>
       ) : (
-        <AppIntroSlider
+        
+           <AppIntroSlider
           activeDotStyle={{
             backgroundColor: colors.white,
             marginBottom: moderateScale(60),
@@ -172,6 +179,9 @@ const Slider = ({navigation}) => {
           showSkipButton={true}
           onSkip={onSkip}
         />
+        
+        
+     
       )}
     </>
   );
@@ -183,7 +193,9 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: moderateScale(70),
+    marginTop:moderateScale(50)
+    // marginBottom: moderateScale(70),
+    
   },
   introTextStyle: {
     ...fonts.subHead,

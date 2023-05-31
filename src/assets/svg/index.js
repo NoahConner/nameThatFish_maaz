@@ -33,4 +33,7 @@ export {default as ResultFlatlist} from './resultFlatlist.svg'
 export {default as Slider4ResultSvg} from './Slider4ResultSvg.svg'
 export {default as Slider3NewFinalSvg} from './Slider3NewFinalSvg.svg'
 export {default as Bell} from './bell.svg'
+export {default as Wave3} from './Wave3.svg'
+
+
 

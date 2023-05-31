@@ -7,6 +7,7 @@ import Notifications from '../screens/Notifications';
 import Subscription from '../screens/Subscription';
 import { Bell, HomeSvg, SettingSvg, SubscriptionBottomSvg } from '../assets/svg';
 import HomeStack from './HomeStack';
+import SubscriptionStack from './SubscriptionStack';
 
 
 const Tab = createBottomTabNavigator();
@@ -22,11 +23,11 @@ const BottomTab = () => {
         tabBarInactiveTintColor: colors.gray_100,
         tabBarStyle: {
           zIndex:1,
-          borderTopLeftRadius:20,
-          borderTopRightRadius:20,
+          borderTopLeftRadius:18,
+          borderTopRightRadius:18,
           backgroundColor:colors.primary,
           paddingBottom: 0,
-          height: moderateScale(48),
+          height: moderateScale(40),
           position:'absolute',
           borderColor:colors.primary
           
@@ -49,7 +50,7 @@ const BottomTab = () => {
             Icon=HomeSvg
           }
 
-          return <Icon width={20} height={22} />;
+          return <Icon width={20} height={20} />;
         },
       })}>
       <Tab.Screen name="HomeStack" component={HomeStack} />

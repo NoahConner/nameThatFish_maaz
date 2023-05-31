@@ -1,9 +1,12 @@
-import {View, Text} from 'react-native';
+
 import React, {useEffect} from 'react';
 import RNBootSplash from 'react-native-bootsplash';
 import {NavigationContainer} from '@react-navigation/native';
 import AppNavigator from './AppNavigator';
 import {SafeAreaView} from 'react-native';
+
+
+
 
 const AppContainer = () => {
   useEffect(() => {
@@ -15,9 +18,9 @@ const AppContainer = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <NavigationContainer>
-        {/* {userToken && userId ? <AppNavigator /> : <AuthNavigator />} */}
         <AppNavigator />
       </NavigationContainer>
+      
     </SafeAreaView>
   );
 };

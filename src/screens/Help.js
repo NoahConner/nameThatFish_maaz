@@ -9,9 +9,10 @@ import {
 import React, {useState} from 'react';
 import {BackSvg} from '../assets/svg';
 import {moderateScale} from 'react-native-size-matters';
-import {Bubbles, Button, SubHeading} from '../components';
+import {Bubbles, Button, SubHeading,} from '../components';
 import {colors, fonts} from '../constants';
 import { TextInput} from 'react-native-gesture-handler';
+import { screenHeight } from '../constants/screenResolution';
 
 
 const Help = ({navigation}) => {
@@ -20,7 +21,8 @@ const Help = ({navigation}) => {
     <ImageBackground
       source={require('../assets/images/bg1.png')}
       resizeMode="stretch"
-      style={{flex: 1}}>
+      style={{flex: 1,height:screenHeight}}>
+        
       <TouchableOpacity style={styles.icon}
         onPress={
           ()=>{
@@ -33,47 +35,42 @@ const Help = ({navigation}) => {
 
       <View style={styles.containerView}>
         <Bubbles
-          width={40}
-          height={40}
-          right={moderateScale(60)}
-          bottom={moderateScale(50)}
+          width={37}
+          height={37}
+          left={moderateScale(50)}
+          bottom={moderateScale(20)}
         />
         <Bubbles
-          width={25}
-          height={25}
-          right={moderateScale(5)}
-          bottom={moderateScale(40)}
+          width={23}
+          height={23}
+          right={moderateScale(25)}
+          bottom={moderateScale(10)}
         />
         <Bubbles
-          width={52}
-          height={52}
+          width={49}
+          height={49}
           right={moderateScale(30)}
-          top={moderateScale(40)}
+          top={moderateScale(30)}
         />
         <Bubbles
-          width={41}
-          height={41}
+          width={39}
+          height={39}
           left={moderateScale(60)}
           top={moderateScale(440)}
         />
         <Bubbles
-          width={25}
-          height={25}
-          left={moderateScale(130)}
-          top={moderateScale(480)}
+          width={22}
+          height={22}
+          left={moderateScale(30)}
+          top={moderateScale(510)}
         />
         <Bubbles
-          width={52}
-          height={52}
+          width={49}
+          height={49}
           left={moderateScale(90)}
           top={moderateScale(540)}
         />
-          <Bubbles
-          width={25}
-          height={25}
-          left={moderateScale(220)}
-          top={moderateScale(610)}
-        />
+         
         <SubHeading name={'Help'} />
         <TextInput
         placeholder='Type Here...'

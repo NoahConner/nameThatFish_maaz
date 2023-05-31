@@ -11,9 +11,11 @@ import React, { useState } from 'react';
 import {BackSvg, ManWithFishSvg, ScannerSvg, UploadPhotoSvg} from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
-import {Button} from '../components';
+import {Button,} from '../components';
 import ImagePicker from 'react-native-image-crop-picker';
 import FlatlistHistory from '../components/FlatlistHistory';
+import { screenHeight, screenWidth } from '../constants/screenResolution';
+import WavesAnimated from '../components/WavesAnimated';
 
 const Home = ({navigation}) => {
   const [imgUri, setImgUri] = useState(null);
@@ -49,13 +51,8 @@ const Home = ({navigation}) => {
     <ImageBackground
       source={require('../assets/images/Rectangle.png')}
       resizeMode='stretch'
-      style={{flex: 1, justifyContent: 'center',}}>
-      <TouchableOpacity style={styles.icon}
-       onPress={() => {
-        navigation.goBack()
-      }}>
-        <BackSvg width={20} height={20} />
-      </TouchableOpacity>
+      style={{flex: 1,height:screenHeight}}>
+{/* <WavesAnimated/> */}
       <TouchableOpacity style={styles.uploadIcon}
       onPress={()=>{openGallery()}}>
         <UploadPhotoSvg width={30} height={23} />
@@ -69,9 +66,10 @@ const Home = ({navigation}) => {
         </Text>
       </TouchableOpacity>
       
-        <TouchableOpacity style={{alignItems:'center',marginTop:moderateScale(40)}}
+      <View style={styles.mainContainer}>
+      <TouchableOpacity style={{alignItems:'center',marginTop:moderateScale(20)}}
         onPress={()=>{openCamera()}}>
-          <ScannerSvg width={140} height={140} />
+          <ScannerSvg width={120} height={120} />
         </TouchableOpacity>
         <View style={styles.container}>
         <Button
@@ -80,22 +78,24 @@ const Home = ({navigation}) => {
           }}
           text={'Scan'}
         />
-        <Text style={{...fonts.subHeadHistory,color:colors.white}}>History</Text>
+        <Text style={{...fonts.subHeadHistory,color:colors.white}}>Recent History</Text>
         </View>
-        <View style={{marginVertical:moderateScale(20)}}>
+        <View style={{width:screenWidth,padding:'5%'}}>
         <FlatlistHistory/>
         <FlatlistHistory/>
         <FlatlistHistory/>
         </View>
         <View style={{...styles.container}}>
         <Button
-        marginTop={moderateScale(20)}
+        marginTop={moderateScale(10)}
           onPress={() => {
             navigation.navigate('History')
           }}
           text={'View More'}
         />
       </View>
+      </View>
+      
     </ImageBackground>
   );
 };
@@ -108,6 +108,12 @@ alignItems:'center'
 
 
   },
+  mainContainer:{
+    // borderColor:'#000',
+    // borderWidth:1,
+    marginTop:moderateScale(50)
+  },
+
   icon: {
     position: 'absolute',
     left: moderateScale(15),
@@ -115,8 +121,8 @@ alignItems:'center'
   },
   uploadIcon: {
     position: 'absolute',
-    right: moderateScale(20),
-    top: moderateScale(25),
+    right: moderateScale(15),
+    top: moderateScale(20),
     alignItems: 'center',
   },
   text: {

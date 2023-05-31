@@ -30,44 +30,44 @@ const TermsCondition = ({navigation}) => {
 
       <View style={styles.containerView}>
         <Bubbles
-          width={40}
-          height={40}
+          width={37}
+          height={37}
           right={moderateScale(60)}
           top={moderateScale(540)}
         />
         <Bubbles
-          width={25}
-          height={25}
+          width={23}
+          height={23}
           right={moderateScale(25)}
           top={moderateScale(0)}
         />
         <Bubbles
-          width={52}
-          height={52}
+          width={48}
+          height={48}
           right={moderateScale(130)}
           bottom={moderateScale(370)}
         />
         <Bubbles
-          width={41}
-          height={41}
+          width={38}
+          height={38}
           left={moderateScale(60)}
           top={moderateScale(440)}
         />
         <Bubbles
-          width={25}
-          height={25}
+          width={22}
+          height={22}
           left={moderateScale(130)}
           top={moderateScale(480)}
         />
         <Bubbles
-          width={52}
-          height={52}
+          width={48}
+          height={48}
           left={moderateScale(90)}
           top={moderateScale(540)}
         />
           <Bubbles
-          width={25}
-          height={25}
+          width={23}
+          height={23}
           left={moderateScale(220)}
           top={moderateScale(410)}
         />

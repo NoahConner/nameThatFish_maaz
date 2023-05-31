@@ -7,4 +7,5 @@ export { default as SubHeading } from './SubHeading';
 export { default as FlatlistHistory } from './FlatlistHistory';
 export { default as Bubbles } from './Bubbles';
 export { default as CustomTexts } from './CustomTexts';
-export { default as Slider4 } from './Slider4';
+export { default as DraggableAnimation } from './DraggableAnimation';
+export { default as WavesAnimated } from './WavesAnimated';

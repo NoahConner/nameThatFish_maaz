@@ -13,13 +13,20 @@ import {Bubbles, Button, CustomModal, SubHeading} from '../components';
 import {Image} from 'react-native-svg';
 import {colors, fonts} from '../constants';
 import AppContext from '../context/AuthContext';
+import { ScrollView } from 'react-native-gesture-handler';
+import { screenHeight } from '../constants/screenResolution';
 
 const Settings = ({navigation}) => {
   const [imgUri, setImgUri] = useState(null);
   const [isModalVisible, setModalVisible] = useState(false);
+  const [isModalVisibleDeleteAccount, setModalVisibleDeleteAccount] = useState(false);
   const context = useContext(AppContext);
+  
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
+  };
+  const toggleModalDeleteAccount = () => {
+    setModalVisibleDeleteAccount(!isModalVisibleDeleteAccount);
   };
 
   const openCamera = () => {
@@ -51,62 +58,76 @@ const Settings = ({navigation}) => {
     <ImageBackground
       source={require('../assets/images/bg1.png')}
       resizeMode="stretch"
-      style={{flex: 1}}>
-      <CustomModal
+      style={{flex: 1,height:screenHeight}}>
+        <ScrollView>
+        <CustomModal
         animationIn={'zoomin'}
         animationOut={'zoomout'}
         text1={'Camera'}
         text2={'Gallery'}
+        text3={'Do you want to update your profile picture?'}
         onPress1={openCamera}
         onPress2={openGallery}
         isVisible={isModalVisible}
         onClose={() => setModalVisible(false)}
       />
-
+ <CustomModal
+        animationIn={'zoomin'}
+        animationOut={'zoomout'}
+        text1={'Yes'}
+        text2={'No'}
+        text3={'Are you sure ? Want to delete your account?'}
+        onPress1={() => {
+          setModalVisibleDeleteAccount(false)
+          context.setuserToken(null)}}
+        onPress2={() => setModalVisibleDeleteAccount(false)}
+        isVisible={isModalVisibleDeleteAccount}
+        onClose={() => setModalVisibleDeleteAccount(false)}
+      />
       <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
         <BackSvg width={20} height={20} />
       </TouchableOpacity>
 
       <View style={styles.containerView}>
         <Bubbles
-          width={38}
-          height={38}
+          width={35}
+          height={35}
           right={moderateScale(60)}
-          bottom={moderateScale(230)}
+          bottom={moderateScale(180)}
         />
         <Bubbles
-          width={23}
-          height={23}
+          width={21}
+          height={21}
           right={moderateScale(15)}
-          bottom={moderateScale(190)}
+          bottom={moderateScale(150)}
         />
         <Bubbles
-          width={50}
-          height={50}
+          width={47}
+          height={47}
           right={moderateScale(30)}
-          bottom={moderateScale(110)}
+          bottom={moderateScale(80)}
         />
         <Bubbles
-          width={31}
-          height={31}
+          width={30}
+          height={30}
           left={moderateScale(20)}
+          top={moderateScale(490)}
+        />
+        <Bubbles
+          width={12}
+          height={12}
+          left={moderateScale(10)}
           top={moderateScale(530)}
         />
         <Bubbles
-          width={13}
-          height={13}
-          left={moderateScale(10)}
-          top={moderateScale(580)}
-        />
-        <Bubbles
-          width={24}
-          height={24}
+          width={21}
+          height={21}
           left={moderateScale(50)}
-          top={moderateScale(590)}
+          top={moderateScale(530)}
         />
         <SubHeading name={'Settings'} />
         <View style={{position: 'absolute', top: moderateScale(58)}}>
-          <ProfileRoundSvg width={119} height={119} />
+          <ProfileRoundSvg width={110} height={110} />
         </View>
         <TouchableOpacity onPress={toggleModal} style={styles.imgCircle}>
           {/* {imgUri !==null ? (
@@ -114,7 +135,7 @@ const Settings = ({navigation}) => {
           ) : (
             <ProfileSvg width={108} height={108} />
           )} */}
-          <ProfileSvg width={108} height={108} />
+          <ProfileSvg width={100} height={100} />
         </TouchableOpacity>
         <Text style={{...fonts.trial_head_sub, color: colors.primary}}>
           David Junior
@@ -126,11 +147,7 @@ const Settings = ({navigation}) => {
           style={styles.items}
           onPress={() => navigation.navigate('PersonalInformation')}>
           <Text
-            style={{
-              ...fonts.subscriptionTrial_head,
-              color: colors.black,
-              paddingBottom: moderateScale(5),
-            }}>
+            style={styles.subHead}>
             Personal Information
           </Text>
         </TouchableOpacity>
@@ -138,11 +155,7 @@ const Settings = ({navigation}) => {
           style={styles.items}
           onPress={() => navigation.navigate('Help')}>
           <Text
-            style={{
-              ...fonts.subscriptionTrial_head,
-              color: colors.black,
-              paddingBottom: moderateScale(5),
-            }}>
+            style={styles.subHead}>
             Help
           </Text>
         </TouchableOpacity>
@@ -150,11 +163,7 @@ const Settings = ({navigation}) => {
           style={styles.items}
           onPress={() => navigation.navigate('TermsCondition')}>
           <Text
-            style={{
-              ...fonts.subscriptionTrial_head,
-              color: colors.black,
-              paddingBottom: moderateScale(5),
-            }}>
+            style={styles.subHead}>
             Terms & Conditions
           </Text>
         </TouchableOpacity>
@@ -162,11 +171,7 @@ const Settings = ({navigation}) => {
           style={styles.items}
           onPress={() => navigation.navigate('PrivacyPolicy')}>
           <Text
-            style={{
-              ...fonts.subscriptionTrial_head,
-              color: colors.black,
-              paddingBottom: moderateScale(5),
-            }}>
+            style={styles.subHead}>
             Privacy Policy
           </Text>
         </TouchableOpacity>
@@ -174,11 +179,7 @@ const Settings = ({navigation}) => {
           style={styles.items}
           onPress={() => navigation.navigate('AboutUs')}>
           <Text
-            style={{
-              ...fonts.subscriptionTrial_head,
-              color: colors.black,
-              paddingBottom: moderateScale(5),
-            }}>
+            style={styles.subHead}>
             About Us
           </Text>
         </TouchableOpacity>
@@ -194,16 +195,13 @@ const Settings = ({navigation}) => {
           }
           >
           <Text
-            style={{
-              ...fonts.subscriptionTrial_head,
-              color: colors.black,
-              paddingBottom: moderateScale(5),
-            }}>
+            style={styles.subHead}>
             Change Password
           </Text>
         </TouchableOpacity>
       </View>
-      <View style={{alignItems: 'center'}}>
+
+      <View style={{alignItems: 'center',marginBottom:moderateScale(50)}}>
         <Button
           onPress={() => {
             context.setuserToken(null)
@@ -218,7 +216,7 @@ const Settings = ({navigation}) => {
           marginTop={moderateScale(0)}
         />
          <Button
-          
+          onPress={toggleModalDeleteAccount}
           text={'Delete Account'}
           width={moderateScale(150)}
           backgroundColor={colors.primary}
@@ -226,6 +224,9 @@ const Settings = ({navigation}) => {
           marginBottom={moderateScale(30)}
         />
       </View>
+      
+        </ScrollView>
+      
     </ImageBackground>
   );
 };
@@ -233,7 +234,7 @@ const Settings = ({navigation}) => {
 const styles = StyleSheet.create({
   containerView: {
     alignItems: 'center',
-    marginTop: moderateScale(40),
+    marginTop: moderateScale(20),
   },
   items: {
     width: '82%',
@@ -245,9 +246,9 @@ const styles = StyleSheet.create({
   },
   imgCircle: {
     marginVertical: moderateScale(25),
-    width: 108,
-    height: 108,
-    borderRadius: 54,
+    width: 100,
+    height: 100,
+    borderRadius: 50,
 
     alignItems: 'center',
     justifyContent: 'center',
@@ -260,5 +261,11 @@ const styles = StyleSheet.create({
     left: moderateScale(15),
     top: moderateScale(15),
   },
+  subHead:{
+    ...fonts.subscriptionTrial_head,
+    color: colors.black,
+    paddingBottom: moderateScale(2),
+  }
+
 });
 export default Settings;

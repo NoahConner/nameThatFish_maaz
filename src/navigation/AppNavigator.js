@@ -8,17 +8,15 @@ import ForgotPassword from '../screens/ForgotPassword';
 import ChangePassword from '../screens/ChangePassword';
 import ResetPassword from '../screens/ResetPassword';
 import {SignIn} from '../screens';
-import Home from '../screens/Home';
 import Trial from '../screens/Trial';
-import History from '../screens/History';
-import Result from '../screens/Result';
 import AppContext from '../context/AuthContext';
+import Subscription from '../screens/Subscription';
 
 const Stack = createStackNavigator();
 
 const StackNavigation = () => {
   const context = useContext(AppContext);
-
+// console.log(context.userToken,'fdgf')
   return (
     <Stack.Navigator
       initialRouteName="Slider"
@@ -29,14 +27,18 @@ const StackNavigation = () => {
           <Stack.Screen name="Intro" component={Intro} />
           <Stack.Screen name="SignIn" component={SignIn} />
           <Stack.Screen name="Signup" component={Signup} />
+          <Stack.Screen name="Trial" component={Trial} />
           <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
           <Stack.Screen name="ChangePassword" component={ChangePassword} />
           <Stack.Screen name="ResetPassword" component={ResetPassword} />
+          <Stack.Screen name="Subscription" component={Subscription} />
+          <Stack.Screen name="HomeScreen" component={BottomTab} />
         </>
       ) : (
         <>
+          <Stack.Screen name="HomeScreen" component={BottomTab} />
           <Stack.Screen name="SettingScreen" component={BottomTab} />
-          <Stack.Screen name="TrialScreen" component={BottomTab} />
+          <Stack.Screen name="SubscriptionScreen" component={BottomTab} />
         </>
       )}
     </Stack.Navigator>

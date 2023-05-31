@@ -8,10 +8,10 @@ const Button = ({
   onPress,
   backgroundColor=colors.primary,
   height=moderateScale(28),
-  width=moderateScale(99),
+  width=moderateScale(92),
   marginTop=moderateScale(40),
   marginBottom=moderateScale(20),
-  borderRadius=25
+  borderRadius=24
 }) => {
   return (
     <TouchableOpacity

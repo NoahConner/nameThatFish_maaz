@@ -9,28 +9,26 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {
-  AppleSvg,
   BackSvg,
-  BubbleSvg,
-  EmailSvg,
-  GoogleSvg,
-  PasswordSvg,
 } from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
 import {Button, CustomInput, MainHeading} from '../components';
 import Icon from 'react-native-vector-icons/Entypo';
+import { screenHeight } from '../constants/screenResolution';
+import WavesAnimated from '../components/WavesAnimated';
 const ChangePassword = ({navigation}) => {
   const [changePassword, setChangePassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
-  const [eyeIconName, setEyeIconName] = useState(false);
-  const [eyeIconName2, setEyeIconName2] = useState(false);
+  const [eyeIconName, setEyeIconName] = useState(true);
+  const [eyeIconName2, setEyeIconName2] = useState(true);
   return (
     <KeyboardAvoidingView style={{flex: 1}}>
       <ImageBackground
         source={require('../assets/images/Rectangle.png')}
         resizeMode="stretch"
-        style={{flex: 1, alignItems: 'center'}}>
+        style={{flex: 1, alignItems: 'center',height:screenHeight}}>
+          {/* <WavesAnimated /> */}
         <TouchableOpacity style={styles.icon}
          onPress={() => {
           navigation.goBack()

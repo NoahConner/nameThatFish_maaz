@@ -18,7 +18,9 @@ import {
 } from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
-import {Button, CustomInput, MainHeading} from '../components';
+import {Button, CustomInput, MainHeading, } from '../components';
+import { screenHeight } from '../constants/screenResolution';
+import WavesAnimated from '../components/WavesAnimated';
 
 const ForgotPassword = ({navigation}) => {
   const [email, setemail] = useState(null);
@@ -27,7 +29,8 @@ const ForgotPassword = ({navigation}) => {
       <ImageBackground
         source={require('../assets/images/Rectangle.png')}
         resizeMode='stretch'
-        style={{flex: 1, alignItems: 'center'}}>
+        style={{flex: 1, alignItems: 'center',height:screenHeight}}>
+          {/* <WavesAnimated/> */}
         <TouchableOpacity style={styles.icon}
          onPress={() => {
           navigation.goBack()

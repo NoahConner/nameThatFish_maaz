@@ -4,15 +4,18 @@ import {
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
-  Keyboard,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import {BackSvg, SubscriptionSvg} from '../assets/svg';
 import {moderateScale} from 'react-native-size-matters';
-import {Bubbles, Button, CustomTexts, SubHeading} from '../components';
+import {Bubbles, Button, SubHeading} from '../components';
 import {colors, fonts} from '../constants';
+import AppContext from '../context/AuthContext';
+
 
 const Subscription = ({navigation}) => {
+  
+  const context = useContext(AppContext);
   return (
     <ImageBackground
       source={require('../assets/images/bg2.png')}
@@ -27,26 +30,26 @@ const Subscription = ({navigation}) => {
 
       <View style={styles.containerView}>
         <Bubbles
-          width={40}
-          height={40}
+          width={37}
+          height={37}
           right={moderateScale(260)}
           top={moderateScale(550)}
         />
         <Bubbles
-          width={25}
-          height={25}
+          width={23}
+          height={23}
           right={moderateScale(35)}
           bottom={moderateScale(240)}
         />
         <Bubbles
-          width={52}
-          height={52}
+          width={48}
+          height={48}
           right={moderateScale(290)}
           top={moderateScale(80)}
         />
         <Bubbles
-          width={41}
-          height={41}
+          width={39}
+          height={39}
           right={moderateScale(30)}
           top={moderateScale(0)}
         />
@@ -80,6 +83,13 @@ const Subscription = ({navigation}) => {
           </Text>
         
           <Button
+          onPress={()=>{
+            // context.setuserToken('122345')
+            
+            setTimeout(() => {
+              navigation.navigate('HomeScreen')
+            });
+          }}
             width={moderateScale(270)}
             height={moderateScale(45)}
             text={'$499.00 Per Year Subscriptions'}
