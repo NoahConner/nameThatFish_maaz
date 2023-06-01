@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Animated,
+  Platform,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {
@@ -91,7 +92,7 @@ const Signup = ({navigation}) => {
               setEyeIconName(!eyeIconName);
             }}
             style={{
-              top: moderateScale(230),
+              top: Platform.OS === 'ios' ? moderateScale(158) : moderateScale(230),
               left: moderateScale(130),
               zIndex: 1,
             }}>
@@ -108,7 +109,7 @@ const Signup = ({navigation}) => {
               setEyeIconName2(!eyeIconName2);
             }}
             style={{
-              top: moderateScale(270),
+              top:  Platform.OS === 'ios' ? moderateScale(178) : moderateScale(270),
               left: moderateScale(130),
               zIndex: 1,
             }}>
@@ -138,7 +139,7 @@ const Signup = ({navigation}) => {
               alignItems:'center',
               justifyContent:'center',
               position:'absolute',
-              top:moderateScale(303),
+              top: Platform.OS === 'ios' ? moderateScale(292) : moderateScale(342),
               left:moderateScale(42),
               zIndex:1
             }}
@@ -221,11 +222,10 @@ const Signup = ({navigation}) => {
 
 const styles = StyleSheet.create({
   icon: {
-    position: 'absolute',
     left: moderateScale(15),
-    top: moderateScale(15),
-    // borderWidth:1,
-    // color:colors.white
+    alignSelf:'flex-start',
+    padding:moderateScale(10),
+    top: Platform.OS === 'ios' ? moderateScale(40) :  moderateScale(15),
   },
   text: {
     ...fonts.placeHolder2,

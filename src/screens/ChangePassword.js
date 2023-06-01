@@ -45,7 +45,7 @@ const ChangePassword = ({navigation}) => {
             setEyeIconName(!eyeIconName);
           }}
           style={{
-            top: moderateScale(50),
+            top: Platform.OS === 'ios' ? moderateScale(35) :  moderateScale(50),
             left: moderateScale(130),
             zIndex: 1,
           }}>
@@ -61,7 +61,7 @@ const ChangePassword = ({navigation}) => {
             setEyeIconName2(!eyeIconName2);
           }}
           style={{
-            top: moderateScale(93),
+            top: Platform.OS === 'ios' ? moderateScale(55) :  moderateScale(93),
             left: moderateScale(130),
             zIndex: 1,
           }}>
@@ -99,11 +99,10 @@ const ChangePassword = ({navigation}) => {
 
 const styles = StyleSheet.create({
   icon: {
-    position: 'absolute',
     left: moderateScale(15),
-    top: moderateScale(15),
-    // borderWidth:1,
-    // color:colors.white
+    alignSelf:'flex-start',
+    padding:moderateScale(10),
+    top: Platform.OS === 'ios' ? moderateScale(40) :  moderateScale(15),
   },
   text: {
     ...fonts.placeHolder2,

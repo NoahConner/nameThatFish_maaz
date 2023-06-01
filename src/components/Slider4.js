@@ -88,7 +88,7 @@ const Slider4 = () => {
         <MainHeading
           name={'Show Result'}
           marginBottom={moderateScale(10)}
-          marginTop={moderateScale(10)}
+          marginTop={moderateScale(30)}
         />
         <View style={styles.containerView}>
           <Slider4Svg width={270} height={150} />

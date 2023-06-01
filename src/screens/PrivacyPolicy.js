@@ -100,9 +100,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   icon: {
-    // position: 'absolute',
     left: moderateScale(15),
-    top: moderateScale(15),
+    alignSelf:'flex-start',
+    padding:moderateScale(10),
+    top: Platform.OS === 'ios' ? moderateScale(40) :  moderateScale(15),
   },
 });
 export default PrivacyPolicy;

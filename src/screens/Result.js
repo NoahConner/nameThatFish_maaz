@@ -6,14 +6,15 @@ import {
   StyleSheet,
   ScrollView,
   FlatList,
+  Platform,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {BackSvg, FishDetailsSvg, ResultFlatlist} from '../assets/svg';
-import {colors, fonts} from '../constants';
-import {moderateScale} from 'react-native-size-matters';
+import React, { useEffect, useState } from 'react';
+import { BackSvg, FishDetailsSvg, ResultFlatlist } from '../assets/svg';
+import { colors, fonts } from '../constants';
+import { moderateScale, s } from 'react-native-size-matters';
 import { screenHeight } from '../constants/screenResolution';
 
-const Result = ({navigation}) => {
+const Result = ({ navigation }) => {
   const DATA = [
     {
       id: 1,
@@ -47,14 +48,14 @@ const Result = ({navigation}) => {
       text2:
         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.Lorem ipsum dolor sit amet, consectetuer adipiscing elit,',
     },
- 
+
   ];
 
-  const renderItem = ({item}) => {
+  const renderItem = ({ item }) => {
     return (
-      <TouchableOpacity style={{flex: 1,marginTop:moderateScale(20)}}>
+      <TouchableOpacity style={{ flex: 1, marginTop: moderateScale(20) }}>
         <item.image width={150} height={144} />
-        <View style={{marginLeft: moderateScale(5),width:moderateScale(133)}}>
+        <View style={{ marginLeft: moderateScale(5), width: moderateScale(133) }}>
           <Text
             style={{
               color: colors.black,
@@ -87,21 +88,22 @@ const Result = ({navigation}) => {
     <ImageBackground
       source={require('../assets/images/bg2.png')}
       resizeMode="stretch"
-      style={{flex: 1,height:screenHeight}}>
-  
+      style={{ flex: 1, height: screenHeight }}>
+
       <ScrollView
         showsVerticalScrollIndicator={false}
-        style={{margin:moderateScale(20),marginBottom:moderateScale(50)}}>
-        <TouchableOpacity 
-         onPress={() => {
-          navigation.goBack()
-        }}>
-          
-        <BackSvg width={20} height={20} />
-      </TouchableOpacity>
+        style={{ margin: moderateScale(20), marginBottom: moderateScale(50) }}>
+        <TouchableOpacity
+          style={styles.icon}
+          onPress={() => {
+            navigation.goBack()
+          }}>
+
+          <BackSvg width={20} height={20} />
+        </TouchableOpacity>
         <View style={styles.containerView}>
           <FishDetailsSvg width={270} height={150} />
-          <View style={{marginLeft: moderateScale(5)}}>
+          <View style={{ marginLeft: moderateScale(5) }}>
 
             <Text
               style={{
@@ -140,15 +142,15 @@ const Result = ({navigation}) => {
 
 const styles = StyleSheet.create({
   containerView: {
-    
+
     width: '77%',
-    marginTop: moderateScale(10),
+    marginTop: Platform.OS === 'ios' ? moderateScale(60) : moderateScale(10),
   },
 
   icon: {
-    
-    left: moderateScale(15),
-    top: moderateScale(15),
+    alignSelf:'flex-start',
+    padding:moderateScale(10),
+    top: Platform.OS === 'ios' ? moderateScale(40) :  moderateScale(0),
   },
   uploadIcon: {
     position: 'absolute',

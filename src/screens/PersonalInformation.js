@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import React, {useState} from 'react';
 import {BackSvg} from '../assets/svg';
@@ -172,7 +173,7 @@ const PersonalInformation = ({navigation}) => {
 const styles = StyleSheet.create({
   containerView: {
     alignItems: 'center',
-    marginTop: moderateScale(40),
+    marginTop: Platform.OS === 'ios' ? moderateScale(60) : moderateScale(40),
   },
   items: {
     width: '82%',
@@ -195,9 +196,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   icon: {
-    // position: 'absolute',
+  
     left: moderateScale(15),
-    top: moderateScale(15),
+    alignSelf:'flex-start',
+    padding:moderateScale(10),
+    top: Platform.OS === 'ios' ? moderateScale(40) :  moderateScale(15),
   },
 });
 export default PersonalInformation;

@@ -23,7 +23,7 @@ function CustomModal({
       onBackdropPress={onClose}
       onBackButtonPress={onClose}>
         
-      <View style={{ ...styles.containerV, height: moderateScale(110) }}>
+      <View style={{ ...styles.containerV, height: moderateScale(130) }}>
         <View>
         <Text style={{ ...fonts.buttonText, color: txtColor1,textAlign:'center' }}>{text3}</Text>
         </View>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#b8e8ec',
     alignItems: 'center',
     justifyContent: 'center',
-    width: moderateScale(300),
+    width: moderateScale(260),
     borderRadius: 20,
     marginLeft:'auto',
     marginRight:'auto'

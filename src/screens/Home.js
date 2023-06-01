@@ -6,24 +6,27 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   TextInput,
+  Platform,
 } from 'react-native';
-import React, { useState } from 'react';
-import {BackSvg, ManWithFishSvg, ScannerSvg, UploadPhotoSvg} from '../assets/svg';
+import React, {useState} from 'react';
+import {
+  BackSvg,
+  ManWithFishSvg,
+  ScannerSvg,
+  UploadPhotoSvg,
+} from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
-import {Button,} from '../components';
+import {Button} from '../components';
 import ImagePicker from 'react-native-image-crop-picker';
 import FlatlistHistory from '../components/FlatlistHistory';
-import { screenHeight, screenWidth } from '../constants/screenResolution';
+import {screenHeight, screenWidth} from '../constants/screenResolution';
 import WavesAnimated from '../components/WavesAnimated';
 
 const Home = ({navigation}) => {
   const [imgUri, setImgUri] = useState(null);
- 
 
- 
   const openCamera = () => {
-    
     ImagePicker.openCamera({
       cropping: true,
       includeBase64: true,
@@ -35,7 +38,6 @@ const Home = ({navigation}) => {
     });
   };
   const openGallery = () => {
-    
     ImagePicker.openPicker({
       cropping: true,
       includeBase64: true,
@@ -50,11 +52,14 @@ const Home = ({navigation}) => {
   return (
     <ImageBackground
       source={require('../assets/images/Rectangle.png')}
-      resizeMode='stretch'
-      style={{flex: 1,height:screenHeight}}>
-{/* <WavesAnimated/> */}
-      <TouchableOpacity style={styles.uploadIcon}
-      onPress={()=>{openGallery()}}>
+      resizeMode="stretch"
+      style={{flex: 1, height: screenHeight}}>
+      {/* <WavesAnimated/> */}
+      <TouchableOpacity
+        style={styles.uploadIcon}
+        onPress={() => {
+          openGallery();
+        }}>
         <UploadPhotoSvg width={30} height={23} />
         <Text
           style={{
@@ -65,53 +70,60 @@ const Home = ({navigation}) => {
           Upload
         </Text>
       </TouchableOpacity>
-      
+
       <View style={styles.mainContainer}>
-      <TouchableOpacity style={{alignItems:'center',marginTop:moderateScale(20)}}
-        onPress={()=>{openCamera()}}>
-          <ScannerSvg width={120} height={120} />
+        <TouchableOpacity
+          style={{
+            alignItems: 'center',
+            width:moderateScale(120) ,
+            alignSelf: 'center',
+            marginTop: Platform.OS === 'ios' ? moderateScale(20) : moderateScale(0),
+          }}
+          onPress={() => {
+            openCamera();
+          }}>
+          <ScannerSvg width={110} height={110} />
         </TouchableOpacity>
         <View style={styles.container}>
-        <Button
-          onPress={() => {
-            navigation.navigate('Result')
-          }}
-          text={'Scan'}
-        />
-        <Text style={{...fonts.subHeadHistory,color:colors.white}}>Recent History</Text>
+          <Button
+            onPress={() => {
+              navigation.navigate('Result');
+            }}
+            text={'Scan'}
+          />
+          <Text style={{...fonts.subHeadHistory, color: colors.white}}>
+            Recent History
+          </Text>
         </View>
-        <View style={{width:screenWidth,padding:'5%'}}>
-        <FlatlistHistory/>
-        <FlatlistHistory/>
-        <FlatlistHistory/>
+        <View style={{width: screenWidth, padding: '5%'}}>
+          <FlatlistHistory />
+          <FlatlistHistory />
+          <FlatlistHistory />
         </View>
         <View style={{...styles.container}}>
-        <Button
-        marginTop={moderateScale(10)}
-          onPress={() => {
-            navigation.navigate('History')
-          }}
-          text={'View More'}
-        />
+          <Button
+            marginTop={moderateScale(10)}
+            onPress={() => {
+              navigation.navigate('History');
+            }}
+            text={'View More'}
+          />
+        </View>
       </View>
-      </View>
-      
     </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-// borderWidth:1,
-// borderColor:colors.white,
-alignItems:'center'
-
-
+    // borderWidth:1,
+    // borderColor:colors.white,
+    alignItems: 'center',
   },
-  mainContainer:{
+  mainContainer: {
     // borderColor:'#000',
     // borderWidth:1,
-    marginTop:moderateScale(50)
+    marginTop: moderateScale(50),
   },
 
   icon: {
@@ -120,10 +132,9 @@ alignItems:'center'
     top: moderateScale(15),
   },
   uploadIcon: {
-    position: 'absolute',
     right: moderateScale(15),
-    top: moderateScale(20),
-    alignItems: 'center',
+    top: Platform.OS === 'ios' ? moderateScale(60) : moderateScale(20),
+    alignItems: 'flex-end',
   },
   text: {
     ...fonts.trial_head,

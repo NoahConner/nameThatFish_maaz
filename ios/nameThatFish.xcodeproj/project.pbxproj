@@ -8,23 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* nameThatFishTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* nameThatFishTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-nameThatFish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-nameThatFish.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-nameThatFish-nameThatFishTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-nameThatFish-nameThatFishTests.a */; };
+		2E1B6DC71D6178758E02F440 /* libPods-nameThatFish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2014AA37B5F5309E006E0664 /* libPods-nameThatFish.a */; };
+		5706D56E2A28676800B2821A /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5706D56D2A28676800B2821A /* BootSplash.storyboard */; };
+		5706D59C2A286F4400B2821A /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5706D5912A286F4300B2821A /* Poppins-Bold.ttf */; };
+		5706D59D2A286F4400B2821A /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5706D5922A286F4300B2821A /* OFL.txt */; };
+		5706D59E2A286F4400B2821A /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5706D5932A286F4300B2821A /* Montserrat-Regular.ttf */; };
+		5706D59F2A286F4400B2821A /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5706D5942A286F4300B2821A /* Montserrat-Bold.ttf */; };
+		5706D5A02A286F4400B2821A /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5706D5952A286F4300B2821A /* Poppins-Medium.ttf */; };
+		5706D5A12A286F4400B2821A /* AkayaKanadaka-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5706D5962A286F4300B2821A /* AkayaKanadaka-Regular.ttf */; };
+		5706D5A22A286F4400B2821A /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5706D5972A286F4400B2821A /* Poppins-Light.ttf */; };
+		5706D5A32A286F4400B2821A /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5706D5982A286F4400B2821A /* Poppins-SemiBold.ttf */; };
+		5706D5A42A286F4400B2821A /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5706D5992A286F4400B2821A /* Montserrat-Medium.ttf */; };
+		5706D5A52A286F4400B2821A /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5706D59A2A286F4400B2821A /* Montserrat-SemiBold.ttf */; };
+		5706D5A62A286F4400B2821A /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5706D59B2A286F4400B2821A /* Poppins-Regular.ttf */; };
+		5A0AB5D7C323D50C77824882 /* libPods-nameThatFish-nameThatFishTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6293FFB06F86766AA454DB /* libPods-nameThatFish-nameThatFishTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		5DA9D54C15FE4C338559337B /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B759EB1A8F44D6D99729A62 /* Poppins-Bold.ttf */; };
-		945FBCCAACB84BD9A1E6D77F /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDCE675CFE95454CB5286F7C /* Poppins-Light.ttf */; };
-		6D4479D9D6034C3A8CAA9E8B /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC8D6D059767472BB0FA1E2E /* Poppins-Medium.ttf */; };
-		A60FC957577F4436BE25EA95 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FC3916955DF4735A9EAC974 /* Poppins-Regular.ttf */; };
-		2545DCB3D57444F0821887A0 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 153D553E2A744B4BB5D4EADD /* Poppins-SemiBold.ttf */; };
-		E825A995393B46F49760CFC3 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 87ED61E5D7DA466C8752AA39 /* OFL.txt */; };
-		D897FDBA275D4A198B65849E /* AkayaKanadaka-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2ADD4CE677CC4DE29979A2F9 /* AkayaKanadaka-Regular.ttf */; };
-		3124EB530C2F47BE8ABF0CD5 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D35E2275C1F0447A8B7CDFDB /* Montserrat-Regular.ttf */; };
-		8CC5FC41D6FB456E9F576775 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5C809BB9A764D9BA86AEC98 /* Montserrat-Bold.ttf */; };
-		7AD0A3541344482D996453E9 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 061B4D326058471CBFADA0CA /* Montserrat-Medium.ttf */; };
-		BC7A7D7D18854BDBB2D80B58 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5E4E1D71A59475681EE1216 /* Montserrat-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,31 +42,59 @@
 		00E356EE1AD99517003FC87E /* nameThatFishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nameThatFishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* nameThatFishTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = nameThatFishTests.m; sourceTree = "<group>"; };
+		061B4D326058471CBFADA0CA /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Medium.ttf"; path = "../src/assets/fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* nameThatFish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nameThatFish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = nameThatFish/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = nameThatFish/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = nameThatFish/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = nameThatFish/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = nameThatFish/main.m; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-nameThatFish-nameThatFishTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nameThatFish-nameThatFishTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B4392A12AC88292D35C810B /* Pods-nameThatFish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nameThatFish.debug.xcconfig"; path = "Target Support Files/Pods-nameThatFish/Pods-nameThatFish.debug.xcconfig"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-nameThatFish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nameThatFish.release.xcconfig"; path = "Target Support Files/Pods-nameThatFish/Pods-nameThatFish.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-nameThatFish-nameThatFishTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nameThatFish-nameThatFishTests.debug.xcconfig"; path = "Target Support Files/Pods-nameThatFish-nameThatFishTests/Pods-nameThatFish-nameThatFishTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-nameThatFish.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nameThatFish.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		153D553E2A744B4BB5D4EADD /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-SemiBold.ttf"; path = "../src/assets/fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		2014AA37B5F5309E006E0664 /* libPods-nameThatFish.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nameThatFish.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		246352931F6C9F3A49454EAD /* Pods-nameThatFish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nameThatFish.debug.xcconfig"; path = "Target Support Files/Pods-nameThatFish/Pods-nameThatFish.debug.xcconfig"; sourceTree = "<group>"; };
+		261E88989E3B898AA7EEC9C0 /* Pods-nameThatFish-nameThatFishTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nameThatFish-nameThatFishTests.debug.xcconfig"; path = "Target Support Files/Pods-nameThatFish-nameThatFishTests/Pods-nameThatFish-nameThatFishTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2ADD4CE677CC4DE29979A2F9 /* AkayaKanadaka-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AkayaKanadaka-Regular.ttf"; path = "../src/assets/fonts/AkayaKanadaka-Regular.ttf"; sourceTree = "<group>"; };
+		2B759EB1A8F44D6D99729A62 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Bold.ttf"; path = "../src/assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		5706D56D2A28676800B2821A /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = nameThatFish/BootSplash.storyboard; sourceTree = "<group>"; };
+		5706D5712A286B3B00B2821A /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Solid.ttf; path = ../../../Fonts/FontAwesome5_Solid.ttf; sourceTree = "<group>"; };
+		5706D5722A286B3B00B2821A /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Regular.ttf; path = ../../../Fonts/FontAwesome5_Regular.ttf; sourceTree = "<group>"; };
+		5706D5732A286B3B00B2821A /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialIcons.ttf; path = ../../../Fonts/MaterialIcons.ttf; sourceTree = "<group>"; };
+		5706D5742A286B3C00B2821A /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Zocial.ttf; path = ../../../Fonts/Zocial.ttf; sourceTree = "<group>"; };
+		5706D5752A286B3C00B2821A /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Foundation.ttf; path = ../../../Fonts/Foundation.ttf; sourceTree = "<group>"; };
+		5706D5762A286B3C00B2821A /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Fontisto.ttf; path = ../../../Fonts/Fontisto.ttf; sourceTree = "<group>"; };
+		5706D5772A286B3D00B2821A /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Octicons.ttf; path = ../../../Fonts/Octicons.ttf; sourceTree = "<group>"; };
+		5706D5782A286B3D00B2821A /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = ../../../Fonts/Ionicons.ttf; sourceTree = "<group>"; };
+		5706D5792A286B3E00B2821A /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Entypo.ttf; path = ../../../Fonts/Entypo.ttf; sourceTree = "<group>"; };
+		5706D57A2A286B3E00B2821A /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialCommunityIcons.ttf; path = ../../../Fonts/MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
+		5706D57B2A286B3E00B2821A /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = EvilIcons.ttf; path = ../../../Fonts/EvilIcons.ttf; sourceTree = "<group>"; };
+		5706D57C2A286B3F00B2821A /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Feather.ttf; path = ../../../Fonts/Feather.ttf; sourceTree = "<group>"; };
+		5706D57D2A286B3F00B2821A /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SimpleLineIcons.ttf; path = ../../../Fonts/SimpleLineIcons.ttf; sourceTree = "<group>"; };
+		5706D57E2A286B3F00B2821A /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AntDesign.ttf; path = ../../../Fonts/AntDesign.ttf; sourceTree = "<group>"; };
+		5706D57F2A286B4000B2821A /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Brands.ttf; path = ../../../Fonts/FontAwesome5_Brands.ttf; sourceTree = "<group>"; };
+		5706D5802A286B4000B2821A /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = ../../../Fonts/FontAwesome.ttf; sourceTree = "<group>"; };
+		5706D5912A286F4300B2821A /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Bold.ttf"; path = "../../maaz fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		5706D5922A286F4300B2821A /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = OFL.txt; path = "../../maaz fonts/OFL.txt"; sourceTree = "<group>"; };
+		5706D5932A286F4300B2821A /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "../../maaz fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		5706D5942A286F4300B2821A /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "../../maaz fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		5706D5952A286F4300B2821A /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Medium.ttf"; path = "../../maaz fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		5706D5962A286F4300B2821A /* AkayaKanadaka-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AkayaKanadaka-Regular.ttf"; path = "../../maaz fonts/AkayaKanadaka-Regular.ttf"; sourceTree = "<group>"; };
+		5706D5972A286F4400B2821A /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Light.ttf"; path = "../../maaz fonts/Poppins-Light.ttf"; sourceTree = "<group>"; };
+		5706D5982A286F4400B2821A /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-SemiBold.ttf"; path = "../../maaz fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		5706D5992A286F4400B2821A /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Medium.ttf"; path = "../../maaz fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		5706D59A2A286F4400B2821A /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-SemiBold.ttf"; path = "../../maaz fonts/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		5706D59B2A286F4400B2821A /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Regular.ttf"; path = "../../maaz fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		6FC3916955DF4735A9EAC974 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Regular.ttf"; path = "../src/assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = nameThatFish/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-nameThatFish-nameThatFishTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nameThatFish-nameThatFishTests.release.xcconfig"; path = "Target Support Files/Pods-nameThatFish-nameThatFishTests/Pods-nameThatFish-nameThatFishTests.release.xcconfig"; sourceTree = "<group>"; };
+		87ED61E5D7DA466C8752AA39 /* OFL.txt */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OFL.txt; path = ../src/assets/fonts/OFL.txt; sourceTree = "<group>"; };
+		899142D98F7E4C82FDBF3D6A /* Pods-nameThatFish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nameThatFish.release.xcconfig"; path = "Target Support Files/Pods-nameThatFish/Pods-nameThatFish.release.xcconfig"; sourceTree = "<group>"; };
+		A5C809BB9A764D9BA86AEC98 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Bold.ttf"; path = "../src/assets/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		A5E4E1D71A59475681EE1216 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-SemiBold.ttf"; path = "../src/assets/fonts/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		CDCE675CFE95454CB5286F7C /* Poppins-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Light.ttf"; path = "../src/assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; };
+		D35E2275C1F0447A8B7CDFDB /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Regular.ttf"; path = "../src/assets/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		DC6293FFB06F86766AA454DB /* libPods-nameThatFish-nameThatFishTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nameThatFish-nameThatFishTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC8D6D059767472BB0FA1E2E /* Poppins-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Medium.ttf"; path = "../src/assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		2B759EB1A8F44D6D99729A62 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; name = "Poppins-Bold.ttf"; path = "../src/assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		CDCE675CFE95454CB5286F7C /* Poppins-Light.ttf */ = {isa = PBXFileReference; name = "Poppins-Light.ttf"; path = "../src/assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		DC8D6D059767472BB0FA1E2E /* Poppins-Medium.ttf */ = {isa = PBXFileReference; name = "Poppins-Medium.ttf"; path = "../src/assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		6FC3916955DF4735A9EAC974 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; name = "Poppins-Regular.ttf"; path = "../src/assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		153D553E2A744B4BB5D4EADD /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; name = "Poppins-SemiBold.ttf"; path = "../src/assets/fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		87ED61E5D7DA466C8752AA39 /* OFL.txt */ = {isa = PBXFileReference; name = "OFL.txt"; path = "../src/assets/fonts/OFL.txt"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		2ADD4CE677CC4DE29979A2F9 /* AkayaKanadaka-Regular.ttf */ = {isa = PBXFileReference; name = "AkayaKanadaka-Regular.ttf"; path = "../src/assets/fonts/AkayaKanadaka-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		D35E2275C1F0447A8B7CDFDB /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; name = "Montserrat-Regular.ttf"; path = "../src/assets/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		A5C809BB9A764D9BA86AEC98 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; name = "Montserrat-Bold.ttf"; path = "../src/assets/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		061B4D326058471CBFADA0CA /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; name = "Montserrat-Medium.ttf"; path = "../src/assets/fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		A5E4E1D71A59475681EE1216 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; name = "Montserrat-SemiBold.ttf"; path = "../src/assets/fonts/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F1105DB9684A6DC7B9350CEF /* Pods-nameThatFish-nameThatFishTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nameThatFish-nameThatFishTests.release.xcconfig"; path = "Target Support Files/Pods-nameThatFish-nameThatFishTests/Pods-nameThatFish-nameThatFishTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-nameThatFish-nameThatFishTests.a in Frameworks */,
+				5A0AB5D7C323D50C77824882 /* libPods-nameThatFish-nameThatFishTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-nameThatFish.a in Frameworks */,
+				2E1B6DC71D6178758E02F440 /* libPods-nameThatFish.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +137,35 @@
 		13B07FAE1A68108700A75B9A /* nameThatFish */ = {
 			isa = PBXGroup;
 			children = (
+				5706D57E2A286B3F00B2821A /* AntDesign.ttf */,
+				5706D5792A286B3E00B2821A /* Entypo.ttf */,
+				5706D5962A286F4300B2821A /* AkayaKanadaka-Regular.ttf */,
+				5706D5942A286F4300B2821A /* Montserrat-Bold.ttf */,
+				5706D5992A286F4400B2821A /* Montserrat-Medium.ttf */,
+				5706D5932A286F4300B2821A /* Montserrat-Regular.ttf */,
+				5706D59A2A286F4400B2821A /* Montserrat-SemiBold.ttf */,
+				5706D5922A286F4300B2821A /* OFL.txt */,
+				5706D5912A286F4300B2821A /* Poppins-Bold.ttf */,
+				5706D5972A286F4400B2821A /* Poppins-Light.ttf */,
+				5706D5952A286F4300B2821A /* Poppins-Medium.ttf */,
+				5706D59B2A286F4400B2821A /* Poppins-Regular.ttf */,
+				5706D5982A286F4400B2821A /* Poppins-SemiBold.ttf */,
+				5706D57B2A286B3E00B2821A /* EvilIcons.ttf */,
+				5706D57C2A286B3F00B2821A /* Feather.ttf */,
+				5706D5802A286B4000B2821A /* FontAwesome.ttf */,
+				5706D57F2A286B4000B2821A /* FontAwesome5_Brands.ttf */,
+				5706D5722A286B3B00B2821A /* FontAwesome5_Regular.ttf */,
+				5706D5712A286B3B00B2821A /* FontAwesome5_Solid.ttf */,
+				5706D5762A286B3C00B2821A /* Fontisto.ttf */,
+				5706D5752A286B3C00B2821A /* Foundation.ttf */,
+				5706D5782A286B3D00B2821A /* Ionicons.ttf */,
+				5706D57A2A286B3E00B2821A /* MaterialCommunityIcons.ttf */,
+				5706D5732A286B3B00B2821A /* MaterialIcons.ttf */,
+				5706D5772A286B3D00B2821A /* Octicons.ttf */,
+				5706D57D2A286B3F00B2821A /* SimpleLineIcons.ttf */,
+				5706D5742A286B3C00B2821A /* Zocial.ttf */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				5706D56D2A28676800B2821A /* BootSplash.storyboard */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -122,10 +179,28 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-nameThatFish.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-nameThatFish-nameThatFishTests.a */,
+				2014AA37B5F5309E006E0664 /* libPods-nameThatFish.a */,
+				DC6293FFB06F86766AA454DB /* libPods-nameThatFish-nameThatFishTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		33CDE3402A6646158FB82BCF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2B759EB1A8F44D6D99729A62 /* Poppins-Bold.ttf */,
+				CDCE675CFE95454CB5286F7C /* Poppins-Light.ttf */,
+				DC8D6D059767472BB0FA1E2E /* Poppins-Medium.ttf */,
+				6FC3916955DF4735A9EAC974 /* Poppins-Regular.ttf */,
+				153D553E2A744B4BB5D4EADD /* Poppins-SemiBold.ttf */,
+				87ED61E5D7DA466C8752AA39 /* OFL.txt */,
+				2ADD4CE677CC4DE29979A2F9 /* AkayaKanadaka-Regular.ttf */,
+				D35E2275C1F0447A8B7CDFDB /* Montserrat-Regular.ttf */,
+				A5C809BB9A764D9BA86AEC98 /* Montserrat-Bold.ttf */,
+				061B4D326058471CBFADA0CA /* Montserrat-Medium.ttf */,
+				A5E4E1D71A59475681EE1216 /* Montserrat-SemiBold.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -163,32 +238,13 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-nameThatFish.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-nameThatFish.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-nameThatFish-nameThatFishTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-nameThatFish-nameThatFishTests.release.xcconfig */,
+				246352931F6C9F3A49454EAD /* Pods-nameThatFish.debug.xcconfig */,
+				899142D98F7E4C82FDBF3D6A /* Pods-nameThatFish.release.xcconfig */,
+				261E88989E3B898AA7EEC9C0 /* Pods-nameThatFish-nameThatFishTests.debug.xcconfig */,
+				F1105DB9684A6DC7B9350CEF /* Pods-nameThatFish-nameThatFishTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		33CDE3402A6646158FB82BCF /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				2B759EB1A8F44D6D99729A62 /* Poppins-Bold.ttf */,
-				CDCE675CFE95454CB5286F7C /* Poppins-Light.ttf */,
-				DC8D6D059767472BB0FA1E2E /* Poppins-Medium.ttf */,
-				6FC3916955DF4735A9EAC974 /* Poppins-Regular.ttf */,
-				153D553E2A744B4BB5D4EADD /* Poppins-SemiBold.ttf */,
-				87ED61E5D7DA466C8752AA39 /* OFL.txt */,
-				2ADD4CE677CC4DE29979A2F9 /* AkayaKanadaka-Regular.ttf */,
-				D35E2275C1F0447A8B7CDFDB /* Montserrat-Regular.ttf */,
-				A5C809BB9A764D9BA86AEC98 /* Montserrat-Bold.ttf */,
-				061B4D326058471CBFADA0CA /* Montserrat-Medium.ttf */,
-				A5E4E1D71A59475681EE1216 /* Montserrat-SemiBold.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -197,12 +253,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "nameThatFishTests" */;
 			buildPhases = (
-				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				87EF80EAF5129627D7331400 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				174C6230887C6FECA525535A /* [CP] Embed Pods Frameworks */,
+				A526A4A0408C4E7176AAFEE0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -218,14 +274,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "nameThatFish" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				707D819A7C8B176E787614AC /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				6FA5CD664DEBD977132CEA1B /* [CP] Embed Pods Frameworks */,
+				984F3D34C7EEC33FC5B37615 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -284,19 +340,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5706D59E2A286F4400B2821A /* Montserrat-Regular.ttf in Resources */,
+				5706D5A22A286F4400B2821A /* Poppins-Light.ttf in Resources */,
+				5706D5A52A286F4400B2821A /* Montserrat-SemiBold.ttf in Resources */,
+				5706D5A32A286F4400B2821A /* Poppins-SemiBold.ttf in Resources */,
+				5706D5A12A286F4400B2821A /* AkayaKanadaka-Regular.ttf in Resources */,
+				5706D59D2A286F4400B2821A /* OFL.txt in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				5DA9D54C15FE4C338559337B /* Poppins-Bold.ttf in Resources */,
-				945FBCCAACB84BD9A1E6D77F /* Poppins-Light.ttf in Resources */,
-				6D4479D9D6034C3A8CAA9E8B /* Poppins-Medium.ttf in Resources */,
-				A60FC957577F4436BE25EA95 /* Poppins-Regular.ttf in Resources */,
-				2545DCB3D57444F0821887A0 /* Poppins-SemiBold.ttf in Resources */,
-				E825A995393B46F49760CFC3 /* OFL.txt in Resources */,
-				D897FDBA275D4A198B65849E /* AkayaKanadaka-Regular.ttf in Resources */,
-				3124EB530C2F47BE8ABF0CD5 /* Montserrat-Regular.ttf in Resources */,
-				8CC5FC41D6FB456E9F576775 /* Montserrat-Bold.ttf in Resources */,
-				7AD0A3541344482D996453E9 /* Montserrat-Medium.ttf in Resources */,
-				BC7A7D7D18854BDBB2D80B58 /* Montserrat-SemiBold.ttf in Resources */,
+				5706D56E2A28676800B2821A /* BootSplash.storyboard in Resources */,
+				5706D5A62A286F4400B2821A /* Poppins-Regular.ttf in Resources */,
+				5706D5A02A286F4400B2821A /* Poppins-Medium.ttf in Resources */,
+				5706D59C2A286F4400B2821A /* Poppins-Bold.ttf in Resources */,
+				5706D5A42A286F4400B2821A /* Montserrat-Medium.ttf in Resources */,
+				5706D59F2A286F4400B2821A /* Montserrat-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,7 +376,24 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
+		174C6230887C6FECA525535A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-nameThatFish-nameThatFishTests/Pods-nameThatFish-nameThatFishTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-nameThatFish-nameThatFishTests/Pods-nameThatFish-nameThatFishTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-nameThatFish-nameThatFishTests/Pods-nameThatFish-nameThatFishTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6FA5CD664DEBD977132CEA1B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -336,29 +410,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-nameThatFish/Pods-nameThatFish-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-nameThatFish-nameThatFishTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		707D819A7C8B176E787614AC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -380,24 +432,29 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
+		87EF80EAF5129627D7331400 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-nameThatFish-nameThatFishTests/Pods-nameThatFish-nameThatFishTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-nameThatFish-nameThatFishTests/Pods-nameThatFish-nameThatFishTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-nameThatFish-nameThatFishTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-nameThatFish-nameThatFishTests/Pods-nameThatFish-nameThatFishTests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
+		984F3D34C7EEC33FC5B37615 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -414,7 +471,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-nameThatFish/Pods-nameThatFish-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
+		A526A4A0408C4E7176AAFEE0 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -483,7 +540,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-nameThatFish-nameThatFishTests.debug.xcconfig */;
+			baseConfigurationReference = 261E88989E3B898AA7EEC9C0 /* Pods-nameThatFish-nameThatFishTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -510,7 +567,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-nameThatFish-nameThatFishTests.release.xcconfig */;
+			baseConfigurationReference = F1105DB9684A6DC7B9350CEF /* Pods-nameThatFish-nameThatFishTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -534,11 +591,12 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-nameThatFish.debug.xcconfig */;
+			baseConfigurationReference = 246352931F6C9F3A49454EAD /* Pods-nameThatFish.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4BAA94W5H2;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = nameThatFish/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -561,11 +619,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-nameThatFish.release.xcconfig */;
+			baseConfigurationReference = 899142D98F7E4C82FDBF3D6A /* Pods-nameThatFish.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4BAA94W5H2;
 				INFOPLIST_FILE = nameThatFish/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -617,7 +676,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -651,6 +710,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -688,7 +748,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -714,6 +774,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

@@ -4,6 +4,7 @@ import {
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import React, {useContext, useState} from 'react';
 import {BackSvg, BubbleSvg, ProfileRoundSvg, ProfileSvg} from '../assets/svg';
@@ -125,7 +126,9 @@ const Settings = ({navigation}) => {
           left={moderateScale(50)}
           top={moderateScale(530)}
         />
+        
         <SubHeading name={'Settings'} />
+        
         <View style={{position: 'absolute', top: moderateScale(58)}}>
           <ProfileRoundSvg width={110} height={110} />
         </View>
@@ -234,7 +237,7 @@ const Settings = ({navigation}) => {
 const styles = StyleSheet.create({
   containerView: {
     alignItems: 'center',
-    marginTop: moderateScale(20),
+    marginTop: Platform.OS === 'ios' ? moderateScale(20) :  moderateScale(10),
   },
   items: {
     width: '82%',
@@ -257,9 +260,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   icon: {
-    // position: 'absolute',
-    left: moderateScale(15),
-    top: moderateScale(15),
+    alignSelf:'flex-start',
+    padding:moderateScale(10),
+    marginLeft:moderateScale(10),
+    top: Platform.OS === 'ios' ? moderateScale(40) :  moderateScale(10),
   },
   subHead:{
     ...fonts.subscriptionTrial_head,
