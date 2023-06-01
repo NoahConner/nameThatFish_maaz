@@ -20,7 +20,6 @@ const AppContainer = () => {
       <NavigationContainer>
         <AppNavigator />
       </NavigationContainer>
-      
     </SafeAreaView>
   );
 };
