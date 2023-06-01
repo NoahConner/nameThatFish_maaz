@@ -104,7 +104,7 @@ Contact Us at: <Text style={{color:colors.light_blue}}>123-456-789-0</Text></Tex
 const styles = StyleSheet.create({
   containerView: {
     alignItems: 'center',
-    marginTop: moderateScale(40),
+    marginTop: Platform.OS ? moderateScale(60) : moderateScale(40),
   },
   inputContainer:{
     width:'93%',
@@ -120,9 +120,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   icon: {
-    // position: 'absolute',
     left: moderateScale(15),
-    top: moderateScale(15),
+    alignSelf:'flex-start',
+    padding:moderateScale(10),
+    top: Platform.OS ? moderateScale(40) :  moderateScale(15),
   },
 });
 export default Help;

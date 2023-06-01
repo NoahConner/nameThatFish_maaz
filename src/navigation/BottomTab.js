@@ -8,6 +8,7 @@ import Subscription from '../screens/Subscription';
 import { Bell, HomeSvg, SettingSvg, SubscriptionBottomSvg } from '../assets/svg';
 import HomeStack from './HomeStack';
 import SubscriptionStack from './SubscriptionStack';
+import { Platform } from 'react-native';
 
 
 const Tab = createBottomTabNavigator();
@@ -26,13 +27,14 @@ const BottomTab = () => {
           borderTopLeftRadius:18,
           borderTopRightRadius:18,
           backgroundColor:colors.primary,
-          paddingBottom: 0,
-          height: moderateScale(40),
+          paddingBottom: Platform.OS ? moderateScale(20) : 0,
+          height: Platform.OS ? moderateScale(70) : moderateScale(40),
           position:'absolute',
           borderColor:colors.primary
           
         },
         tabBarIcon: () => {
+          
           let Icon;
 
           if (route.name == 'SettingStack') {
@@ -50,7 +52,7 @@ const BottomTab = () => {
             Icon=HomeSvg
           }
 
-          return <Icon width={20} height={20} />;
+          return <Icon  width={20} height={20} />;
         },
       })}>
       <Tab.Screen name="HomeStack" component={HomeStack} />

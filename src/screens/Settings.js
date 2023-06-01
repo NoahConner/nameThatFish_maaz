@@ -4,6 +4,7 @@ import {
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import React, {useContext, useState} from 'react';
 import {BackSvg, BubbleSvg, ProfileRoundSvg, ProfileSvg} from '../assets/svg';
@@ -257,9 +258,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   icon: {
-    // position: 'absolute',
-    left: moderateScale(15),
-    top: moderateScale(15),
+    alignSelf:'flex-start',
+    padding:moderateScale(10),
+    marginLeft:moderateScale(10),
+    top: Platform.OS ? moderateScale(40) :  moderateScale(15),
   },
   subHead:{
     ...fonts.subscriptionTrial_head,

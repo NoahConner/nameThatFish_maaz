@@ -6,6 +6,7 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   TextInput,
+  Platform,
 } from 'react-native';
 import React, {useState} from 'react';
 import {
@@ -42,7 +43,7 @@ const ForgotPassword = ({navigation}) => {
           marginTop={moderateScale(100)}
           marginBottom={moderateScale(70)}
         />
-        <View style={{right: moderateScale(130), top: moderateScale(27)}}>
+        <View style={{right: moderateScale(130), top:Platform.OS ? moderateScale(13) : moderateScale(27)}}>
           <EmailSvg width={18} height={15} />
         </View>
      
@@ -70,11 +71,10 @@ const ForgotPassword = ({navigation}) => {
 
 const styles = StyleSheet.create({
   icon: {
-    position: 'absolute',
     left: moderateScale(15),
-    top: moderateScale(15),
-    // borderWidth:1,
-    // color:colors.white
+    alignSelf:'flex-start',
+    padding:moderateScale(10),
+    top: Platform.OS ? moderateScale(40) :  moderateScale(15),
   },
   text: {
     ...fonts.placeHolder2,

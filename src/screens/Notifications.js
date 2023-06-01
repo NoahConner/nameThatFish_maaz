@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
+  Platform,
 } from 'react-native';
 import React from 'react';
 import {BackSvg} from '../assets/svg';
@@ -35,9 +36,9 @@ const Notifications = ({navigation}) => {
       onPress={()=>{
         navigation.goBack()
       }}>
-        <BackSvg width={20} height={20} />
+        <BackSvg  width={20} height={20} />
       </TouchableOpacity>
-        <MainHeading name={'Notifications'}  marginTop={moderateScale(60)}/>
+        <MainHeading name={'Notifications'}  marginTop={Platform.OS ? moderateScale(80) : moderateScale(60)}/>
         <View style={{marginTop:moderateScale(20),width:screenWidth-50}}>
         <View style={styles.notificationBody}>
           <Text style={{...fonts.sub_head_small,color:colors.white}}>{DATA.body} </Text>
@@ -65,8 +66,12 @@ const styles = StyleSheet.create({
   },
   icon: {
     position: 'absolute',
+
+    padding:moderateScale(10),
+    alignSelf:'flex-start',
     left: moderateScale(15),
-    top: moderateScale(15),
+    top: Platform.OS ? moderateScale(60) : moderateScale(15),
+    // backgroundColor:'red'
   },
   uploadIcon: {
     position: 'absolute',

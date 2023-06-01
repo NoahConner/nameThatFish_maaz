@@ -6,6 +6,7 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   TextInput,
+  Platform,
 } from 'react-native';
 import React, {useState} from 'react';
 import {
@@ -48,7 +49,7 @@ const ResetPassword = ({navigation}) => {
             setEyeIconName(!eyeIconName);
           }}
           style={{
-            top: moderateScale(30),
+            top: Platform.OS ? moderateScale(15) : moderateScale(30),
             left: moderateScale(130),
             zIndex: 1,
           }}>
@@ -79,11 +80,10 @@ const ResetPassword = ({navigation}) => {
 
 const styles = StyleSheet.create({
   icon: {
-    position: 'absolute',
     left: moderateScale(15),
-    top: moderateScale(15),
-    // borderWidth:1,
-    // color:colors.white
+    alignSelf:'flex-start',
+    padding:moderateScale(10),
+    top: Platform.OS ? moderateScale(40) :  moderateScale(15),
   },
   text: {
     ...fonts.placeHolder2,

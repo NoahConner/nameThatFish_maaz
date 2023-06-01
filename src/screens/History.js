@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
+  Platform,
 } from 'react-native';
 import React, { useState } from 'react';
 import {BackSvg, DeleteSvg} from '../assets/svg';
@@ -43,7 +44,7 @@ const History = ({navigation}) => {
         </Text>
       </TouchableOpacity>
 
-    <MainHeading name={'History'} marginTop={moderateScale(50)}/>
+    <MainHeading name={'History'} marginTop={Platform.OS ? moderateScale(100) : moderateScale(50)}/>
       {deleteHistory ? null :  <ScrollView
         style={{marginVertical: moderateScale(20),marginBottom:moderateScale(55)}}
         showsVerticalScrollIndicator={false}>
@@ -72,13 +73,15 @@ const styles = StyleSheet.create({
   icon: {
     position: 'absolute',
     left: moderateScale(15),
-    top: moderateScale(15),
+    top: Platform.OS ? moderateScale(60) : moderateScale(20),
+    padding:moderateScale(10)
   },
   uploadIcon: {
     position: 'absolute',
     right: moderateScale(20),
-    top: moderateScale(25),
+    top: Platform.OS ? moderateScale(60) : moderateScale(25),
     alignItems: 'center',
+
   },
   text: {
     ...fonts.trial_head,

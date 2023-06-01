@@ -6,6 +6,7 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   TextInput,
+  Platform,
 } from 'react-native';
 import React, { useState } from 'react';
 import {BackSvg, ManWithFishSvg, ScannerSvg, UploadPhotoSvg} from '../assets/svg';
@@ -67,7 +68,7 @@ const Home = ({navigation}) => {
       </TouchableOpacity>
       
       <View style={styles.mainContainer}>
-      <TouchableOpacity style={{alignItems:'center',marginTop:moderateScale(20)}}
+      <TouchableOpacity style={{alignItems:'center', width:120 , alignSelf:'center',marginTop:moderateScale(20)}}
         onPress={()=>{openCamera()}}>
           <ScannerSvg width={120} height={120} />
         </TouchableOpacity>
@@ -120,10 +121,9 @@ alignItems:'center'
     top: moderateScale(15),
   },
   uploadIcon: {
-    position: 'absolute',
     right: moderateScale(15),
-    top: moderateScale(20),
-    alignItems: 'center',
+    top: Platform.OS ? moderateScale(60) : moderateScale(20),
+    alignItems: 'flex-end',
   },
   text: {
     ...fonts.trial_head,
