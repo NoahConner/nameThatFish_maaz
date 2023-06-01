@@ -74,10 +74,10 @@ const Slider4 = () => {
   };
   return (
     <ImageBackground
-      source={require('../assets/images/Rectangle.png')}
+      source={require('../assets/images/backgroundPlain.png')}
       resizeMode="stretch"
       style={{flex: 1}}>
-        {/* <WavesAnimated /> */}
+        <WavesAnimated/>
       <View
         style={{
           margin: moderateScale(10),

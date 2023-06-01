@@ -103,7 +103,7 @@ const Slider = ({navigation}) => {
       <Slider4/>
       :
       <ImageBackground
-        source={require('../assets/images/Rectangle.png')}
+        source={require('../assets/images/backgroundPlain.png')}
         resizeMode='stretch'
         style={{
           flex: 1,
@@ -112,7 +112,7 @@ const Slider = ({navigation}) => {
         }}>
           
           
-          {/* <WavesAnimated/> */}
+          <WavesAnimated/>
         <View style={styles.container}>
           
           

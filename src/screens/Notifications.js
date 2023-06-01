@@ -27,17 +27,17 @@ const Notifications = ({navigation}) => {
   
   return (
     <ImageBackground
-      source={require('../assets/images/Rectangle.png')}
+      source={require('../assets/images/backgroundPlain.png')}
       resizeMode="stretch"
       style={{flex: 1,alignItems:'center'}}>
-      {/* <WavesAnimated/> */}
-        
+      <WavesAnimated/>
+{/*         
       <TouchableOpacity style={styles.icon}
       onPress={()=>{
         navigation.goBack()
       }}>
         <BackSvg  width={20} height={20} />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
         <MainHeading name={'Notifications'}  marginTop={Platform.OS === 'ios' ? moderateScale(80) : moderateScale(60)}/>
         <View style={{marginTop:moderateScale(20),width:screenWidth-50}}>
         <View style={styles.notificationBody}>

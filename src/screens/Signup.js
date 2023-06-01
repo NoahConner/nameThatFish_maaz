@@ -59,10 +59,10 @@ const Signup = ({navigation}) => {
     <KeyboardAvoidingView style={{flex: 1,backgroundColor:'#000'}}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <ImageBackground
-          source={require('../assets/images/Rectangle.png')}
+          source={require('../assets/images/backgroundPlain.png')}
           resizeMode="stretch"
           style={{alignItems: 'center', flex: 1,height:screenHeight}}>
-{/* <WavesAnimated/> */}
+<WavesAnimated/>
           <CountryPicker
             show={show}
             // when picker button press you will get the country object with dial code
@@ -82,7 +82,7 @@ const Signup = ({navigation}) => {
 
           <MainHeading
             name={'Sign Up'}
-            marginTop={moderateScale(70)}
+            marginTop={Platform.OS === 'ios' ? moderateScale(70) : moderateScale(30)}
             marginBottom={moderateScale(10)}
           />
 
@@ -139,7 +139,7 @@ const Signup = ({navigation}) => {
               alignItems:'center',
               justifyContent:'center',
               position:'absolute',
-              top: Platform.OS === 'ios' ? moderateScale(292) : moderateScale(342),
+              top: Platform.OS === 'ios' ? moderateScale(292) : moderateScale(302),
               left:moderateScale(42),
               zIndex:1
             }}

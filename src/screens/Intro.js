@@ -8,10 +8,10 @@ import WavesAnimated from '../components/WavesAnimated';
 const Intro = ({navigation}) => {
   return (
     <ImageBackground
-      source={require('../assets/images/Rectangle.png')}
+      source={require('../assets/images/backgroundPlain.png')}
       resizeMode="stretch"
       style={{flex: 1,alignItems:'center'}}>
-      {/* <WavesAnimated/> */}
+      <WavesAnimated/>
       
         <View
           style={{

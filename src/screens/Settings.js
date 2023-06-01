@@ -85,9 +85,9 @@ const Settings = ({navigation}) => {
         isVisible={isModalVisibleDeleteAccount}
         onClose={() => setModalVisibleDeleteAccount(false)}
       />
-      <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
+      {/* <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
         <BackSvg width={20} height={20} />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       <View style={styles.containerView}>
         <Bubbles
@@ -237,7 +237,7 @@ const Settings = ({navigation}) => {
 const styles = StyleSheet.create({
   containerView: {
     alignItems: 'center',
-    marginTop: Platform.OS === 'ios' ? moderateScale(20) :  moderateScale(10),
+    marginTop: Platform.OS === 'ios' ? moderateScale(20) :  moderateScale(20),
   },
   items: {
     width: '82%',

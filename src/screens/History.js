@@ -19,10 +19,10 @@ const History = ({navigation}) => {
   const [deleteHistory, setDeleteHistory] = useState(false)
   return (
     <ImageBackground
-      source={require('../assets/images/Rectangle.png')}
+      source={require('../assets/images/backgroundPlain.png')}
       resizeMode="stretch"
       style={{flex: 1,alignItems:'center',height:screenHeight}}>
-        {/* <WavesAnimated/> */}
+        <WavesAnimated/>
       <TouchableOpacity style={styles.icon}
        onPress={() => {
         navigation.goBack()

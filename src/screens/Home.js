@@ -51,10 +51,10 @@ const Home = ({navigation}) => {
 
   return (
     <ImageBackground
-      source={require('../assets/images/Rectangle.png')}
+      source={require('../assets/images/backgroundPlain.png')}
       resizeMode="stretch"
       style={{flex: 1, height: screenHeight}}>
-      {/* <WavesAnimated/> */}
+      <WavesAnimated/>
       <TouchableOpacity
         style={styles.uploadIcon}
         onPress={() => {
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     // borderColor:'#000',
     // borderWidth:1,
-    marginTop: moderateScale(50),
+    marginTop: moderateScale(30),
   },
 
   icon: {

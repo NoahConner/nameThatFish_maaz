@@ -43,10 +43,10 @@ const Trial = ({navigation}) => {
 
   return (
     <ImageBackground
-      source={require('../assets/images/Rectangle.png')}
+      source={require('../assets/images/backgroundPlain.png')}
       resizeMode="stretch"
       style={{flex: 1, height: screenHeight}}>
-      {/* <WavesAnimated /> */}
+      <WavesAnimated/>
 
       <Animated.View
         style={{

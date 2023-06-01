@@ -28,10 +28,10 @@ const ForgotPassword = ({navigation}) => {
   return (
     <KeyboardAvoidingView style={{flex: 1}}>
       <ImageBackground
-        source={require('../assets/images/Rectangle.png')}
+        source={require('../assets/images/backgroundPlain.png')}
         resizeMode='stretch'
         style={{flex: 1, alignItems: 'center',height:screenHeight}}>
-          {/* <WavesAnimated/> */}
+          <WavesAnimated/>
         <TouchableOpacity style={styles.icon}
          onPress={() => {
           navigation.goBack()

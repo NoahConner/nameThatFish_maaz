@@ -18,10 +18,9 @@ import {
 } from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
-import {Button, CustomInput, MainHeading, WavesAnimated, } from '../components';
+import {Button, CustomInput, MainHeading, WavesAnimated} from '../components';
 import Icon from 'react-native-vector-icons/Entypo';
 import {screenWidth} from '../constants/screenResolution';
-
 
 const SignIn = ({navigation}) => {
   const [email, setemail] = useState(null);
@@ -49,26 +48,31 @@ const SignIn = ({navigation}) => {
   };
 
   return (
-    
-    
     <KeyboardAvoidingView style={{flex: 1}}>
-<ImageBackground
-    source={require('../assets/images/Rectangle.png')}
-    resizeMode="stretch"
-    style={{flex:1,alignItems:'center'}}>
+      <ImageBackground
+        source={require('../assets/images/backgroundPlain.png')}
+        resizeMode="stretch"
+        style={{flex: 1, alignItems: 'center'}}>
+        <WavesAnimated/>
 
-{/* <WavesAnimated/> */}
-    
         <MainHeading
           name={'Sign In'}
-          marginTop={moderateScale(110)}
+          marginTop= {Platform.OS === 'ios' ? moderateScale(110) : moderateScale(60)}
           marginBottom={moderateScale(10)}
         />
 
-        <View style={{right: moderateScale(130), top: Platform.OS === 'ios' ? moderateScale(46) : moderateScale(60)}}>
+        <View
+          style={{
+            right: moderateScale(130),
+            top: Platform.OS === 'ios' ? moderateScale(46) : moderateScale(65),
+          }}>
           <EmailSvg width={18} height={15} />
         </View>
-        <View style={{right: moderateScale(130), top:  Platform.OS === 'ios' ? moderateScale(72) : moderateScale(105)}}>
+        <View
+          style={{
+            right: moderateScale(130),
+            top: Platform.OS === 'ios' ? moderateScale(72) : moderateScale(110),
+          }}>
           <PasswordSvg width={18} height={15} />
         </View>
         <TouchableOpacity
@@ -76,7 +80,7 @@ const SignIn = ({navigation}) => {
             setEyeIconName(!eyeIconName);
           }}
           style={{
-            top:  Platform.OS === 'ios' ? moderateScale(58) :  moderateScale(90),
+            top: Platform.OS === 'ios' ? moderateScale(58) : moderateScale(95),
             left: moderateScale(130),
             zIndex: 1,
           }}>
@@ -165,14 +169,9 @@ const SignIn = ({navigation}) => {
             width={moderateScale(137)}
           />
         </Animated.View>
-    {/* </View> */}
-        </ImageBackground>
-          
-          
-          
-
+        {/* </View> */}
+      </ImageBackground>
     </KeyboardAvoidingView>
-    
   );
 };
 
@@ -201,7 +200,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     //    borderWidth:1,
     // color:colors.white
-    
   },
 });
 export default SignIn;
