@@ -129,22 +129,25 @@ const Settings = ({navigation}) => {
         
         <SubHeading name={'Settings'} />
         
-        <View style={{position: 'absolute', top: moderateScale(58)}}>
-          <ProfileRoundSvg width={110} height={110} />
-        </View>
+       
         <TouchableOpacity onPress={toggleModal} style={styles.imgCircle}>
           {/* {imgUri !==null ? (
             <Image source={{uri: imgUri}} />
           ) : (
             <ProfileSvg width={108} height={108} />
           )} */}
+          <View style={{position:'relative'}}> 
+          <ProfileRoundSvg width={110} height={110} />
+          </View>
+          <View style={{position:'absolute'}}>
           <ProfileSvg width={100} height={100} />
+          </View>
         </TouchableOpacity>
         <Text style={{...fonts.trial_head_sub, color: colors.primary}}>
           David Junior
         </Text>
-      </View>
-
+      
+        </View>
       <View style={{marginTop: moderateScale(15),marginBottom:moderateScale(5)}}>
         <TouchableOpacity
           style={styles.items}
@@ -252,7 +255,6 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
-
     alignItems: 'center',
     justifyContent: 'center',
   },

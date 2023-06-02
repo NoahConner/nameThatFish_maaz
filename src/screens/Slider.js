@@ -39,8 +39,8 @@ const Slider = ({navigation}) => {
         style={{
           
           position: 'absolute',
-          right: moderateScale(0),
-          bottom: moderateScale(0),
+          right: moderateScale(20),
+          bottom: moderateScale(20),
         }}>
         <Text
           style={{
@@ -59,8 +59,8 @@ const Slider = ({navigation}) => {
         borderBottomWidth: 2,
         borderColor: colors.white,
         position: 'absolute',
-        left: moderateScale(0),
-        bottom: moderateScale(0),
+        left: moderateScale(20),
+        bottom: moderateScale(20),
         
       }}>
       <Text
@@ -80,8 +80,8 @@ const Slider = ({navigation}) => {
         style={{
           
           position: 'absolute',
-          right: moderateScale(0),
-          bottom: moderateScale(0),
+          right: moderateScale(20),
+          bottom: moderateScale(20),
         }}>
         <Text
           style={{
@@ -162,11 +162,11 @@ const Slider = ({navigation}) => {
            <AppIntroSlider
           activeDotStyle={{
             backgroundColor: colors.white,
-            marginBottom: moderateScale(60),
+            marginBottom: moderateScale(100),
           }}
           dotStyle={{
             backgroundColor: colors.pagination,
-            marginBottom: moderateScale(60),
+            marginBottom: moderateScale(100),
           }}
           renderNextButton={RenderNextButton}
           renderSkipButton={renderSkipButton}

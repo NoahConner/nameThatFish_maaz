@@ -53,57 +53,69 @@ const SignIn = ({navigation}) => {
         source={require('../assets/images/backgroundPlain.png')}
         resizeMode="stretch"
         style={{flex: 1, alignItems: 'center'}}>
-        <WavesAnimated/>
+        <WavesAnimated />
 
         <MainHeading
           name={'Sign In'}
-          marginTop= {Platform.OS === 'ios' ? moderateScale(110) : moderateScale(60)}
+          marginTop={
+            Platform.OS === 'ios' ? moderateScale(110) : moderateScale(60)
+          }
           marginBottom={moderateScale(10)}
         />
 
+      
         <View
           style={{
-            right: moderateScale(130),
-            top: Platform.OS === 'ios' ? moderateScale(46) : moderateScale(65),
+            display: 'flex',
+            flexDirection: 'row',
+            borderBottomWidth: 2,
+            borderColor: colors.white,
+            alignItems: 'center',
+            marginTop: moderateScale(20),
+            // width:'80%',
+            
           }}>
-          <EmailSvg width={18} height={15} />
-        </View>
-        <View
-          style={{
-            right: moderateScale(130),
-            top: Platform.OS === 'ios' ? moderateScale(72) : moderateScale(110),
-          }}>
-          <PasswordSvg width={18} height={15} />
-        </View>
-        <TouchableOpacity
-          onPress={() => {
-            setEyeIconName(!eyeIconName);
-          }}
-          style={{
-            top: Platform.OS === 'ios' ? moderateScale(58) : moderateScale(95),
-            left: moderateScale(130),
-            zIndex: 1,
-          }}>
-          <Icon
-            name={eyeIconName ? 'eye-with-line' : 'eye'}
-            size={20}
-            color={colors.white}
+          <EmailSvg width={15} height={15} />
+
+          <CustomInput
+          paddingLeft={moderateScale(10)}
+            placeholder={'Email Address'}
+            value={email}
+            setValue={e => setemail(e)}
+            keyboardType={'email-address'}
           />
-        </TouchableOpacity>
-        <CustomInput
-          paddingLeft={moderateScale(40)}
-          placeholder={'Email Address'}
-          value={email}
-          setValue={e => setemail(e)}
-          keyboardType={'email-address'}
-        />
-        <CustomInput
-          paddingLeft={moderateScale(40)}
-          placeholder={'Password'}
-          value={password}
-          setValue={e => setPassword(e)}
-          secureTextEntry={eyeIconName}
-        />
+        </View>
+
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            borderBottomWidth: 2,
+            borderColor: colors.white,
+            alignItems: 'center',
+            marginTop: moderateScale(20),
+            width:'85%'
+          }}>
+          <PasswordSvg width={15} height={15} />
+          <CustomInput
+          paddingLeft={moderateScale(10)}
+            placeholder={'Password'}
+            value={password}
+            setValue={e => setPassword(e)}
+            secureTextEntry={eyeIconName}
+          />
+          <TouchableOpacity
+            onPress={() => {
+              setEyeIconName(!eyeIconName);
+            }}>
+            <Icon
+              name={eyeIconName ? 'eye-with-line' : 'eye'}
+              size={20}
+              color={colors.white}
+            />
+          </TouchableOpacity>
+        </View>
+
         <Button
           onPress={() => {
             navigation.navigate('Trial');
@@ -122,7 +134,7 @@ const SignIn = ({navigation}) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={{marginTop: moderateScale(110)}}
+          style={{marginTop: moderateScale(80)}}
           onPress={() => {
             navigation.navigate('Signup');
           }}>

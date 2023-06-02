@@ -10,8 +10,8 @@ const CustomInput = ({
   placeholder,
   keyboardType,
   autoCapitalize,
-  paddingLeft=moderateScale(10),
-  paddingBottom=moderateScale(2),
+  paddingLeft=moderateScale(0),
+  paddingBottom=moderateScale(0),
   maxLength
 }) => (
     
@@ -30,11 +30,10 @@ const CustomInput = ({
 
 const style = StyleSheet.create({
   inpurText: {
-    borderBottomWidth: 2,
-    color: colors.white,
+    
     ...fonts.placeHolder,
-    borderColor: colors.white,
-    marginBottom: moderateScale(20),
+    color:colors.white,
+    
     width:'80%'
     
     

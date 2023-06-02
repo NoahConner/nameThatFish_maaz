@@ -41,31 +41,38 @@ const ResetPassword = ({navigation}) => {
         </TouchableOpacity>
         <MainHeading
           name={'Reset Password'}
-          marginTop={moderateScale(100)}
-          marginBottom={moderateScale(85)}
+          marginTop={moderateScale(60)}
+          marginBottom={moderateScale(30)}
         />
-        <TouchableOpacity
-          onPress={() => {
-            setEyeIconName(!eyeIconName);
-          }}
+       <View
           style={{
-            top: Platform.OS === 'ios' ? moderateScale(15) : moderateScale(30),
-            left: moderateScale(130),
-            zIndex: 1,
+            display: 'flex',
+            flexDirection: 'row',
+            borderBottomWidth: 2,
+            borderColor: colors.white,
+            alignItems: 'center',
+            marginTop: moderateScale(20),
+            
           }}>
-          <Icon
-            name={eyeIconName ? 'eye-with-line' : 'eye'}
-            size={20}
-            color={colors.white}
+          
+          <CustomInput
+          paddingLeft={moderateScale(10)}
+            placeholder={'Reset Password'}
+            value={password}
+            setValue={e => setPassword(e)}
+            secureTextEntry={eyeIconName}
           />
-        </TouchableOpacity>
-
-        <CustomInput
-          placeholder={'Reset Password'}
-          value={password}
-          setValue={e => setPassword(e)}
-          secureTextEntry={eyeIconName}
-        />
+          <TouchableOpacity
+            onPress={() => {
+              setEyeIconName(!eyeIconName);
+            }}>
+            <Icon
+              name={eyeIconName ? 'eye-with-line' : 'eye'}
+              size={20}
+              color={colors.white}
+            />
+          </TouchableOpacity>
+        </View>
         <Button
           onPress={() => {
             navigation.navigate('ChangePassword')

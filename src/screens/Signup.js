@@ -10,18 +10,13 @@ import {
   Platform,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {
-  AppleSvg,
-  BackSvg,
-  GoogleSvg,
-  
-} from '../assets/svg';
+import {AppleSvg, BackSvg, GoogleSvg, PasswordSvg} from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
-import {Button, CustomInput, MainHeading, } from '../components';
+import {Button, CustomInput, MainHeading} from '../components';
 import Icon from 'react-native-vector-icons/Entypo';
 import {CountryPicker} from 'react-native-country-codes-picker';
-import { screenHeight, screenWidth } from '../constants/screenResolution';
+import {screenHeight, screenWidth} from '../constants/screenResolution';
 import WavesAnimated from '../components/WavesAnimated';
 
 const Signup = ({navigation}) => {
@@ -56,13 +51,13 @@ const Signup = ({navigation}) => {
     }).start();
   };
   return (
-    <KeyboardAvoidingView style={{flex: 1,backgroundColor:'#000'}}>
+    <KeyboardAvoidingView style={{flex: 1, backgroundColor: '#000'}}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <ImageBackground
           source={require('../assets/images/backgroundPlain.png')}
           resizeMode="stretch"
-          style={{alignItems: 'center', flex: 1,height:screenHeight}}>
-<WavesAnimated/>
+          style={{alignItems: 'center', flex: 1, height: screenHeight}}>
+          <WavesAnimated />
           <CountryPicker
             show={show}
             // when picker button press you will get the country object with dial code
@@ -82,138 +77,183 @@ const Signup = ({navigation}) => {
 
           <MainHeading
             name={'Sign Up'}
-            marginTop={Platform.OS === 'ios' ? moderateScale(70) : moderateScale(30)}
+            marginTop={
+              Platform.OS === 'ios' ? moderateScale(70) : moderateScale(30)
+            }
             marginBottom={moderateScale(10)}
           />
 
-          <TouchableOpacity
-            onPress={() => {
-              // console.warn('press');
-              setEyeIconName(!eyeIconName);
-            }}
-            style={{
-              top: Platform.OS === 'ios' ? moderateScale(158) : moderateScale(230),
-              left: moderateScale(130),
-              zIndex: 1,
-            }}>
-            <Icon
-              name={eyeIconName ? 'eye-with-line' : 'eye'}
-              size={20}
-              color={colors.white}
-            />
-          </TouchableOpacity>
+          
 
-          <TouchableOpacity
-            onPress={() => {
-              // console.warn('press');
-              setEyeIconName2(!eyeIconName2);
-            }}
+          <View
             style={{
-              top:  Platform.OS === 'ios' ? moderateScale(178) : moderateScale(270),
-              left: moderateScale(130),
-              zIndex: 1,
+              display: 'flex',
+              flexDirection: 'row',
+              borderBottomWidth: 2,
+              borderColor: colors.white,
+              alignItems: 'center',
+              marginTop: moderateScale(20),
+              width: '85%',
             }}>
-            <Icon
-              name={eyeIconName2 ? 'eye-with-line' : 'eye'}
-              size={20}
-              color={colors.white}
+            <CustomInput
+              paddingLeft={moderateScale(10)}
+              placeholder={'Full Name'}
+              value={fullname}
+              setValue={e => setFullname(e)}
             />
-          </TouchableOpacity>
-          <CustomInput
-            placeholder={'Full Name'}
-            value={fullname}
-            setValue={e => setFullname(e)}
-          />
-          <CustomInput
-            placeholder={'Email Address'}
-            value={email}
-            setValue={e => setemail(e)}
-            keyboardType={'email-address'}
-          />
-          <TouchableOpacity
+          </View>
+
+          <View
             style={{
-              width: moderateScale(32),
-              height: moderateScale(20),
-              // borderColor: colors.white,
-              // borderWidth: 1,
-              alignItems:'center',
-              justifyContent:'center',
-              position:'absolute',
-              top: Platform.OS === 'ios' ? moderateScale(292) : moderateScale(302),
-              left:moderateScale(42),
-              zIndex:1
+              display: 'flex',
+              flexDirection: 'row',
+              borderBottomWidth: 2,
+              borderColor: colors.white,
+              alignItems: 'center',
+              marginTop: moderateScale(20),
+              width: '85%',
+            }}>
+            <CustomInput
+              paddingLeft={moderateScale(10)}
+              placeholder={'Email Address'}
+              value={email}
+              setValue={e => setemail(e)}
+              keyboardType={'email-address'}
+            />
+          </View>
+
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              borderBottomWidth: 2,
+              borderColor: colors.white,
+              alignItems: 'center',
+              marginTop: moderateScale(20),
+              width: '85%',
+            }}>
+ <TouchableOpacity
+            style={{
+              marginLeft:moderateScale(10),
+              marginTop:moderateScale(10)
+              
             }}
             onPress={() => {
               setShow(true);
             }}>
-            <Text style={{...fonts.placeHolder,color:colors.white}}>{countryCode}</Text>
+            <Text style={{...fonts.placeHolder,color:colors.white}}>{countryCode} - </Text>
           </TouchableOpacity>
+            <CustomInput
+              // paddingLeft={moderateScale(10)}
+              maxLength={11}
+              placeholder={''}
+              value={contact}
+              setValue={e => setContact(e)}
+              keyboardType={'numeric'}
+            />
+          </View>
 
-          <CustomInput
-          paddingLeft={moderateScale(37)}
-            maxLength={11}
-            placeholder={''}
-            value={contact}
-            setValue={e => setContact(e)}
-            keyboardType={'numeric'}
-          />
-          <CustomInput
-            placeholder={'Create Password'}
-            value={password}
-            setValue={e => setPassword(e)}
-            secureTextEntry={eyeIconName}
-          />
-          <CustomInput
-            placeholder={'Confirm Password'}
-            value={confirmPassword}
-            setValue={e => setConfirmPassword(e)}
-            secureTextEntry={eyeIconName2}
-          />
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              borderBottomWidth: 2,
+              borderColor: colors.white,
+              alignItems: 'center',
+              marginTop: moderateScale(20),
+            }}>
+            <CustomInput
+              paddingLeft={moderateScale(10)}
+              placeholder={'Create Password'}
+              value={password}
+              setValue={e => setPassword(e)}
+              secureTextEntry={eyeIconName}
+            />
+            <TouchableOpacity
+              onPress={() => {
+                setEyeIconName(!eyeIconName);
+              }}>
+              <Icon
+                name={eyeIconName ? 'eye-with-line' : 'eye'}
+                size={20}
+                color={colors.white}
+              />
+            </TouchableOpacity>
+          </View>
+
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              borderBottomWidth: 2,
+              borderColor: colors.white,
+              alignItems: 'center',
+              marginTop: moderateScale(20),
+            }}>
+            <CustomInput
+              paddingLeft={moderateScale(10)}
+              placeholder={'Confirm Password'}
+              value={confirmPassword}
+              setValue={e => setConfirmPassword(e)}
+              secureTextEntry={eyeIconName2}
+            />
+            <TouchableOpacity
+              onPress={() => {
+                setEyeIconName2(!eyeIconName2);
+              }}>
+              <Icon
+                name={eyeIconName2 ? 'eye-with-line' : 'eye'}
+                size={20}
+                color={colors.white}
+              />
+            </TouchableOpacity>
+          </View>
+
           <Button
             onPress={() => {
               navigation.navigate('SignIn');
             }}
             text={'Register'}
             marginBottom={moderateScale(10)}
-            marginTop={moderateScale(20)}
+            marginTop={moderateScale(40)}
             width={moderateScale(95)}
           />
-         
-         <Animated.View
-          style={{
-            ...styles.socialLogins,
-            transform: [{translateY: MobileAnimation}],
-          }}>
-          <View
+
+          <Animated.View
             style={{
-              left: moderateScale(32),
-              top: moderateScale(9),
-              zIndex: 1,
+              ...styles.socialLogins,
+              transform: [{translateY: MobileAnimation}],
             }}>
-            <GoogleSvg width={20} height={23} />
-          </View>
-          <Button
-            text={'Sign In'}
-            backgroundColor={colors.black}
-            height={moderateScale(32)}
-            width={moderateScale(135)}
-          />
-          <View
-            style={{
-              left: moderateScale(32),
-              top: moderateScale(9),
-              zIndex: 1,
-              // position: 'absolute',
-            }}>
-            <AppleSvg width={20} height={23} />
-          </View>
-          <Button
-            text={'Sign In'}
-            backgroundColor={colors.black}
-            height={moderateScale(32)}
-            width={moderateScale(137)}
-          />
-        </Animated.View>
+            <View
+              style={{
+                left: moderateScale(32),
+                top: moderateScale(9),
+                zIndex: 1,
+              }}>
+              <GoogleSvg width={20} height={23} />
+            </View>
+            <Button
+              text={'Sign In'}
+              backgroundColor={colors.black}
+              height={moderateScale(32)}
+              width={moderateScale(135)}
+            />
+            <View
+              style={{
+                left: moderateScale(32),
+                top: moderateScale(9),
+                zIndex: 1,
+                // position: 'absolute',
+              }}>
+              <AppleSvg width={20} height={23} />
+            </View>
+            <Button
+              text={'Sign In'}
+              backgroundColor={colors.black}
+              height={moderateScale(32)}
+              width={moderateScale(137)}
+            />
+          </Animated.View>
         </ImageBackground>
       </ScrollView>
     </KeyboardAvoidingView>
@@ -223,9 +263,9 @@ const Signup = ({navigation}) => {
 const styles = StyleSheet.create({
   icon: {
     left: moderateScale(15),
-    alignSelf:'flex-start',
-    padding:moderateScale(10),
-    top: Platform.OS === 'ios' ? moderateScale(40) :  moderateScale(15),
+    alignSelf: 'flex-start',
+    padding: moderateScale(10),
+    top: Platform.OS === 'ios' ? moderateScale(40) : moderateScale(15),
   },
   text: {
     ...fonts.placeHolder2,
@@ -244,8 +284,6 @@ const styles = StyleSheet.create({
     // justifyContent: 'space-between',
     flexDirection: 'row',
     // height:screenHeight
-    
-    
   },
 });
 export default Signup;

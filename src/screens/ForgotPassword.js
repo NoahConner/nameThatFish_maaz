@@ -40,21 +40,29 @@ const ForgotPassword = ({navigation}) => {
         </TouchableOpacity>
         <MainHeading
           name={'Forget Password'}
-          marginTop={moderateScale(100)}
-          marginBottom={moderateScale(70)}
+          marginTop={moderateScale(60)}
+          marginBottom={moderateScale(30)}
         />
-        <View style={{right: moderateScale(130), top:Platform.OS === 'ios' ? moderateScale(13) : moderateScale(27)}}>
-          <EmailSvg width={18} height={15} />
-        </View>
-     
-      
-        <CustomInput
-          paddingLeft={moderateScale(40)}
-          placeholder={'Email Address'}
-          value={email}
-          setValue={e => setemail(e)}
-          keyboardType={'email-address'}
-        />
+
+        <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              borderBottomWidth: 2,
+              borderColor: colors.white,
+              alignItems: 'center',
+              marginTop: moderateScale(20),
+              
+            }}>
+              <EmailSvg width={15} height={15} />
+            <CustomInput
+              paddingLeft={moderateScale(10)}
+              placeholder={'Email Address'}
+              value={email}
+              setValue={e => setemail(e)}
+              keyboardType={'email-address'}
+            />
+          </View>
      
         <Button
           onPress={() => {

@@ -37,54 +37,65 @@ const ChangePassword = ({navigation}) => {
         </TouchableOpacity>
         <MainHeading
           name={'Change Password'}
-          marginTop={moderateScale(100)}
-          marginBottom={moderateScale(75)}
+          marginTop={moderateScale(60)}
+          marginBottom={moderateScale(25)}
         />
-        <TouchableOpacity
-          onPress={() => {
-            setEyeIconName(!eyeIconName);
-          }}
-          style={{
-            top: Platform.OS === 'ios' ? moderateScale(35) :  moderateScale(50),
-            left: moderateScale(130),
-            zIndex: 1,
-          }}>
-          <Icon
-            name={eyeIconName ? 'eye-with-line' : 'eye'}
-            size={20}
-            color={colors.white}
-          />
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => {
-            setEyeIconName2(!eyeIconName2);
-          }}
-          style={{
-            top: Platform.OS === 'ios' ? moderateScale(55) :  moderateScale(93),
-            left: moderateScale(130),
-            zIndex: 1,
-          }}>
-          <Icon
-            name={eyeIconName2 ? 'eye-with-line' : 'eye'}
-            size={20}
-            color={colors.white}
-          />
-        </TouchableOpacity>
-
-        <CustomInput
+      
+<View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              borderBottomWidth: 2,
+              borderColor: colors.white,
+              alignItems: 'center',
+              marginTop: moderateScale(20),
+            }}>
+             <CustomInput
+             paddingLeft={moderateScale(10)}
           placeholder={'Change Password'}
           value={changePassword}
           setValue={e => setChangePassword(e)}
           secureTextEntry={eyeIconName}
         />
-        <CustomInput
+            <TouchableOpacity
+              onPress={() => {
+                setEyeIconName(!eyeIconName);
+              }}>
+              <Icon
+                name={eyeIconName ? 'eye-with-line' : 'eye'}
+                size={20}
+                color={colors.white}
+              />
+            </TouchableOpacity>
+          </View>
+
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              borderBottomWidth: 2,
+              borderColor: colors.white,
+              alignItems: 'center',
+              marginTop: moderateScale(20),
+            }}>
+            <CustomInput
+            paddingLeft={moderateScale(10)}
           placeholder={'Confirm Password'}
           value={confirmPassword}
           setValue={e => setConfirmPassword(e)}
           secureTextEntry={eyeIconName2}
         />
-
+            <TouchableOpacity
+              onPress={() => {
+                setEyeIconName2(!eyeIconName2);
+              }}>
+              <Icon
+                name={eyeIconName2 ? 'eye-with-line' : 'eye'}
+                size={20}
+                color={colors.white}
+              />
+            </TouchableOpacity>
+          </View>
         <Button
           onPress={() => {
             navigation.navigate('SignIn')

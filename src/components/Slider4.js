@@ -17,6 +17,7 @@ import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
 import MainHeading from './MainHeading';
 import { WavesAnimated } from '.';
+import { screenHeight } from '../constants/screenResolution';
 
 
 const Slider4 = () => {
@@ -41,8 +42,8 @@ const Slider4 = () => {
 
   const renderItem = ({item}) => {
     return (
-      <View style={{flex: 1, marginTop: moderateScale(20)}}>
-        <item.image width={165} height={147} />
+      <View style={{flex: 1, marginTop: moderateScale(10)}}>
+        <item.image width={155} height={140} />
         <View style={{marginLeft: moderateScale(5), width: moderateScale(170)}}>
           <Text
             style={{
@@ -76,13 +77,13 @@ const Slider4 = () => {
     <ImageBackground
       source={require('../assets/images/backgroundPlain.png')}
       resizeMode="stretch"
-      style={{flex: 1}}>
+      style={{flex: 1,height:screenHeight}}>
         <WavesAnimated/>
       <View
         style={{
           margin: moderateScale(10),
-          marginBottom: moderateScale(110),
-          marginTop: moderateScale(20),
+          
+          
         }}>
    
         <MainHeading
@@ -91,7 +92,7 @@ const Slider4 = () => {
           marginTop={moderateScale(30)}
         />
         <View style={styles.containerView}>
-          <Slider4Svg width={270} height={150} />
+          <Slider4Svg width={250} height={130} />
           <View style={{marginLeft: moderateScale(5)}}>
             <Text
               style={{
