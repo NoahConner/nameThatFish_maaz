@@ -9,6 +9,7 @@ import { notificationService,requestUserPermission } from '../utils/PushNotifica
 
 
 const AppContainer = () => {
+  
   useEffect(() => {
     requestUserPermission()
     notificationService()

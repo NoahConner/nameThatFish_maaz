@@ -21,8 +21,7 @@ import {moderateScale} from 'react-native-size-matters';
 import {Button, CustomInput, MainHeading, WavesAnimated} from '../components';
 import Icon from 'react-native-vector-icons/Entypo';
 import {screenWidth} from '../constants/screenResolution';
-import auth from '@react-native-firebase/auth';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import {GoogleSignin,statusCodes} from '@react-native-google-signin/google-signin';
 
 const SignIn = ({navigation}) => {
   const [email, setemail] = useState(null);
@@ -31,20 +30,26 @@ const SignIn = ({navigation}) => {
   const GirlAnimation = new Animated.Value(screenWidth + 250);
   const MobileAnimation = new Animated.Value(screenWidth + 250);
 
- 
-const googleLogin=async()=>{
-  // Check if your device supports Google Play
-  await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-  // Get the users ID token
-  const { idToken } = await GoogleSignin.signIn();
-
-  // Create a Google credential with the token
-  const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-  // Sign-in the user with the credential
-  console.log(idToken,'token');
-  return auth().signInWithCredential(googleCredential);
-}
+  const googleLogin = async () => {
+    await GoogleSignin.hasPlayServices();
+    await GoogleSignin.signIn()
+      .then(user => {
+        console.log('user', user);
+        // storeData(user.idToken.toString());
+      })
+      .catch(error => {
+        if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+          // user cancelled the login flow
+          alert('Cancel');
+        } else if (error.code === statusCodes.IN_PROGRESS) {
+          alert('Signin in progress'); // operation (f.e. sign in) is in progress already
+        } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+          alert('PLAY_SERVICES_NOT_AVAILABLE'); // play services not available or outdated
+        } else {
+          console.log('some other', error); // some other error happened
+        }
+      });
+  };
 
   useEffect(() => {
     startAnimations();
@@ -80,7 +85,6 @@ const googleLogin=async()=>{
           marginBottom={moderateScale(10)}
         />
 
-      
         <View
           style={{
             display: 'flex',
@@ -90,12 +94,11 @@ const googleLogin=async()=>{
             alignItems: 'center',
             marginTop: moderateScale(20),
             // width:'80%',
-            
           }}>
           <EmailSvg width={15} height={15} />
 
           <CustomInput
-          paddingLeft={moderateScale(10)}
+            paddingLeft={moderateScale(10)}
             placeholder={'Email Address'}
             value={email}
             setValue={e => setemail(e)}
@@ -111,11 +114,11 @@ const googleLogin=async()=>{
             borderColor: colors.white,
             alignItems: 'center',
             marginTop: moderateScale(20),
-            width:'85%'
+            width: '85%',
           }}>
           <PasswordSvg width={15} height={15} />
           <CustomInput
-          paddingLeft={moderateScale(10)}
+            paddingLeft={moderateScale(10)}
             placeholder={'Password'}
             value={password}
             setValue={e => setPassword(e)}
@@ -181,7 +184,10 @@ const googleLogin=async()=>{
             backgroundColor={colors.black}
             height={moderateScale(32)}
             width={moderateScale(135)}
-            onPress={()=>googleLogin()}
+            onPress={() => {
+              googleLogin();
+              navigation.navigate('Trial');
+            }}
           />
           <View
             style={{
