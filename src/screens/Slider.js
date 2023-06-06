@@ -8,6 +8,7 @@ import {
   Image,
   Button,
   ImageBackground,
+  Platform,
 } from 'react-native';
 
 //import AppIntroSlider to use it
@@ -20,127 +21,86 @@ import {
 } from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
-import { WavesAnimated } from '../components';
-import { screenHeight } from '../constants/screenResolution';
+import {WavesAnimated} from '../components';
+import {screenHeight} from '../constants/screenResolution';
 import Slider4 from '../components/Slider4';
 const Slider = ({navigation}) => {
   const [showRealApp, setShowRealApp] = useState(false);
 
   const onDone = () => {
-    navigation.navigate('Intro')
+    navigation.navigate('Intro');
   };
   const onSkip = () => {
-    navigation.navigate('Intro')
+    navigation.navigate('Intro');
   };
 
-  const RenderNextButton = () => {
+  const renderNextButton = () => {
     return (
-      <View
-        style={{
-          
-          position: 'absolute',
-          right: moderateScale(20),
-          bottom: moderateScale(20),
-        }}>
-        <Text
-          style={{
-            color: colors.white,
-            ...fonts.buttonText,
-          }}>
-          Next
-        </Text>
+      <View style={{padding: moderateScale(20), top: moderateScale(-20)}}>
+        <Text style={{...fonts.buttonTextSlide, color: 'white'}}>Next</Text>
       </View>
     );
   };
+
   const renderSkipButton = () => {
     return (
-      <View
-      style={{
-        borderBottomWidth: 2,
-        borderColor: colors.white,
-        position: 'absolute',
-        left: moderateScale(20),
-        bottom: moderateScale(20),
-        
-      }}>
-      <Text
-        style={{
-          color: colors.white,
-          ...fonts.buttonText,
-          
-        }}>
-        Skip
-      </Text>
-    </View>
+      <View style={{padding: moderateScale(20), top: moderateScale(-20)}}>
+        <Text style={{...fonts.buttonTextSlide, color: 'white'}}>Skip</Text>
+      </View>
     );
   };
-  const renderFinishButton = () => {
+
+  const renderDoneButton = () => {
     return (
-      <View
-        style={{
-          
-          position: 'absolute',
-          right: moderateScale(20),
-          bottom: moderateScale(20),
-        }}>
-        <Text
-          style={{
-            color: colors.white,
-            ...fonts.buttonText,
-          }}>
-          Next
-        </Text>
-      </View>
+      <>
+        <View style={{padding: moderateScale(20), top: moderateScale(-20)}}>
+          <Text style={{...fonts.buttonTextSlide, color: 'white'}}>Finish</Text>
+        </View>
+      </>
     );
   };
 
   const RenderItem = ({item}) => {
-    
     return (
-      <View style={{flex:1}}>
-      
-      {item.key==='s4' ?
-      <Slider4/>
-      :
-      <ImageBackground
-        source={require('../assets/images/backgroundPlain.png')}
-        resizeMode='stretch'
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          height:screenHeight
-        }}>
-          
-          
-          <WavesAnimated/>
-        <View style={styles.container}>
-          
-          
-          <View style={{marginBottom: moderateScale(20)}}>
-            {item.key==='s3' ?<Image source={require('../assets/images/slider4Image.png')} 
-            resizeMode='contain'
-            style={{marginTop:moderateScale(140)}}
-            />
-             :<item.image
-              width={moderateScale(332)}
-              height={moderateScale(360)}
-            />
-            }
-            
-          </View>
-          <Text style={styles.introTextStyle}>{item.text}</Text>
-          <Text style={styles.introBodyStyle}>{item.body}</Text>
-        </View>
-      </ImageBackground>}
-        
+      <View style={{flex: 1}}>
+        {item.key === 's4' ? (
+          <Slider4 />
+        ) : (
+          <ImageBackground
+            source={require('../assets/images/Rectangle.png')}
+            resizeMode="stretch"
+            style={{
+              flex: 1,
+
+              alignItems: 'center',
+              // height: screenHeight
+            }}>
+            <View style={styles.container}>
+              <View style={{marginBottom: moderateScale(20)}}>
+                {item.key === 's3' ? (
+                  <Image
+                    source={require('../assets/images/slider4Image.png')}
+                    resizeMode="contain"
+                    style={{marginTop: moderateScale(140)}}
+                  />
+                ) : (
+                  <item.image
+                    width={moderateScale(332)}
+                    height={moderateScale(360)}
+                  />
+                )}
+              </View>
+              <Text style={styles.introTextStyle}>{item.text}</Text>
+              <Text style={styles.introBodyStyle}>{item.body}</Text>
+            </View>
+          </ImageBackground>
+        )}
       </View>
-   
     );
   };
 
   return (
     <>
-    
       {showRealApp ? (
         <SafeAreaView style={styles.container}>
           <View style={styles.container}>
@@ -158,19 +118,12 @@ const Slider = ({navigation}) => {
           </View>
         </SafeAreaView>
       ) : (
-        
-           <AppIntroSlider
-          activeDotStyle={{
-            backgroundColor: colors.white,
-            marginBottom: moderateScale(100),
-          }}
-          dotStyle={{
-            backgroundColor: colors.pagination,
-            marginBottom: moderateScale(100),
-          }}
-          renderNextButton={RenderNextButton}
+        <AppIntroSlider
+          activeDotStyle={{backgroundColor: colors.white, marginBottom:Platform.OS ==='ios'? moderateScale(220): moderateScale(130) }}
+          dotStyle={{backgroundColor: colors.pagination, marginBottom:Platform.OS ==='ios'? moderateScale(220): moderateScale(130) }}
+          renderNextButton={renderNextButton}
           renderSkipButton={renderSkipButton}
-          renderDoneButton={renderFinishButton}
+          renderDoneButton={renderDoneButton}
           doneLabel="Finish"
           data={slides}
           renderItem={RenderItem}
@@ -179,9 +132,6 @@ const Slider = ({navigation}) => {
           showSkipButton={true}
           onSkip={onSkip}
         />
-        
-        
-     
       )}
     </>
   );
@@ -193,9 +143,8 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop:moderateScale(50)
+    marginTop: moderateScale(50),
     // marginBottom: moderateScale(70),
-    
   },
   introTextStyle: {
     ...fonts.subHead,
@@ -207,8 +156,8 @@ const styles = StyleSheet.create({
     letterSpacing: 0.05,
     color: colors.gray,
     marginTop: moderateScale(10),
-    marginHorizontal:moderateScale(16),
-    textAlign:'center'
+    marginHorizontal: moderateScale(16),
+    textAlign: 'center',
   },
 });
 

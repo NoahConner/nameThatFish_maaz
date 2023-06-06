@@ -21,6 +21,8 @@ import {moderateScale} from 'react-native-size-matters';
 import {Button, CustomInput, MainHeading, WavesAnimated} from '../components';
 import Icon from 'react-native-vector-icons/Entypo';
 import {screenWidth} from '../constants/screenResolution';
+import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 const SignIn = ({navigation}) => {
   const [email, setemail] = useState(null);
@@ -28,6 +30,21 @@ const SignIn = ({navigation}) => {
   const [eyeIconName, setEyeIconName] = useState(true);
   const GirlAnimation = new Animated.Value(screenWidth + 250);
   const MobileAnimation = new Animated.Value(screenWidth + 250);
+
+ 
+const googleLogin=async()=>{
+  // Check if your device supports Google Play
+  await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+  // Get the users ID token
+  const { idToken } = await GoogleSignin.signIn();
+
+  // Create a Google credential with the token
+  const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+  // Sign-in the user with the credential
+  console.log(idToken,'token');
+  return auth().signInWithCredential(googleCredential);
+}
 
   useEffect(() => {
     startAnimations();
@@ -164,6 +181,7 @@ const SignIn = ({navigation}) => {
             backgroundColor={colors.black}
             height={moderateScale(32)}
             width={moderateScale(135)}
+            onPress={()=>googleLogin()}
           />
           <View
             style={{

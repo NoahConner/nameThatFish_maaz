@@ -42,6 +42,13 @@ export default fonts = {
       fontSize: 17,
       lineHeight: 20,
     },
+    buttonTextSlide: {
+      fontFamily: 'AkayaKanadaka-Regular',
+      fontStyle: 'normal',
+      fontWeight: 400,
+      fontSize: 17,
+      lineHeight: 20,
+    },
 
     placeHolder: {
       fontFamily: 'AkayaKanadaka-Regular',

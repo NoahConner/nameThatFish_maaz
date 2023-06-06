@@ -15,8 +15,9 @@ import { MainHeading,  } from '../components';
 import WavesAnimated from '../components/WavesAnimated';
 import { screenWidth } from '../constants/screenResolution';
 
-const Notifications = ({navigation}) => {
 
+const Notifications = () => {
+ 
   const DATA=
     {
       id:0,

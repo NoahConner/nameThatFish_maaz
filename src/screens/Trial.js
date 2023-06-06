@@ -53,7 +53,7 @@ const Trial = ({navigation}) => {
           ...styles.fishIcon,
           transform: [{translateX: MobileAnimation}],
         }}>
-        <ManWithFishSvg width={200} height={290} />
+        <ManWithFishSvg width={180} height={270} />
       </Animated.View>
 
       <Animated.View
