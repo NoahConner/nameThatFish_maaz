@@ -8,7 +8,7 @@ import {
   TextInput,
   Platform,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
   BackSvg,
   ManWithFishSvg,
@@ -22,8 +22,10 @@ import ImagePicker from 'react-native-image-crop-picker';
 import FlatlistHistory from '../components/FlatlistHistory';
 import {screenHeight, screenWidth} from '../constants/screenResolution';
 import WavesAnimated from '../components/WavesAnimated';
+import AppContext from '../context/AuthContext';
 
 const Home = ({navigation}) => {
+  const context = useContext(AppContext);
   const [imgUri, setImgUri] = useState(null);
 
   const openCamera = () => {
@@ -48,6 +50,11 @@ const Home = ({navigation}) => {
       console.log(imgUri, 'Image uri');
     });
   };
+ 
+  
+useEffect(() => {
+  console.log(context.userToken,'User Token In Home');
+}, [])
 
   return (
     <ImageBackground

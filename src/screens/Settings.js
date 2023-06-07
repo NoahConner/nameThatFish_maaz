@@ -17,6 +17,7 @@ import AppContext from '../context/AuthContext';
 import {ScrollView} from 'react-native-gesture-handler';
 import {screenHeight} from '../constants/screenResolution';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Settings = ({navigation}) => {
   const [imgUri, setImgUri] = useState(null);
@@ -58,12 +59,17 @@ const Settings = ({navigation}) => {
   };
 
   const logOut = async () => {
+    await AsyncStorage.clear();
+    context.setuserToken(null);
     const isSignedIn = await GoogleSignin.isSignedIn();
     if (isSignedIn) {
       await GoogleSignin.revokeAccess();
       await GoogleSignin.signOut();
       console.log('Google Logout');
     }
+    // setTimeout(() => {
+    //   navigation.navigate('SignIn')
+    // }, 1000);
   };
 
   return (
@@ -203,10 +209,11 @@ const Settings = ({navigation}) => {
         <View style={{alignItems: 'center', marginBottom: moderateScale(50)}}>
           <Button
             onPress={() => {
-              context.setuserToken(null);
+              
               setTimeout(() => {
                 logOut();
-                navigation.navigate('SignIn');
+                
+                
               });
             }}
             text={'Logout'}

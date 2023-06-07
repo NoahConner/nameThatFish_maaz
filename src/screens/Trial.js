@@ -16,15 +16,24 @@ import {moderateScale} from 'react-native-size-matters';
 import {Button, WavesAnimated} from '../components';
 import AppContext from '../context/AuthContext';
 import {screenHeight, screenWidth} from '../constants/screenResolution';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Trial = ({navigation}) => {
   const context = useContext(AppContext);
   const GirlAnimation = new Animated.Value(screenWidth + 250);
   const MobileAnimation = new Animated.Value(screenWidth + 250);
   
+  const storeUserToken = async value => {
+    try {
+      await AsyncStorage.setItem('@auth_token', value);
+     context.setuserToken(value);
+     
+    } catch (e) {}
+  };
 
   useEffect(() => {
     startAnimations();
+    
   }, []);
 
   const startAnimations = () => {
@@ -73,8 +82,11 @@ const Trial = ({navigation}) => {
         <Button
           marginTop={moderateScale(20)}
           onPress={() => {
-            // context.setuserToken('122345')
-            navigation.navigate('Subscription');
+            storeUserToken('122345')
+            // setTimeout(() => {
+            //   navigation.navigate('Subscription');
+              
+            // }, 2000);
           }}
           text={'Buy Now'}
         />
@@ -97,8 +109,10 @@ const Trial = ({navigation}) => {
           marginBottom={moderateScale(5)}
           marginTop={moderateScale(5)}
           onPress={() => {
-            // context.setuserToken('122345');
-            navigation.navigate('HomeScreen');
+            storeUserToken('122345')
+            // setTimeout(() => {
+            //   navigation.navigate('HomeScreen');
+            // }, 2000);
           }}
           text={'Start'}
         />
