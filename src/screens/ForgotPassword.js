@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView,
   TextInput,
   Platform,
+  Alert,
 } from 'react-native';
 import React, {useState} from 'react';
 import {
@@ -22,9 +23,24 @@ import {moderateScale} from 'react-native-size-matters';
 import {Button, CustomInput, MainHeading, } from '../components';
 import { screenHeight } from '../constants/screenResolution';
 import WavesAnimated from '../components/WavesAnimated';
+import { AuthServices } from '../services';
 
 const ForgotPassword = ({navigation}) => {
   const [email, setemail] = useState(null);
+  const [loading, setloading] = useState(false)
+
+  const sendOTP=()=>{
+
+    setloading(true)
+    AuthServices.sendMail({email}).then((res)=>{
+      Alert.alert(res?.data?.message);
+      navigation.navigate('OTP',{getEmail:email})
+      setloading(false)
+    }).catch((err)=>{
+      Alert.alert(err?.response?.data?.message);
+      setloading(false)
+    })
+  }
   return (
     <KeyboardAvoidingView style={{flex: 1}}>
       <ImageBackground
@@ -42,6 +58,7 @@ const ForgotPassword = ({navigation}) => {
           name={'Forget Password'}
           marginTop={moderateScale(60)}
           marginBottom={moderateScale(30)}
+          
         />
 
         <View
@@ -66,10 +83,11 @@ const ForgotPassword = ({navigation}) => {
      
         <Button
           onPress={() => {
-            navigation.navigate('ResetPassword')
+            sendOTP()
           }}
           text={'Send'}
           width={moderateScale(95)}
+          indicator={loading ? true : false}
         />
    
       </ImageBackground>

@@ -24,7 +24,7 @@ const Intro = ({navigation}) => {
         <MainHeading name={'Welcome'} />
         <Button
           onPress={() => {
-            navigation.navigate('SignIn');
+            navigation.navigate('Trial');
           }}
           text={'Get Started'}
           width={moderateScale(123)}

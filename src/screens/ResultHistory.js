@@ -17,26 +17,24 @@ import {colors, fonts} from '../constants';
 import {moderateScale, s} from 'react-native-size-matters';
 import {screenHeight} from '../constants/screenResolution';
 import {Loader} from '../components';
-import { HistoryAuth, UserServices } from '../services';
+import {HistoryAuth, UserServices} from '../services';
 import AppContext from '../context/AuthContext';
 
 const axios = require('axios').default;
 const baseURL = 'https://serpapi.com/search.json?';
 
 const Result = ({navigation, route}) => {
-  const context = useContext(AppContext);
-  const userToken = context.userToken;
-  const {getBase64} = route?.params;
-  
+  // const context = useContext(AppContext);
+  // const userToken = context.userToken;
+  const {getImgUrl} = route?.params;
+  let imgUrl = getImgUrl.replace(/\s+/g, '%20');
   const [loading, setloading] = useState(false);
   const [apiData, setApiData] = useState(null);
   const [headerData, setHeaderData] = useState(null);
-  // const [title, setTitle] = useState();
-  // const [subtitle, setSubtitle] = useState();
-  // const [thumbnail, setThumbnail] = useState('');
+  
+
   useEffect(() => {
-    // console.log(getBase64);
-    postBase64(getBase64);
+    hitApi(imgUrl);
   }, []);
 
   const renderItem = ({item}) => {
@@ -80,35 +78,9 @@ const Result = ({navigation, route}) => {
     );
   };
 
-  const postBase64 = base64 => {
-    setloading(true);
-    UserServices.uploadBase64({base64})
-      .then(function (response) {
-        let imgUrl = (response?.data?.data?.image_url)
-        .replace(/\s+/g, '%20');
-        setloading(false);
-        console.log(imgUrl);
-        hitApi(imgUrl);
-        postUrlHistory(imgUrl)
-      })
-      .catch(function (error) {
-        setloading(false);
-        Alert.alert('Network/Server Error');
-        console.log(error?.response);
-      });
-  };
-
-  const postUrlHistory=(imgUrl)=>{
-    HistoryAuth.postImgUrlhistory({imgUrl,userToken}).then((res)=>{
-      console.log(res?.data);
-    }).catch((err)=>{
-      console.log(err?.response?.data);
-    })
-  }
-  
   const hitApi = imgUrl => {
     // setApiData([]);
-    // setloading(true);
+    setloading(true);
     axios
       .get(baseURL, {
         params: {
@@ -150,29 +122,28 @@ const Result = ({navigation, route}) => {
           }}>
           <BackSvg width={20} height={20} />
         </TouchableOpacity>
-        
-          <View style={styles.containerView}>
-            <View style={{marginLeft: moderateScale(5)}}>
-              <Text
-                style={{
-                  color: colors.black,
-                  ...fonts.fishDetail,
-                  marginTop: moderateScale(6),
-                }}>
-                {headerData?.title}
-              </Text>
 
-              <Text
-                style={{
-                  color: colors.light_black,
-                  ...fonts.subscriptionTrial_head,
-                  marginTop: moderateScale(6),
-                }}>
-                {headerData?.subtitle}
-              </Text>
+        <View style={styles.containerView}>
+              <View style={{marginLeft: moderateScale(5)}}>
+                <Text
+                  style={{
+                    color: colors.black,
+                    ...fonts.fishDetail,
+                    marginTop: moderateScale(6),
+                  }}>
+                  {headerData?.title}
+                </Text>
+  
+                <Text
+                  style={{
+                    color: colors.light_black,
+                    ...fonts.subscriptionTrial_head,
+                    marginTop: moderateScale(6),
+                  }}>
+                  {headerData?.subtitle}
+                </Text>
+              </View>
             </View>
-          </View>
-        
 
         <FlatList renderItem={renderItem} data={apiData} numColumns={2} />
       </ScrollView>

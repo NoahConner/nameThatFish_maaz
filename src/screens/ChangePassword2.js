@@ -8,7 +8,7 @@ import {
   TextInput,
   Alert,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {BackSvg} from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
@@ -17,34 +17,47 @@ import Icon from 'react-native-vector-icons/Entypo';
 import {screenHeight} from '../constants/screenResolution';
 import WavesAnimated from '../components/WavesAnimated';
 import {AuthServices} from '../services';
-const ChangePassword = ({navigation, route}) => {
-  const [changePassword, setChangePassword] = useState(null);
+import AppContext from '../context/AuthContext';
+
+const ChangePassword2 = ({navigation}) => {
+  const context = useContext(AppContext);
+  const userToken = context.userToken;
+  const [Password, setPassword] = useState(null);
+  const [newPassword, setNewPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
   const [eyeIconName, setEyeIconName] = useState(true);
   const [eyeIconName2, setEyeIconName2] = useState(true);
+  const [eyeIconName3, setEyeIconName3] = useState(true);
   const [loading, setloading] = useState(false)
 
-  const routes = route?.params;
-  let otp = routes?.OTPCode;
-  let email = routes?.email?.getEmail;
-  console.log(otp,email);
-  
-  const onUpdatePass = () => {
+    useEffect(() => {
+      console.log(userToken,'user token');
+    }, [])
+
+  const onChangePass = () => {
     setloading(true)
-    AuthServices.forgotPass({email, otp, changePassword, confirmPassword})
+    AuthServices.changePassword({
+      confirmPassword,
+      newPassword,
+      Password,
+      userToken,
+    })
       .then(res => {
+        // console.log(res?.data?.message);
         Alert.alert(res?.data?.message);
-        navigation.navigate('SignIn');
-        setloading(false)
+        context.setuserToken(null);
+        setTimeout(() => {
+            navigation.navigate('SignIn');
+          }, 1000);
       })
       .catch(err => {
-        Alert.alert(err?.response?.data?.message);
-        navigation.navigate('SignIn');
+        // Alert.alert(err?.response?.data?.message?.confirm_password[0]);
+        // console.log(err?.response?.data?.message?.confirm_password[0])
+       Alert.alert(err?.response?.data?.message)
         setloading(false)
       });
   };
 
-  
   return (
     <KeyboardAvoidingView style={{flex: 1}}>
       <ImageBackground
@@ -69,9 +82,9 @@ const ChangePassword = ({navigation, route}) => {
           }}>
           <CustomInput
             paddingLeft={moderateScale(10)}
-            placeholder={'New Password'}
-            value={changePassword}
-            setValue={e => setChangePassword(e)}
+            placeholder={'Old Password'}
+            value={Password}
+            setValue={e => setPassword(e)}
             secureTextEntry={eyeIconName}
           />
           <TouchableOpacity
@@ -97,9 +110,9 @@ const ChangePassword = ({navigation, route}) => {
           }}>
           <CustomInput
             paddingLeft={moderateScale(10)}
-            placeholder={'Confirm Password'}
-            value={confirmPassword}
-            setValue={e => setConfirmPassword(e)}
+            placeholder={'New Password'}
+            value={newPassword}
+            setValue={e => setNewPassword(e)}
             secureTextEntry={eyeIconName2}
           />
           <TouchableOpacity
@@ -113,9 +126,36 @@ const ChangePassword = ({navigation, route}) => {
             />
           </TouchableOpacity>
         </View>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            borderBottomWidth: 2,
+            borderColor: colors.white,
+            alignItems: 'center',
+            marginTop: moderateScale(20),
+          }}>
+          <CustomInput
+            paddingLeft={moderateScale(10)}
+            placeholder={'Confirm Password'}
+            value={confirmPassword}
+            setValue={e => setConfirmPassword(e)}
+            secureTextEntry={eyeIconName3}
+          />
+          <TouchableOpacity
+            onPress={() => {
+              setEyeIconName3(!eyeIconName3);
+            }}>
+            <Icon
+              name={eyeIconName3 ? 'eye-with-line' : 'eye'}
+              size={20}
+              color={colors.white}
+            />
+          </TouchableOpacity>
+        </View>
         <Button
           onPress={() => {
-            onUpdatePass()
+            onChangePass();
           }}
           text={'Update'}
           width={moderateScale(95)}
@@ -153,4 +193,4 @@ const styles = StyleSheet.create({
     // marginTop:moderateScale(15)
   },
 });
-export default ChangePassword;
+export default ChangePassword2;

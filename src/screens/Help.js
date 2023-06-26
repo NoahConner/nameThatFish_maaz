@@ -4,32 +4,44 @@ import {
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
-  Keyboard
+  Keyboard,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {BackSvg} from '../assets/svg';
 import {moderateScale} from 'react-native-size-matters';
-import {Bubbles, Button, SubHeading,} from '../components';
+import {Bubbles, Button, SubHeading} from '../components';
 import {colors, fonts} from '../constants';
-import { TextInput} from 'react-native-gesture-handler';
-import { screenHeight } from '../constants/screenResolution';
-
+import {TextInput} from 'react-native-gesture-handler';
+import {screenHeight} from '../constants/screenResolution';
+import { UserServices } from '../services';
+import AppContext from '../context/AuthContext';
 
 const Help = ({navigation}) => {
+  const context = useContext(AppContext);
+  const userToken = context.userToken;
   const [helpQuery, setHelpQuery] = useState(null);
+
+  // useEffect(() => {
+  //   console.log(userToken,'Token Help');
+  // }, [])
+  
+  const onSend=()=>{
+    UserServices.userSupport({helpQuery,userToken}).then((res)=>{
+      console.log(res?.data);
+    }).catch((err)=>{
+      console.log(err?.response?.data);
+    })
+  }
   return (
     <ImageBackground
       source={require('../assets/images/bg1.png')}
       resizeMode="stretch"
-      style={{flex: 1,height:screenHeight}}>
-        
-      <TouchableOpacity style={styles.icon}
-        onPress={
-          ()=>{
-            
-            navigation.goBack()
-          }
-        }>
+      style={{flex: 1, height: screenHeight}}>
+      <TouchableOpacity
+        style={styles.icon}
+        onPress={() => {
+          navigation.goBack();
+        }}>
         <BackSvg width={20} height={20} />
       </TouchableOpacity>
 
@@ -70,32 +82,36 @@ const Help = ({navigation}) => {
           left={moderateScale(90)}
           top={moderateScale(540)}
         />
-         
+
         <SubHeading name={'Help'} />
         <TextInput
-        placeholder='Type Here...'
-        placeholderTextColor={colors.gray_100}
-        value={helpQuery}
-        onChangeText={setHelpQuery}
-        style={styles.inputContainer}
-        multiline={true}
-        numberOfLines={10}/>
+          placeholder="Type Here..."
+          placeholderTextColor={colors.gray_100}
+          value={helpQuery}
+          onChangeText={setHelpQuery}
+          style={styles.inputContainer}
+          multiline={true}
+          numberOfLines={10}
+        />
         <Button
-        onPress={
-          ()=>{
-            Keyboard.dismiss()
-            navigation.navigate('Settings')
-          }
-        }
+          onPress={() => {
+            Keyboard.dismiss();
+            onSend()
+            navigation.navigate('Settings');
+          }}
           text={'Send'}
           backgroundColor={colors.primary}
           marginTop={moderateScale(20)}
         />
       </View>
-      <View style={{margin:moderateScale(12)}}>
-        <Text style={{...fonts.placeHolder,color:colors.light_black}}>If you have any query or want to contact with us {'\n'}
-Email Us at: <Text style={{color:colors.light_blue}}>abc@example.com</Text> {'\n'}
-Contact Us at: <Text style={{color:colors.light_blue}}>123-456-789-0</Text></Text>
+      <View style={{margin: moderateScale(12)}}>
+        <Text style={{...fonts.placeHolder, color: colors.light_black}}>
+          If you have any query or want to contact with us {'\n'}
+          Email Us at:{' '}
+          <Text style={{color: colors.light_blue}}>abc@example.com</Text> {'\n'}
+          Contact Us at:{' '}
+          <Text style={{color: colors.light_blue}}>123-456-789-0</Text>
+        </Text>
       </View>
     </ImageBackground>
   );
@@ -106,24 +122,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: Platform.OS === 'ios' ? moderateScale(60) : moderateScale(40),
   },
-  inputContainer:{
-    width:'93%',
-    height:moderateScale(200),
-    backgroundColor:colors.white,
+  inputContainer: {
+    width: '93%',
+    height: moderateScale(200),
+    backgroundColor: colors.white,
     ...fonts.helpPlaceholder,
-    marginTop:moderateScale(25),
-    textAlignVertical:'top',
-    textAlign:'center'
-    
+    marginTop: moderateScale(25),
+    textAlignVertical: 'top',
+    textAlign: 'center',
   },
   bubbleIcon: {
     position: 'absolute',
   },
   icon: {
     left: moderateScale(15),
-    alignSelf:'flex-start',
-    padding:moderateScale(10),
-    top: Platform.OS === 'ios' ? moderateScale(40) :  moderateScale(15),
+    alignSelf: 'flex-start',
+    padding: moderateScale(10),
+    top: Platform.OS === 'ios' ? moderateScale(40) : moderateScale(15),
   },
 });
 export default Help;

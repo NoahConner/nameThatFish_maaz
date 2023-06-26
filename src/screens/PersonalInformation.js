@@ -6,40 +6,84 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
+  Alert,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState,useRef} from 'react';
 import {BackSvg} from '../assets/svg';
 import {moderateScale} from 'react-native-size-matters';
-import {Bubbles, Button, CustomInput, SubHeading} from '../components';
+import {ActivityIndicate, Bubbles, Button, CustomInput, Loader, SubHeading} from '../components';
 import {colors, fonts} from '../constants';
 import {ScrollView, TextInput} from 'react-native-gesture-handler';
 import {CountryPicker} from 'react-native-country-codes-picker';
+import {UserServices} from '../services';
+import PhoneInput from 'react-native-phone-input';
+import AppContext from '../context/AuthContext';
 
 const PersonalInformation = ({navigation}) => {
-  const [name, setName] = useState('David Junior');
+  const context = useContext(AppContext);
+  const userToken = context.userToken;
+  const id =context.userId;
+  const [name, setName] = useState(null);
   const [contactNumber, setContactNumber] = useState(null);
-  const [email, setEmail] = useState('abc@exmaple.com');
-  const [address, setAddress] = useState('123 street NY 123456  USA');
+  const [email, setEmail] = useState(null);
+  const [address, setAddress] = useState(null);
+  const [borderColor, setborderColor] = useState(colors.black);
+  const phonenum = useRef();
+  // const [id, setid] = useState(null);
   // country code picker
   const [show, setShow] = useState(false);
-  const [countryCode, setCountryCode] = useState('+1');
+  const [countryCode, setCountryCode] = useState(null);
+  const [loading, setloading] = useState(false)
+
+  useEffect(() => {
+    getUserInfo()
+  }, []);
+
+  const getUserInfo=()=>{
+    setloading(true)
+    UserServices.userProfile({userToken})
+    .then(res => {
+        setName(res?.data?.data?.name);
+        setContactNumber(res?.data?.data?.phone);
+        setEmail(res?.data?.data?.email);
+        setAddress(res?.data?.data?.address);
+        setCountryCode(res?.data?.data?.code);
+        phonenum.current.setValue(res?.data?.data?.phone)
+        // context.setuserId(res?.data?.data?.id);
+        // console.log(id,'User ID');
+        
+      })
+      .catch(err => {
+        Alert.alert(err,'Did not getting Information');
+      });
+      setloading(false)
+  }
+  const onSave = () => {
+    UserServices.updateUserProfile({address, email, id, name, contactNumber,countryCode})
+      .then(res => {
+        console.log(res?.data);
+      })
+      .catch(err => {
+        console.log(err?.data, 'Error');
+      });
+  };
 
   return (
     <ImageBackground
       source={require('../assets/images/bg2.png')}
       resizeMode="stretch"
       style={{flex: 1}}>
-         <CountryPicker
-            show={show}
-            // when picker button press you will get the country object with dial code
-            pickerButtonOnPress={item => {
-              setCountryCode(item.dial_code);
-              console.log(countryCode, 'Country Code');
-              setShow(false);
-            }}
-          />
-      <TouchableOpacity style={styles.icon}
-      onPress={()=>navigation.goBack()}>
+        {loading ? <Loader/> : null}
+      <CountryPicker
+        show={show}
+        // when picker button press you will get the country object with dial code
+        pickerButtonOnPress={item => {
+          setCountryCode(item.dial_code);
+          console.log(countryCode, 'Country Code');
+          setShow(false);
+        }}
+      />
+      <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
         <BackSvg width={20} height={20} />
       </TouchableOpacity>
 
@@ -80,7 +124,7 @@ const PersonalInformation = ({navigation}) => {
           left={moderateScale(90)}
           top={moderateScale(540)}
         />
-          <Bubbles
+        <Bubbles
           width={21}
           height={21}
           left={moderateScale(220)}
@@ -88,84 +132,93 @@ const PersonalInformation = ({navigation}) => {
         />
         <SubHeading name={'Personal Information'} />
       </View>
-<ScrollView showsVerticalScrollIndicator={false}>
-<View style={{marginTop: moderateScale(60)}}>
-        <View style={styles.items}>
-          <TextInput
-            value={name}
-            onChangeText={setName}
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={{marginTop: moderateScale(60)}}>
+          <View style={styles.items}>
+            <TextInput
+              value={name}
+              onChangeText={setName}
+              style={{
+                ...fonts.subscriptionTrial_head,
+                color: colors.black,
+                paddingBottom: moderateScale(5),
+              }}
+            />
+          </View>
+          <View style={styles.items}>
+            <Text
+              style={{
+                ...fonts.subscriptionTrial_head,
+                color: colors.black,
+                paddingBottom: moderateScale(5),
+                marginTop:moderateScale(10),
+                paddingLeft:moderateScale(4)
+              }}>{email}</Text>
+          </View>
+          <View
             style={{
-              ...fonts.subscriptionTrial_head,
-              color: colors.black,
-              paddingBottom: moderateScale(5),
-            }}
-          />
-        </View>
-        <View style={styles.items}>
-          <TextInput
-            style={{
-              ...fonts.subscriptionTrial_head,
-              color: colors.black,
-              paddingBottom: moderateScale(5),
-            }}
-            value={email}
-            onChangeText={setEmail}
-          />
-        </View>
-        <View style={styles.items}>
-        <TouchableOpacity
-            style={{
-              width: moderateScale(45),
-              height: moderateScale(22),
-              // borderColor: colors.black,
-              // borderWidth: 1,
-              alignItems:'flex-start',
-              justifyContent:'center',
-              position:'absolute',
-              top:moderateScale(12),
-              left:moderateScale(5),
-              zIndex:1
-            }}
-            onPress={() => {
-              setShow(true);
+             ...styles.items,
+             borderColor:borderColor
             }}>
-            <Text style={{...fonts.subscriptionTrial_head,color:colors.black}}>{countryCode} -</Text>
-          </TouchableOpacity>
-          <TextInput
-            style={{
-              ...fonts.subscriptionTrial_head,
-              color: colors.black,
-              paddingBottom: moderateScale(5),
-              paddingLeft:moderateScale(48)
+              
+            <PhoneInput
+            initialValue={contactNumber}
+              initialCountry={'us'}
+              textProps={{
+                placeholder: 'Enter Phone Number',
+                placeholderTextColor: colors.black,
+              }}
+              autoFormat={true}
+              flagStyle={{width: 20, height: 15}}
+              pickerBackgroundColor={'#d3d3d3'}
+              style={{
+                // borderWidth: 1,
+                // borderColor: '#000',
+                marginTop: moderateScale(10),
+                paddingBottom:moderateScale(5),
+                marginLeft:moderateScale(10)
+              }}
+              textStyle={[{color: colors.black, ...fonts.subscriptionTrial_head}]}
+              isValidNumber={e => console.log(e, 'here')}
+              ref={phonenum}
+              
+              onChangePhoneNumber={phNumber => {
+                console.log(phonenum.current.getValue(),'nummmm');
+                if (phonenum.current.isValidNumber()) {
+                  setborderColor(colors.black);
+                  setContactNumber(phonenum.current.getValue());
+                } else {
+                  setborderColor('red');
+                }
+              }}
+            />
+          </View>
+          <View style={styles.items}>
+            <TextInput
+            placeholder=' Your Address'
+              style={{
+                ...fonts.subscriptionTrial_head,
+                color: colors.black,
+                paddingBottom: moderateScale(5),
+                
+              }}
+              value={address}
+              onChangeText={setAddress}
+            />
+          </View>
+        </View>
+        <View style={{alignItems: 'center'}}>
+          <Button
+            onPress={() => {
+              onSave();
+              navigation.navigate('Settings');
             }}
-            maxLength={11}
-            value={contactNumber}
-            keyboardType='numeric'
-            onChangeText={e=>setContactNumber(e)}
+            text={'Save'}
+            backgroundColor={colors.primary}
+            marginTop={moderateScale(20)}
           />
         </View>
-        <View style={styles.items}>
-          <TextInput
-            style={{
-              ...fonts.subscriptionTrial_head,
-              color: colors.black,
-              paddingBottom: moderateScale(5),
-            }}
-            value={address}
-            onChangeText={setAddress}
-          />
-        </View>
-      </View>
-      <View style={{alignItems: 'center'}}>
-        <Button
-        onPress={()=>navigation.navigate('Settings')}
-          text={'Save'}
-          backgroundColor={colors.primary}
-          marginTop={moderateScale(20)}
-        />
-      </View>
-</ScrollView>
-     
+      </ScrollView>
     </ImageBackground>
   );
 };
@@ -182,6 +235,7 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     marginBottom: moderateScale(20),
+    
   },
   imgCircle: {
     marginVertical: moderateScale(25),
@@ -196,11 +250,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   icon: {
-  
     left: moderateScale(15),
-    alignSelf:'flex-start',
-    padding:moderateScale(10),
-    top: Platform.OS === 'ios' ? moderateScale(40) :  moderateScale(15),
+    alignSelf: 'flex-start',
+    padding: moderateScale(10),
+    top: Platform.OS === 'ios' ? moderateScale(40) : moderateScale(15),
   },
 });
 export default PersonalInformation;

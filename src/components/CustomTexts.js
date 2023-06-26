@@ -3,7 +3,7 @@ import React from 'react';
 import { colors, fonts } from '../constants';
 import { moderateScale } from 'react-native-size-matters';
 
-const CustomTexts = ({marginTop, marginBottom}) => {
+const CustomTexts = ({marginTop, marginBottom,text}) => {
   return (
     <Text
       style={{
@@ -14,15 +14,7 @@ const CustomTexts = ({marginTop, marginBottom}) => {
         marginHorizontal:moderateScale(20),
         textAlign:'center'
       }}>
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-      nibh euismod tincidunt.Lorem ipsum dolor sit amet, consectetuer adipiscing
-      elit, sed diam nonummy nibh euismod tincidunt.Lorem ipsum dolor sit amet,
-      consectetuer adipiscing elit, sed diam nonummy nibh euismod
-      tincidunt.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-      diam nonummy nibh euismod tincidunt.Lorem ipsum dolor sit amet,
-      consectetuer adipiscing elit, sed diam nonummy nibh euismod
-      tincidunt.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-      diam nonummy nibh euismod tincidunt.{' '}
+        {text}
     </Text>
   );
 };

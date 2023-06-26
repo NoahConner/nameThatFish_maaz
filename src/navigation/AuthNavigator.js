@@ -4,11 +4,11 @@ import {
   ChangePassword,
   ForgotPassword,
   Intro,
+  OTP,
   ResetPassword,
   SignIn,
   Signup,
   Slider,
-  Subscription,
   Trial,
 } from '../screens';
 import BottomTab from './BottomTab';
@@ -28,8 +28,8 @@ const AuthNavigator = () => {
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
       <Stack.Screen name="ResetPassword" component={ResetPassword} />
-      {/* <Stack.Screen name="Subscription" component={Subscription} />
-      <Stack.Screen name="HomeScreen" component={BottomTab} /> */}
+      <Stack.Screen name="OTP" component={OTP} />
+      
     </Stack.Navigator>
   );
 };

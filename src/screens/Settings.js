@@ -5,31 +5,59 @@ import {
   StyleSheet,
   TouchableOpacity,
   Platform,
+  Image,
+  Alert
 } from 'react-native';
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {BackSvg, BubbleSvg, ProfileRoundSvg, ProfileSvg} from '../assets/svg';
 import {moderateScale} from 'react-native-size-matters';
 import ImagePicker from 'react-native-image-crop-picker';
-import {Bubbles, Button, CustomModal, SubHeading} from '../components';
-import {Image} from 'react-native-svg';
+import {Bubbles, Button, CustomModal, Loader, SubHeading} from '../components';
 import {colors, fonts} from '../constants';
 import AppContext from '../context/AuthContext';
 import {ScrollView} from 'react-native-gesture-handler';
 import {screenHeight} from '../constants/screenResolution';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {AuthServices, UserServices} from '../services';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { useIsFocused } from '@react-navigation/native';
 
 const Settings = ({navigation}) => {
+  const context = useContext(AppContext);
+  const id =context.userId;
+  const userToken = context.userToken;
+  const isFocused = useIsFocused();
   const [imgUri, setImgUri] = useState(null);
+  const [loading, setloading] = useState(false)
+  const [loading2, setloading2] = useState(false);
+  const [name, setname] = useState(null)
   const [isModalVisible, setModalVisible] = useState(false);
   const [isModalVisibleDeleteAccount, setModalVisibleDeleteAccount] =
     useState(false);
-  const context = useContext(AppContext);
 
+    useEffect(() => {
+      getInfo()
+    
+    }, [isFocused])
+
+    const getInfo=()=>{
+      UserServices.userProfile({userToken}).then((res)=>{
+        setImgUri(res?.data?.data?.user_img);
+        setname(res?.data?.data?.name)
+        
+       }).catch((err)=>{
+        console.log(err?.response?.data);
+      
+       })
+      
+    }
+    
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
   const toggleModalDeleteAccount = () => {
+    
     setModalVisibleDeleteAccount(!isModalVisibleDeleteAccount);
   };
 
@@ -39,12 +67,15 @@ const Settings = ({navigation}) => {
       cropping: true,
       includeBase64: true,
       freeStyleCropEnabled: true,
+      compressImageQuality: 0.8,
     }).then(image => {
       setModalVisible(false);
-      setImgUri(image?.path);
-      console.log(imgUri, 'Image uri');
+      // setImgUri(image?.path)
+      uploadImage(image?.data)
+      
     });
   };
+
   const openGallery = () => {
     toggleModal;
     ImagePicker.openPicker({
@@ -53,30 +84,70 @@ const Settings = ({navigation}) => {
       freeStyleCropEnabled: true,
     }).then(image => {
       setModalVisible(false);
-      setImgUri(image?.path);
-      console.log(imgUri, 'Image uri');
+      // setImgUri(image?.path)
+      uploadImage(image?.data)
+      
     });
   };
 
   const logOut = async () => {
+    setloading(true)
     await AsyncStorage.clear();
     context.setuserToken(null);
+    setloading(false)
     const isSignedIn = await GoogleSignin.isSignedIn();
     if (isSignedIn) {
       await GoogleSignin.revokeAccess();
       await GoogleSignin.signOut();
       console.log('Google Logout');
     }
-    // setTimeout(() => {
-    //   navigation.navigate('SignIn')
-    // }, 1000);
+    setTimeout(() => {
+      navigation.navigate('SignIn');
+    }, 1000);
   };
 
+  const deleteAccount=async()=>{
+    // setloading(true)
+    UserServices.deleteUser({id}).then((res)=>{
+      console.log(res?.data);
+      // setloading(false)
+    }).catch((err)=>{
+      console.log(err,'Error');
+      // setloading(false)
+    })
+    const isSignedIn = await GoogleSignin.isSignedIn();
+    if (isSignedIn) {
+      await GoogleSignin.revokeAccess();
+      await GoogleSignin.signOut();
+      console.log('Google Logout');
+    }
+  }
+
+  const uploadImage=(base64)=>{
+    UserServices.uploadBase64({base64}).then((res)=>{
+      uploadProfileImg(res?.data?.data?.image_url);
+      // uploadProfileImg(imageUrl)
+      console.log(res?.data?.data?.image_url);
+    }).catch((err)=>{
+      console.log(err?.response,'Error');
+    })
+  }
+
+  const uploadProfileImg=(imageUrl)=>{
+    UserServices.uploadDp({id,imageUrl}).then((res)=>{
+      // setimageUrl(res?.data?.data?.image_url);
+      Alert.alert(res?.data?.message);
+    }).catch((err)=>{
+      console.log(err?.response,'Error');
+    })
+  }
+// console.log(id,'user ID');
   return (
     <ImageBackground
       source={require('../assets/images/bg1.png')}
       resizeMode="stretch"
       style={{flex: 1, height: screenHeight}}>
+        {loading2 ? <Loader /> : null}
       <ScrollView>
         <CustomModal
           animationIn={'zoomin'}
@@ -96,8 +167,10 @@ const Settings = ({navigation}) => {
           text2={'No'}
           text3={'Are you sure ? Want to delete your account?'}
           onPress1={() => {
+            deleteAccount()
             setModalVisibleDeleteAccount(false);
             context.setuserToken(null);
+            context.setuserId(null);
           }}
           onPress2={() => setModalVisibleDeleteAccount(false)}
           isVisible={isModalVisibleDeleteAccount}
@@ -147,21 +220,26 @@ const Settings = ({navigation}) => {
 
           <SubHeading name={'Settings'} />
 
-          <TouchableOpacity onPress={toggleModal} style={styles.imgCircle}>
-            {/* {imgUri !==null ? (
-            <Image source={{uri: imgUri}} />
-          ) : (
-            <ProfileSvg width={108} height={108} />
-          )} */}
-            <View style={{position: 'relative'}}>
+          <TouchableOpacity onPress={toggleModal} style={{...styles.imgCircle,}}>
+          <View style={{position: 'relative'}}>
               <ProfileRoundSvg width={110} height={110} />
             </View>
-            <View style={{position: 'absolute'}}>
+          {imgUri ? (
+            
+              <Image source={{ uri: imgUri }} style={{...styles.imgCircle,position:'absolute'}} />
+              
+            ) : (
+              <View style={{position: 'absolute'}}>
+              <Icon name="user" size={82} color={colors.primary} />
+              </View>
+            )}
+           
+            {/* <View style={{position: 'absolute'}}>
               <ProfileSvg width={100} height={100} />
-            </View>
+            </View>  */}
           </TouchableOpacity>
           <Text style={{...fonts.trial_head_sub, color: colors.primary}}>
-            David Junior
+            {name}
           </Text>
         </View>
         <View
@@ -196,12 +274,9 @@ const Settings = ({navigation}) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.items}
-            onPress={() => {
-              context.setuserToken(null);
-              setTimeout(() => {
-                navigation.navigate('ChangePassword');
-              });
-            }}>
+            onPress={() => 
+              navigation.navigate('ChangePassword2')
+            }>
             <Text style={styles.subHead}>Change Password</Text>
           </TouchableOpacity>
         </View>
@@ -209,16 +284,14 @@ const Settings = ({navigation}) => {
         <View style={{alignItems: 'center', marginBottom: moderateScale(50)}}>
           <Button
             onPress={() => {
-              
               setTimeout(() => {
                 logOut();
-                
-                
               });
             }}
             text={'Logout'}
             backgroundColor={colors.primary}
             marginTop={moderateScale(0)}
+            indicator={loading ? true : false}
           />
           <Button
             onPress={toggleModalDeleteAccount}
@@ -227,6 +300,7 @@ const Settings = ({navigation}) => {
             backgroundColor={colors.primary}
             marginTop={moderateScale(0)}
             marginBottom={moderateScale(30)}
+            
           />
         </View>
       </ScrollView>
@@ -254,6 +328,9 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     alignItems: 'center',
     justifyContent: 'center',
+    
+    // borderWidth:1,
+    // borderColor:colors.black
   },
   bubbleIcon: {
     position: 'absolute',

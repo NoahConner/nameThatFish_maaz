@@ -6,17 +6,27 @@ import {
   TouchableOpacity,
   Keyboard
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {BackSvg} from '../assets/svg';
 import {moderateScale} from 'react-native-size-matters';
 import {Bubbles, Button, CustomTexts, SubHeading} from '../components';
 import {colors, fonts} from '../constants';
 import { screenHeight, screenWidth } from '../constants/screenResolution';
+import { AdminServices } from '../services';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 
 const PrivacyPolicy = ({navigation}) => {
-  
+  const [description, setdescription] = useState(null)
+  useEffect(() => {
+    AdminServices.getPrivacyPolicy().then((res)=>{
+      setdescription(res?.data?.data[0]?.description);
+      
+    }).catch((err)=>{
+      console.log(err?.response?.data);
+    })
+  }, [])
   return (
     <ImageBackground
       source={require('../assets/images/bg1.png')}
@@ -28,8 +38,10 @@ const PrivacyPolicy = ({navigation}) => {
       }}>
         <BackSvg width={20} height={20} />
       </TouchableOpacity>
-
-      <View style={styles.containerView}>
+      <View style={{alignItems:'center'}}>
+      <SubHeading name={'Privacy Policy'} marginTop={moderateScale(30)}/>
+      </View>
+      <ScrollView style={styles.containerView}>
         <Bubbles
           width={37}
           height={37}
@@ -72,10 +84,10 @@ const PrivacyPolicy = ({navigation}) => {
           left={moderateScale(220)}
           top={moderateScale(610)}
         />
-        <SubHeading name={'Privacy Policy'} marginTop={moderateScale(30)}/>
+        
+    <CustomTexts marginTop={moderateScale(20)} text={description}/>
     <CustomTexts marginTop={moderateScale(20)}/>
-    <CustomTexts marginTop={moderateScale(20)}/>
-      </View>
+      </ScrollView>
     
     </ImageBackground>
   );
@@ -83,8 +95,8 @@ const PrivacyPolicy = ({navigation}) => {
 
 const styles = StyleSheet.create({
   containerView: {
-    alignItems: 'center',
-    marginTop: moderateScale(40),
+    // alignItems: 'center',
+    marginTop: moderateScale(10),
   },
   inputContainer:{
     width:'93%',

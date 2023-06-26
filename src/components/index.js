@@ -9,3 +9,6 @@ export { default as Bubbles } from './Bubbles';
 export { default as CustomTexts } from './CustomTexts';
 export { default as DraggableAnimation } from './DraggableAnimation';
 export { default as WavesAnimated } from './WavesAnimated';
+export { default as Loader } from './Loader';
+export { default as LoadingButton } from './LoadingButton';
+export { default as ActivityIndicate } from './ActivityIndicate';

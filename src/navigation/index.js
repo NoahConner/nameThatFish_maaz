@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import RNBootSplash from 'react-native-bootsplash';
 import {NavigationContainer} from '@react-navigation/native';
 import AppNavigator from './AppNavigator';
@@ -11,9 +11,14 @@ import AppContext from '../context/AuthContext';
 import {View} from 'react-native';
 import AuthNavigator from './AuthNavigator';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Loader, LoadingButton } from '../components';
+import { OTP } from '../screens';
+import ActivityIndicate from '../components/ActivityIndicate';
+
 
 const AppContainer = () => {
   const context = useContext(AppContext);
+  const [loading, setloading] = useState(true);
 
   const getUserToken = async () => {
     const value = await AsyncStorage.getItem('@auth_token');
@@ -25,12 +30,25 @@ const AppContainer = () => {
       
     }
   };
-
+  const getUserId = async () => {
+    const value = await AsyncStorage.getItem('@user_Id');
+    if (value !== null) {
+     context.setuserId(value);
+     
+    } else {
+      context.setuserId(null);
+      
+    }
+  };
+  const getUserDetails = async () => {
+    await getUserToken();
+    await getUserId();
+  }; 
   useEffect(() => {
     requestUserPermission();
     notificationService();
-     getUserToken();
-    
+     getUserDetails()
+     
     setTimeout(() => {
       RNBootSplash.hide({fade: true});
     }, 3000);
@@ -46,6 +64,8 @@ const AppContainer = () => {
       <NavigationContainer>
         {context.userToken ? <AppNavigator /> : <AuthNavigator />}
       </NavigationContainer>
+      
+    {/* <Loader/> */}
     </View>
   );
 };

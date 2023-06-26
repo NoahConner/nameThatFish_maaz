@@ -7,8 +7,9 @@ import {
   KeyboardAvoidingView,
   Animated,
   Platform,
+  Alert,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
   AppleSvg,
   BackSvg,
@@ -21,36 +22,86 @@ import {moderateScale} from 'react-native-size-matters';
 import {Button, CustomInput, MainHeading, WavesAnimated} from '../components';
 import Icon from 'react-native-vector-icons/Entypo';
 import {screenWidth} from '../constants/screenResolution';
-import {GoogleSignin,statusCodes} from '@react-native-google-signin/google-signin';
+import AppContext from '../context/AuthContext';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {AuthServices} from '../services';
 
 const SignIn = ({navigation}) => {
   const [email, setemail] = useState(null);
   const [password, setPassword] = useState(null);
   const [eyeIconName, setEyeIconName] = useState(true);
+  const [loading, setloading] = useState(false)
+  const [loading2, setloading2] = useState(false)
   const GirlAnimation = new Animated.Value(screenWidth + 250);
   const MobileAnimation = new Animated.Value(screenWidth + 250);
+  const context = useContext(AppContext);
 
+  const storeUserToken = async value => {
+    try {
+      await AsyncStorage.setItem('@auth_token', value);
+      context.setuserToken(value);
+    } catch (e) {}
+  };
+  
+  const storeUserID = async value => {
+    try {
+      await AsyncStorage.setItem('@user_Id', value);
+      context.setuserId(value);
+    } catch (e) {}
+  };
   const googleLogin = async () => {
+    setloading2(true)
     await GoogleSignin.hasPlayServices();
     await GoogleSignin.signIn()
       .then(user => {
-        console.log('user', user);
-        // storeData(user.idToken.toString());
+        // storeUserToken(user?.idToken.toString());
+        const email=user?.user?.email;
+        const name=user?.user?.name;
+        const password=user?.user?.id;
+        const user_img=user?.user?.photo;
+        AuthServices.googleLogin({email,name,user_img,password}).then((res)=>{
+          storeUserToken(res?.data?.token);
+          storeUserID(res?.data?.user_id.toString())
+        }).catch((err)=>{
+          Alert.alert(err?.response?.data?.message);
+        })
+        
       })
       .catch(error => {
         if (error.code === statusCodes.SIGN_IN_CANCELLED) {
           // user cancelled the login flow
-          alert('Cancel');
+          Alert.alert('Cancel');
         } else if (error.code === statusCodes.IN_PROGRESS) {
-          alert('Signin in progress'); // operation (f.e. sign in) is in progress already
+          Alert.alert('Signin in progress'); // operation (f.e. sign in) is in progress already
         } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-          alert('PLAY_SERVICES_NOT_AVAILABLE'); // play services not available or outdated
+          Alert.alert('PLAY_SERVICES_NOT_AVAILABLE'); // play services not available or outdated
         } else {
           console.log('some other', error); // some other error happened
         }
+        setloading2(false)
       });
   };
 
+  const onSignIn=()=>{
+    setloading(true)
+    AuthServices.login({email, password})
+    .then(res => {
+      // {res?.data?.message ==='User Profile' ? Alert.alert('Succesfully Login') :null }
+      storeUserToken(res?.data?.token)
+      storeUserID(res?.data?.user_id.toString())
+      // setloading(false)
+    })
+    .catch(err => {
+      Alert.alert(err.response?.data?.error);
+      setloading(false)
+    });
+
+  }
+ 
   useEffect(() => {
     startAnimations();
   }, []);
@@ -137,11 +188,10 @@ const SignIn = ({navigation}) => {
         </View>
 
         <Button
-          onPress={() => {
-            navigation.navigate('Trial');
-          }}
+          onPress={() => onSignIn()}
           text={'Log in'}
           width={moderateScale(95)}
+          indicator={loading ? true : false}
         />
         <TouchableOpacity
           onPress={() => {
@@ -166,9 +216,10 @@ const SignIn = ({navigation}) => {
           </Text>
         </TouchableOpacity>
 
-        <Animated.View
+          {Platform.OS==='ios' ? 
+          <Animated.View
           style={{
-            ...styles.socialLogins,
+           ...styles.socialLogins,
             transform: [{translateY: MobileAnimation}],
           }}>
           <View
@@ -186,8 +237,8 @@ const SignIn = ({navigation}) => {
             width={moderateScale(135)}
             onPress={() => {
               googleLogin();
-              navigation.navigate('Trial');
             }}
+            indicator={loading2 ? true : false}
           />
           <View
             style={{
@@ -204,8 +255,36 @@ const SignIn = ({navigation}) => {
             height={moderateScale(32)}
             width={moderateScale(137)}
           />
-        </Animated.View>
-        {/* </View> */}
+        </Animated.View> : 
+
+        <Animated.View
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          transform: [{translateY: MobileAnimation}],
+        }}>
+        <View
+          style={{
+            left: moderateScale(32),
+            top: moderateScale(9),
+            zIndex: 1,
+          }}>
+          <GoogleSvg width={20} height={23} />
+        </View>
+        <Button
+          text={'Sign In'}
+          backgroundColor={colors.black}
+          height={moderateScale(32)}
+          width={moderateScale(135)}
+          onPress={() => {
+            googleLogin();
+          }}
+          indicator={loading2 ? true : false}
+        />
+      </Animated.View>}
+        
+        
       </ImageBackground>
     </KeyboardAvoidingView>
   );
@@ -229,13 +308,13 @@ const styles = StyleSheet.create({
   },
   socialLogins: {
     display: 'flex',
-    width: '90%',
+    flexDirection: 'row',
     alignItems: 'center',
+    width: '90%',
     marginLeft: 'auto',
     marginRight: 'auto',
-    flexDirection: 'row',
-    //    borderWidth:1,
-    // color:colors.white
+       borderWidth:1,
+    color:colors.white
   },
 });
 export default SignIn;

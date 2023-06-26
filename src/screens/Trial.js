@@ -14,26 +14,14 @@ import {BackSvg, ManWithFishSvg} from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
 import {Button, WavesAnimated} from '../components';
-import AppContext from '../context/AuthContext';
 import {screenHeight, screenWidth} from '../constants/screenResolution';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Trial = ({navigation}) => {
-  const context = useContext(AppContext);
   const GirlAnimation = new Animated.Value(screenWidth + 250);
   const MobileAnimation = new Animated.Value(screenWidth + 250);
-  
-  const storeUserToken = async value => {
-    try {
-      await AsyncStorage.setItem('@auth_token', value);
-     context.setuserToken(value);
-     
-    } catch (e) {}
-  };
 
   useEffect(() => {
     startAnimations();
-    
   }, []);
 
   const startAnimations = () => {
@@ -55,7 +43,7 @@ const Trial = ({navigation}) => {
       source={require('../assets/images/backgroundPlain.png')}
       resizeMode="stretch"
       style={{flex: 1, height: screenHeight}}>
-      <WavesAnimated/>
+      <WavesAnimated />
 
       <Animated.View
         style={{
@@ -72,7 +60,7 @@ const Trial = ({navigation}) => {
           style={{
             ...styles.text,
             ...fonts.trial_head_sub,
-            fontFamily:'Montserrat-Bold',
+            fontFamily: 'Montserrat-Bold',
             marginLeft: moderateScale(5),
             marginVertical: moderateScale(10),
           }}>
@@ -82,15 +70,16 @@ const Trial = ({navigation}) => {
         <Button
           marginTop={moderateScale(20)}
           onPress={() => {
-            storeUserToken('122345')
-            // setTimeout(() => {
-            //   navigation.navigate('Subscription');
-              
-            // }, 2000);
+            navigation.navigate('SignIn');
           }}
           text={'Buy Now'}
         />
-        <Text style={{...styles.text, ...fonts.trial_head_sub,fontFamily:'Montserrat-Bold',}}>
+        <Text
+          style={{
+            ...styles.text,
+            ...fonts.trial_head_sub,
+            fontFamily: 'Montserrat-Bold',
+          }}>
           Start Your Free Trial
         </Text>
 
@@ -109,10 +98,8 @@ const Trial = ({navigation}) => {
           marginBottom={moderateScale(5)}
           marginTop={moderateScale(5)}
           onPress={() => {
-            storeUserToken('122345')
-            // setTimeout(() => {
-            //   navigation.navigate('HomeScreen');
-            // }, 2000);
+            // storeUserToken('122345')
+            navigation.navigate('SignIn');
           }}
           text={'Start'}
         />
@@ -126,7 +113,7 @@ const styles = StyleSheet.create({
     marginLeft: moderateScale(20),
     width: moderateScale(323),
     marginTop: moderateScale(155),
-    left:moderateScale(0)
+    left: moderateScale(0),
     // marginBottom:moderateScale(30),
     // borderWidth:1,
     // borderColor:'#000'
@@ -140,11 +127,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: moderateScale(0),
     top: moderateScale(45),
-    width: moderateScale(screenWidth - 210)
+    width: moderateScale(screenWidth - 210),
   },
   text: {
     ...fonts.trial_head,
-    fontFamily:'Montserrat-Bold',
+    fontFamily: 'Montserrat-Bold',
     color: colors.white,
     width: moderateScale(290),
   },

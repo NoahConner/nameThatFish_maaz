@@ -7,6 +7,7 @@ import Help from '../screens/Help';
 import TermsCondition from '../screens/TermsCondition';
 import PrivacyPolicy from '../screens/PrivacyPolicy';
 import AboutUs from '../screens/AboutUs';
+import { ChangePassword2 } from '../screens';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ const SettingStack = () => {
       <Stack.Screen name="TermsCondition" component={TermsCondition} />
       <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
       <Stack.Screen name="AboutUs" component={AboutUs} />
+      <Stack.Screen name="ChangePassword2" component={ChangePassword2} />
     </Stack.Navigator>
   );
 };

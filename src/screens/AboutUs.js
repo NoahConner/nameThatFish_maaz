@@ -6,29 +6,41 @@ import {
   TouchableOpacity,
   Keyboard
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {BackSvg} from '../assets/svg';
 import {moderateScale} from 'react-native-size-matters';
 import {Bubbles, Button, CustomTexts, SubHeading} from '../components';
 import {colors, fonts} from '../constants';
-import { screenHeight } from '../constants/screenResolution';
+import { screenHeight, screenWidth } from '../constants/screenResolution';
+import { AdminServices } from '../services';
 
 
 
 const AboutUs = ({navigation}) => {
-  
+
+  const [description, setdescription] = useState(null)
+  useEffect(() => {
+    AdminServices.getAboutUs().then((res)=>{
+      setdescription(res?.data?.data[0]?.description);
+      
+    }).catch((err)=>{
+      console.log(err?.response?.data);
+    })
+  }, [])
   return (
     <ImageBackground
       source={require('../assets/images/bg1.png')}
       resizeMode="stretch"
-      style={{flex: 1,height:screenHeight}}>
+      style={{flex: 1,height:screenHeight,width:screenWidth}}>
       <TouchableOpacity style={styles.icon}
        onPress={()=>{
         navigation.goBack()
       }}>
         <BackSvg width={20} height={20} />
       </TouchableOpacity>
-
+      <View style={{alignItems:'center'}}>
+        <SubHeading name={'About Us'} marginTop={moderateScale(30)}/>
+        </View>
       <View style={styles.containerView}>
         <Bubbles
           width={30}
@@ -61,8 +73,8 @@ const AboutUs = ({navigation}) => {
           left={moderateScale(60)}
           top={moderateScale(510)}
         />
-        <SubHeading name={'About Us'} marginTop={moderateScale(30)}/>
-    <CustomTexts marginTop={moderateScale(20)}/>
+        
+    <CustomTexts marginTop={moderateScale(20)} text={description}/>
     <CustomTexts marginTop={moderateScale(20)}/>
       </View>
     
@@ -72,8 +84,8 @@ const AboutUs = ({navigation}) => {
 
 const styles = StyleSheet.create({
   containerView: {
-    alignItems: 'center',
-    marginTop: moderateScale(40),
+    // alignItems: 'center',
+    marginTop: moderateScale(10),
   },
   inputContainer:{
     width:'93%',

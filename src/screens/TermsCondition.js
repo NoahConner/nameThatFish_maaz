@@ -4,17 +4,31 @@ import {
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
-  Keyboard
+  Keyboard,
+  
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {BackSvg} from '../assets/svg';
 import {moderateScale} from 'react-native-size-matters';
 import {Bubbles, Button, CustomTexts, SubHeading} from '../components';
 import {colors, fonts} from '../constants';
+import { AdminServices } from '../services';
+import { ScrollView } from 'react-native-gesture-handler';
+
 
 
 
 const TermsCondition = ({navigation}) => {
+const [description, setdescription] = useState(null)
+  useEffect(() => {
+    AdminServices.getTermsCondition().then((res)=>{
+      setdescription(res?.data?.data[0]?.description);
+      
+    }).catch((err)=>{
+      console.log(err?.response?.data);
+    })
+  }, [])
+  
   
   return (
     <ImageBackground
@@ -27,8 +41,10 @@ const TermsCondition = ({navigation}) => {
       }}>
         <BackSvg width={20} height={20} />
       </TouchableOpacity>
-
-      <View style={styles.containerView}>
+      <View style={{alignItems:'center'}}>
+        <SubHeading name={'Terms & Condition'} marginTop={moderateScale(30)}  />
+        </View>
+      <ScrollView style={styles.containerView}>
         <Bubbles
           width={37}
           height={37}
@@ -71,10 +87,10 @@ const TermsCondition = ({navigation}) => {
           left={moderateScale(220)}
           top={moderateScale(410)}
         />
-        <SubHeading name={'Terms & Condition'} marginTop={moderateScale(30)}/>
+      
+    <CustomTexts marginTop={moderateScale(20)} text={description}/>
     <CustomTexts marginTop={moderateScale(20)}/>
-    <CustomTexts marginTop={moderateScale(20)}/>
-      </View>
+      </ScrollView>
     
     </ImageBackground>
   );
@@ -82,8 +98,9 @@ const TermsCondition = ({navigation}) => {
 
 const styles = StyleSheet.create({
   containerView: {
-    alignItems: 'center',
-    marginTop: Platform.OS === 'ios' ? moderateScale(40) : moderateScale(40),
+    // alignItems: 'center',
+    marginTop: Platform.OS === 'ios' ? moderateScale(10) : moderateScale(10),
+    marginBottom:moderateScale(50)
   },
   inputContainer:{
     width:'93%',

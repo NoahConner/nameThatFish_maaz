@@ -2,12 +2,9 @@
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import messaging from '@react-native-firebase/messaging';
-import { useEffect } from 'react';
 
-import PushNotification from 'react-native-push-notification';
-
-
-
+// server Id : AAAAhQuWyok:APA91bEpRB9MyqgixB5R8ACVxVabIitHloaJS0h-pOBW_G36wlvaE2T1bAo8ZASp3hWXg2GXtgOfsC6UPxcpt_KqZypwBsZubn5dYuN2SehSQh15Gf_UYRT2PZ-41brdpTmSfM_UCBCd
+// fcm token : fvIgffUjTYKn73v0PNJlQo:APA91bE3YKqKpO9Zzo5W5bgdPam03vz-qc2uNxXvksVP80KIVZGvbPvHvBeYvyr7eQVZAB-4YuyI3kcqEqxe0DDixH_YaUlbFstFQVePPgTGbmaaq4r78uE6vVhBKPKolAG9XSij2wmL
 export async function requestUserPermission() {
   const authStatus = await messaging().requestPermission();
   const enabled =

@@ -8,8 +8,10 @@ import {
   ScrollView,
   Animated,
   Platform,
+  Alert,
+  ToastAndroid,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {AppleSvg, BackSvg, GoogleSvg, PasswordSvg} from '../assets/svg';
 import {colors, fonts} from '../constants';
 import {moderateScale} from 'react-native-size-matters';
@@ -18,20 +20,27 @@ import Icon from 'react-native-vector-icons/Entypo';
 import {CountryPicker} from 'react-native-country-codes-picker';
 import {screenHeight, screenWidth} from '../constants/screenResolution';
 import WavesAnimated from '../components/WavesAnimated';
+import PhoneInput from 'react-native-phone-input';
+import {AuthServices} from '../services';
 
 const Signup = ({navigation}) => {
-  const [email, setemail] = useState(null);
-  const [password, setPassword] = useState(null);
   const [fullname, setFullname] = useState(null);
+  const [email, setemail] = useState(null);
   const [contact, setContact] = useState(null);
+  const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
   const [eyeIconName, setEyeIconName] = useState(true);
   const [eyeIconName2, setEyeIconName2] = useState(true);
+  const [loading, setloading] = useState(false);
+  const [borderColor, setborderColor] = useState(colors.white);
+
   // country code picker
   const [show, setShow] = useState(false);
-  const [countryCode, setCountryCode] = useState('+1');
+  const [countryCode, setCountryCode] = useState('1');
   const GirlAnimation = new Animated.Value(screenWidth + 250);
   const MobileAnimation = new Animated.Value(screenWidth + 250);
+
+  const phonenum = useRef();
 
   useEffect(() => {
     startAnimations();
@@ -49,6 +58,33 @@ const Signup = ({navigation}) => {
       duration: 2000,
       useNativeDriver: true,
     }).start();
+  };
+
+  const onSignUp = () => {
+    const emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    if (!emailReg.test(email)) return Alert.alert('Invalid Email ');
+
+    // if (!email || !password || !firstName || !lastName)
+    //   return Alert.alert('Fill all the fields');
+    setloading(true);
+    AuthServices.signup({
+      fullname,
+      password,
+      email,
+      contact,
+      confirmPassword,
+      countryCode,
+    })
+      .then(res => {
+        Alert.alert(res?.data?.message);
+        navigation.navigate('SignIn');
+        setloading(false);
+      })
+      .catch(err => {
+        Alert.alert(err.response?.data?.message, 'Error');
+        setloading(false);
+      });
   };
   return (
     <KeyboardAvoidingView style={{flex: 1, backgroundColor: '#000'}}>
@@ -82,8 +118,6 @@ const Signup = ({navigation}) => {
             }
             marginBottom={moderateScale(10)}
           />
-
-          
 
           <View
             style={{
@@ -127,31 +161,73 @@ const Signup = ({navigation}) => {
               display: 'flex',
               flexDirection: 'row',
               borderBottomWidth: 2,
+              borderColor: borderColor,
+              alignItems: 'center',
+              marginTop: moderateScale(20),
+              width: '85%',
+            }}>
+            <PhoneInput
+              initialCountry={'us'}
+              textProps={{
+                placeholder: 'Enter Phone Number',
+                placeholderTextColor: colors.white,
+              }}
+              autoFormat={true}
+              flagStyle={{width: 20, height: 15}}
+              pickerBackgroundColor={'#d3d3d3'}
+              style={{
+                // borderWidth: 1,
+                // borderColor: '#000',
+                marginTop: moderateScale(10),
+                paddingBottom:moderateScale(5),
+                marginLeft:moderateScale(10)
+              }}
+              textStyle={[{color: colors.white, ...fonts.placeHolder}]}
+              isValidNumber={e => console.log(e, 'here')}
+              ref={phonenum}
+              onChangePhoneNumber={phNumber => {
+                console.log(phonenum.current)
+                if (phonenum.current.isValidNumber()) {
+                  setborderColor(colors.white);
+                  setContact(phNumber);
+                } else {
+                  setborderColor('red');
+                }
+              }}
+            />
+          </View>
+
+          {/* <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              borderBottomWidth: 2,
               borderColor: colors.white,
               alignItems: 'center',
               marginTop: moderateScale(20),
               width: '85%',
             }}>
- <TouchableOpacity
-            style={{
-              marginLeft:moderateScale(10),
-              marginTop:moderateScale(10)
-              
-            }}
-            onPress={() => {
-              setShow(true);
-            }}>
-            <Text style={{...fonts.placeHolder,color:colors.white}}>{countryCode} - </Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={{
+                marginLeft: moderateScale(10),
+                marginTop: moderateScale(10),
+              }}
+              onPress={() => {
+                setShow(true);
+              }}>
+              <Text style={{...fonts.placeHolder, color: colors.white}}>
+                {countryCode}
+              </Text>
+            </TouchableOpacity>
             <CustomInput
               // paddingLeft={moderateScale(10)}
-              maxLength={11}
+              maxLength={10}
               placeholder={''}
               value={contact}
               setValue={e => setContact(e)}
               keyboardType={'numeric'}
             />
-          </View>
+          </View> */}
 
           <View
             style={{
@@ -210,16 +286,15 @@ const Signup = ({navigation}) => {
           </View>
 
           <Button
-            onPress={() => {
-              navigation.navigate('SignIn');
-            }}
+            onPress={() => onSignUp()}
             text={'Register'}
             marginBottom={moderateScale(10)}
             marginTop={moderateScale(40)}
             width={moderateScale(95)}
+            indicator={loading ? true : false}
           />
 
-          <Animated.View
+          {/* <Animated.View
             style={{
               ...styles.socialLogins,
               transform: [{translateY: MobileAnimation}],
@@ -252,8 +327,9 @@ const Signup = ({navigation}) => {
               backgroundColor={colors.black}
               height={moderateScale(32)}
               width={moderateScale(137)}
+              
             />
-          </Animated.View>
+          </Animated.View> */}
         </ImageBackground>
       </ScrollView>
     </KeyboardAvoidingView>
