@@ -23,4 +23,5 @@ export default API = {
   getUrlHistory:`${baseURL}/search-history`,
   deleteHistory:`${baseURL}/delete-history`,
   uploadProfilePic:`${baseURL}/img_update`,
+  getUserData:`${baseURL}/profile`,
 };

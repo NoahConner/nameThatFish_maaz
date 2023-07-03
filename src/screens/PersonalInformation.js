@@ -41,7 +41,7 @@ const PersonalInformation = ({navigation}) => {
 
   const getUserInfo=()=>{
     setloading(true)
-    UserServices.userProfile({userToken})
+    UserServices.getUser({userToken})
     .then(res => {
         setName(res?.data?.data?.name);
         setContactNumber(res?.data?.data?.phone);

@@ -9,7 +9,7 @@ import {
   Platform,
   Alert,
 } from 'react-native';
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   AppleSvg,
   BackSvg,
@@ -17,20 +17,22 @@ import {
   GoogleSvg,
   PasswordSvg,
 } from '../assets/svg';
-import {colors, fonts} from '../constants';
-import {moderateScale} from 'react-native-size-matters';
-import {Button, CustomInput, MainHeading, WavesAnimated} from '../components';
+import { colors, fonts } from '../constants';
+import { moderateScale } from 'react-native-size-matters';
+import { Button, CustomInput, MainHeading, WavesAnimated } from '../components';
 import Icon from 'react-native-vector-icons/Entypo';
-import {screenWidth} from '../constants/screenResolution';
+import { screenWidth } from '../constants/screenResolution';
 import AppContext from '../context/AuthContext';
 import {
   GoogleSignin,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {AuthServices} from '../services';
+import { AuthServices, UserServices } from '../services';
+import { Axios } from 'axios';
+import messaging from '@react-native-firebase/messaging';
 
-const SignIn = ({navigation}) => {
+const SignIn = ({ navigation }) => {
   const [email, setemail] = useState(null);
   const [password, setPassword] = useState(null);
   const [eyeIconName, setEyeIconName] = useState(true);
@@ -39,19 +41,19 @@ const SignIn = ({navigation}) => {
   const GirlAnimation = new Animated.Value(screenWidth + 250);
   const MobileAnimation = new Animated.Value(screenWidth + 250);
   const context = useContext(AppContext);
-
+  // const userToken = context.userToken;
   const storeUserToken = async value => {
     try {
       await AsyncStorage.setItem('@auth_token', value);
       context.setuserToken(value);
-    } catch (e) {}
+    } catch (e) { }
   };
-  
+
   const storeUserID = async value => {
     try {
       await AsyncStorage.setItem('@user_Id', value);
       context.setuserId(value);
-    } catch (e) {}
+    } catch (e) { }
   };
   const googleLogin = async () => {
     setloading2(true)
@@ -59,17 +61,17 @@ const SignIn = ({navigation}) => {
     await GoogleSignin.signIn()
       .then(user => {
         // storeUserToken(user?.idToken.toString());
-        const email=user?.user?.email;
-        const name=user?.user?.name;
-        const password=user?.user?.id;
-        const user_img=user?.user?.photo;
-        AuthServices.googleLogin({email,name,user_img,password}).then((res)=>{
+        const email = user?.user?.email;
+        const name = user?.user?.name;
+        const password = user?.user?.id;
+        const user_img = user?.user?.photo;
+        AuthServices.googleLogin({ email, name, user_img, password }).then((res) => {
           storeUserToken(res?.data?.token);
           storeUserID(res?.data?.user_id.toString())
-        }).catch((err)=>{
+        }).catch((err) => {
           Alert.alert(err?.response?.data?.message);
         })
-        
+
       })
       .catch(error => {
         if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -86,22 +88,47 @@ const SignIn = ({navigation}) => {
       });
   };
 
-  const onSignIn=()=>{
-    setloading(true)
-    AuthServices.login({email, password})
-    .then(res => {
-      // {res?.data?.message ==='User Profile' ? Alert.alert('Succesfully Login') :null }
-      storeUserToken(res?.data?.token)
-      storeUserID(res?.data?.user_id.toString())
-      // setloading(false)
-    })
-    .catch(err => {
-      Alert.alert(err.response?.data?.error);
-      setloading(false)
-    });
+
+  
+
+ 
+
+  const onSignIn = () => {
+    // setloading(true)
+   
+    
+    AuthServices.login({ email, password })
+      .then(res => {
+        // {res?.data?.message ==='User Profile' ? Alert.alert('Succesfully Login') :null }
+       getFcmToken()
+        storeUserToken(res?.data?.token)
+        storeUserID(res?.data?.user_id.toString())
+       
+        // setloading(false)
+      })
+      .catch(err => {
+        Alert.alert(err.response?.data?.error);
+        setloading(false)
+      });
 
   }
- 
+
+  const getFcmToken = async () => {
+    let fcmToken = await AsyncStorage.getItem('fcmToken');
+    console.log('Old fcm Token:', fcmToken);
+    if (!fcmToken) {
+      try {
+        const fcmToken = await messaging().getToken();
+        if (fcmToken) {
+          console.log('new generated fcm Token', fcmToken);
+         context.setFcm(fcmToken)
+        }
+      } catch (error) {
+        console.log(error, 'Error');
+      }
+    }
+  };
+
   useEffect(() => {
     startAnimations();
   }, []);
@@ -121,11 +148,11 @@ const SignIn = ({navigation}) => {
   };
 
   return (
-    <KeyboardAvoidingView style={{flex: 1}}>
+    <KeyboardAvoidingView style={{ flex: 1 }}>
       <ImageBackground
         source={require('../assets/images/backgroundPlain.png')}
         resizeMode="stretch"
-        style={{flex: 1, alignItems: 'center'}}>
+        style={{ flex: 1, alignItems: 'center' }}>
         <WavesAnimated />
 
         <MainHeading
@@ -199,92 +226,92 @@ const SignIn = ({navigation}) => {
           }}>
           <Text style={styles.text}>
             Forgot{' '}
-            <Text style={{...styles.text, color: colors.white}}>Password</Text>
+            <Text style={{ ...styles.text, color: colors.white }}>Password</Text>
           </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={{marginTop: moderateScale(80)}}
+          style={{ marginTop: moderateScale(80) }}
           onPress={() => {
             navigation.navigate('Signup');
           }}>
           <Text style={styles.textBottom}>
             Don’t have an account?{' '}
-            <Text style={{...styles.textBottom, color: colors.black}}>
+            <Text style={{ ...styles.textBottom, color: colors.black }}>
               Sign up now
             </Text>
           </Text>
         </TouchableOpacity>
 
-          {Platform.OS==='ios' ? 
+        {Platform.OS === 'ios' ?
           <Animated.View
-          style={{
-           ...styles.socialLogins,
-            transform: [{translateY: MobileAnimation}],
-          }}>
-          <View
             style={{
-              left: moderateScale(32),
-              top: moderateScale(9),
-              zIndex: 1,
+              ...styles.socialLogins,
+              transform: [{ translateY: MobileAnimation }],
             }}>
-            <GoogleSvg width={20} height={23} />
-          </View>
-          <Button
-            text={'Sign In'}
-            backgroundColor={colors.black}
-            height={moderateScale(32)}
-            width={moderateScale(135)}
-            onPress={() => {
-              googleLogin();
-            }}
-            indicator={loading2 ? true : false}
-          />
-          <View
-            style={{
-              left: moderateScale(32),
-              top: moderateScale(9),
-              zIndex: 1,
-              // position: 'absolute',
-            }}>
-            <AppleSvg width={20} height={23} />
-          </View>
-          <Button
-            text={'Sign In'}
-            backgroundColor={colors.black}
-            height={moderateScale(32)}
-            width={moderateScale(137)}
-          />
-        </Animated.View> : 
+            <View
+              style={{
+                left: moderateScale(32),
+                top: moderateScale(9),
+                zIndex: 1,
+              }}>
+              <GoogleSvg width={20} height={23} />
+            </View>
+            <Button
+              text={'Sign In'}
+              backgroundColor={colors.black}
+              height={moderateScale(32)}
+              width={moderateScale(135)}
+              onPress={() => {
+                googleLogin();
+              }}
+              indicator={loading2 ? true : false}
+            />
+            <View
+              style={{
+                left: moderateScale(32),
+                top: moderateScale(9),
+                zIndex: 1,
+                // position: 'absolute',
+              }}>
+              <AppleSvg width={20} height={23} />
+            </View>
+            <Button
+              text={'Sign In'}
+              backgroundColor={colors.black}
+              height={moderateScale(32)}
+              width={moderateScale(137)}
+            />
+          </Animated.View> :
 
-        <Animated.View
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          transform: [{translateY: MobileAnimation}],
-        }}>
-        <View
-          style={{
-            left: moderateScale(32),
-            top: moderateScale(9),
-            zIndex: 1,
-          }}>
-          <GoogleSvg width={20} height={23} />
-        </View>
-        <Button
-          text={'Sign In'}
-          backgroundColor={colors.black}
-          height={moderateScale(32)}
-          width={moderateScale(135)}
-          onPress={() => {
-            googleLogin();
-          }}
-          indicator={loading2 ? true : false}
-        />
-      </Animated.View>}
-        
-        
+          <Animated.View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              transform: [{ translateY: MobileAnimation }],
+            }}>
+            <View
+              style={{
+                left: moderateScale(32),
+                top: moderateScale(9),
+                zIndex: 1,
+              }}>
+              <GoogleSvg width={20} height={23} />
+            </View>
+            <Button
+              text={'Sign In'}
+              backgroundColor={colors.black}
+              height={moderateScale(32)}
+              width={moderateScale(135)}
+              onPress={() => {
+                googleLogin();
+              }}
+              indicator={loading2 ? true : false}
+            />
+          </Animated.View>}
+
+
       </ImageBackground>
     </KeyboardAvoidingView>
   );
@@ -313,8 +340,8 @@ const styles = StyleSheet.create({
     width: '90%',
     marginLeft: 'auto',
     marginRight: 'auto',
-       borderWidth:1,
-    color:colors.white
+    borderWidth: 1,
+    color: colors.white
   },
 });
 export default SignIn;
