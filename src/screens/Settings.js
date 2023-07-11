@@ -311,7 +311,7 @@ const Settings = ({navigation}) => {
 const styles = StyleSheet.create({
   containerView: {
     alignItems: 'center',
-    marginTop: Platform.OS === 'ios' ? moderateScale(20) : moderateScale(20),
+    marginTop: Platform.OS === 'ios' ? moderateScale(40) : moderateScale(20),
   },
   items: {
     width: '82%',

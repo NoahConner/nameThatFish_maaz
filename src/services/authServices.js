@@ -1,10 +1,11 @@
 import axios from 'axios';
 import {API} from '../constants';
 
-export const login = ({email, password}) => {
+export const login = ({email, password,device_token}) => {
   return axios.post(API.login, {
     email,
     password,
+    device_token
   });
 };
 
@@ -66,12 +67,13 @@ export const sendMail = ({email}) => {
   });
 };
 
-export const googleLogin = ({email,name,user_img,password}) => {
+export const googleLogin = ({email,name,user_img,password,device_token}) => {
   return axios.post(API.googleLogin, {
     name,
     email,
     user_img,
-    password
+    password,
+    device_token
   });
 };
 

@@ -10,30 +10,31 @@ import {
   Alert,
   Image
 } from 'react-native';
-import React, { useContext, useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
   BackSvg,
   ManWithFishSvg,
   ScannerSvg,
   UploadPhotoSvg,
 } from '../assets/svg';
-import { colors, fonts } from '../constants';
-import { moderateScale } from 'react-native-size-matters';
-import { Button, CustomModal, Loader } from '../components';
+import {colors, fonts} from '../constants';
+import {moderateScale} from 'react-native-size-matters';
+import {Button, CustomModal, Loader} from '../components';
 import ImagePicker from 'react-native-image-crop-picker';
 import FlatlistHistory from '../components/FlatlistHistory';
-import { screenHeight, screenWidth } from '../constants/screenResolution';
+import {screenHeight, screenWidth} from '../constants/screenResolution';
 import WavesAnimated from '../components/WavesAnimated';
 import AppContext from '../context/AuthContext';
-import { HistoryAuth, UserServices } from '../services';
+import { HistoryAuth } from '../services';
 import { FlatList } from 'react-native-gesture-handler';
 import { useIsFocused } from '@react-navigation/native';
 
 const axios = require('axios').default;
 
-const Home = ({ navigation }) => {
+const Home = ({navigation}) => {
   const context = useContext(AppContext);
   const userToken = context.userToken;
+  const device_token = context.fcmToken;
   const id = context.userId;
   const [History, setHistory] = useState(null);
   const [imgUri, setImgUri] = useState(null);
@@ -43,11 +44,6 @@ const Home = ({ navigation }) => {
   const [fishExist, setFishExist] = useState();
   const [isModalVisible, setModalVisible] = useState(false);
   const isFocused = useIsFocused();
-
-  useEffect(() => {
-    myDataFunc()
-  }, [])
-  
 
   const openCamera = () => {
     ImagePicker.openCamera({
@@ -89,8 +85,9 @@ const Home = ({ navigation }) => {
   useEffect(() => {
     cleanImagePicker();
     viewHistory()
-    console.log(userToken, 'userToken');
-    console.log(id, 'user IDD');
+    console.log(userToken,'userToken');
+    console.log(id,'user IDD');
+    console.log(device_token,'device_token');
   }, [isFocused]);
   const getLabel = base64 => {
     const apiKey = 'AIzaSyDEWD5MLAof7UnDMH5mVf9Fpwr_dLtH5X0';
@@ -127,7 +124,7 @@ const Home = ({ navigation }) => {
         // setFishExist(isFishExist);
         {
           isFishExist
-            ? navigation.navigate('Result', { getBase64: base64 })
+            ? navigation.navigate('Result', {getBase64: base64})
             : setModalVisible(true);
         }
         console.log(isFishExist, 'fish exist');
@@ -140,78 +137,43 @@ const Home = ({ navigation }) => {
         }
       });
   };
+ 
+ const viewHistory=()=>{
+  // setloading(true)
+  HistoryAuth.getImgUrlhistory({userToken})
+  .then(res => {
+    let recentHistory=res?.data?.history.slice(0,9);
+    setHistory(recentHistory);
+    recentHistory.length == 9 ? setshowViewMore(true): setshowViewMore(false)
+    recentHistory.length == 0 ? setshowRecentHistory(false): setshowRecentHistory(true)
+    console.log(recentHistory.length);
+    })
 
-  const viewHistory = () => {
-    // setloading(true)
-    HistoryAuth.getImgUrlhistory({ userToken })
-      .then(res => {
-        let recentHistory = res?.data?.history.slice(0, 9);
-        setHistory(recentHistory);
-        recentHistory.length == 9 ? setshowViewMore(true) : setshowViewMore(false)
-        recentHistory.length == 0 ? setshowRecentHistory(false) : setshowRecentHistory(true)
-        console.log(recentHistory.length);
-      })
+  .catch(err => {
+    console.log(err?.response?.data);
+  });
+// setloading(false)
+}
 
-      .catch(err => {
-        console.log(err?.response?.data);
-      });
-    // setloading(false)
-  }
-
-  const myDataFunc = () => {
-    console.log(userToken, "usertoken");
-
-    UserServices.getUser({ userToken })
-      .then(res => {
-
-        onSave(res?.data);
-      })
-      .catch(err => {
-        console.log(err?.response?.data);
-      });
-
-  }
-
-  const onSave = (res) => {
-    if (res && res.data) {
-      const { address, email, id, name, contactNumber, countryCode, } = res.data;
-      const fcmTok = context.fcmtoken
-  
-      UserServices.updateUserProfile({ address, email, id, name, contactNumber, countryCode , fcmTok})
-        .then(res => {
-          console.log(res?.data);
-        })
-        .catch(err => {
-          console.log(err?.data, 'Error');
-        });
-    } else {
-      console.log('Invalid response');
-    }
-  };
-
-
-
-
-  const renderItem = ({ item }) => {
-    return (
-      <TouchableOpacity style={styles.container} onPress={() => {
-        navigation.navigate('ResultHistory', { getImgUrl: item?.img_url })
-      }}>
-
-        <Image
-          source={{ uri: item?.img_url }}
-          resizeMode="contain"
-          style={{ width: '100%', height: '100%', borderRadius: 15 }}
-        />
-      </TouchableOpacity>
-    );
-  };
+const renderItem = ({item}) => {
+  return (
+    <TouchableOpacity style={styles.container} onPress={()=>{
+      navigation.navigate('ResultHistory',{getImgUrl: item?.img_url})
+    }}>
+      <Image
+        source={{uri: item?.img_url}}
+        resizeMode="contain"
+        style={{width: '100%', height: '100%',borderRadius:15}}
+      />
+    </TouchableOpacity>
+  );
+};
 
   return (
     <ImageBackground
       source={require('../assets/images/backgroundPlain.png')}
       resizeMode="stretch"
-      style={{ flex: 1, height: screenHeight }}>
+      style={{flex: 1, height: screenHeight}}>
       {loading ? <Loader /> : null}
       <WavesAnimated />
       <CustomModal
@@ -242,9 +204,7 @@ const Home = ({ navigation }) => {
           Upload
         </Text>
       </TouchableOpacity>
-      {/* <TouchableOpacity onPress={() => myDataFunc(context.userToken)}>
-        <Text style={{ color: 'black' }}>HELLO</Text>
-      </TouchableOpacity> */}
+
       <View style={styles.mainContainer}>
         <TouchableOpacity
           style={{
@@ -257,20 +217,20 @@ const Home = ({ navigation }) => {
           onPress={openCamera}>
           <ScannerSvg width={110} height={110} />
         </TouchableOpacity>
-        <View style={{ alignItems: 'center' }}>
+        <View style={{alignItems:'center'}}>
           <Button onPress={openCamera} text={'Scan'} />
-          {showRecentHistory ? <Text style={{ ...fonts.subHeadHistory, color: colors.white }}>
+          {showRecentHistory ? <Text style={{...fonts.subHeadHistory, color: colors.white}}>
             Recent History
-          </Text> : null}
-
-        </View>
-
-        <View style={{ width: screenWidth, padding: '5%' }}>
-          {/* <View style={{alignItems: 'center'}}> */}
+          </Text>  : null}
+          
+        </View> 
+        
+        <View style={{width: screenWidth, padding: '5%'}}>
+        {/* {/ <View style={{alignItems: 'center'}}> /} */}
           <FlatList renderItem={renderItem} data={History} numColumns={3} />
-          {/* </View> */}
+        {/* {/ </View> /} */}
         </View>
-        {showViewMore ? <View style={{ alignItems: 'center' }}>
+        {showViewMore ?  <View style={{alignItems:'center'}}>
           <Button
             marginTop={moderateScale(10)}
             onPress={() => {
@@ -278,8 +238,8 @@ const Home = ({ navigation }) => {
             }}
             text={'View More'}
           />
-        </View> : null}
-
+        </View> : null }
+       
       </View>
     </ImageBackground>
   );

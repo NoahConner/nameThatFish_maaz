@@ -2,7 +2,7 @@ import axios from 'axios';
 import {API} from '../constants';
 
 export const userProfile = ({userToken}) => {
-    return axios.get(API.getUserData,{}, {
+    return axios.post(API.profile,{}, {
         headers: {
             'Accept': `application/json`,
             'Authorization': `Bearer ${userToken}`,
@@ -15,15 +15,14 @@ export const userProfile = ({userToken}) => {
     });
   };
   
-  export const updateUserProfile = ({id,name,email,contactNumber,address,countryCode ,fcmTok}) => {
+  export const updateUserProfile = ({id,name,email,contactNumber,address,countryCode}) => {
     return axios.post(API.updateUser, {
         id,
         name,
         email,
         phone:contactNumber,
         address,
-        code:countryCode,
-        device_token:fcmTok
+        code:countryCode
     });
   };
 
@@ -60,18 +59,4 @@ export const userProfile = ({userToken}) => {
     return axios.post(API.postBase64, {
       image:base64
     });
-  };
-
- 
-
-  export const getUser = ({userToken}) => {
-    return axios.get(
-      `${API.getUserData}`,
-      {
-        headers: {
-          Accept: `application/json`,
-          Authorization: `Bearer ${userToken}`,
-        },
-      },
-    );
   };

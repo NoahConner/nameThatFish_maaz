@@ -6,7 +6,6 @@ const App = () => {
   const [userToken, setuserToken] = useState(null);
   const [userId, setuserId] = useState(null);
   const [deviceToken, setDeviceToken] = useState(null);
-  const [fcmtoken ,setFcm] =useState(null)
 
   const userSettings = {
     userToken,
@@ -15,8 +14,6 @@ const App = () => {
     setuserId,
     deviceToken,
     setDeviceToken,
-    setFcm,
-    fcmtoken
   };
 
   return (
