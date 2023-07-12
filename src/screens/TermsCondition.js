@@ -5,25 +5,29 @@ import {
   StyleSheet,
   TouchableOpacity,
   Keyboard,
-  
+  SafeAreaView
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {BackSvg} from '../assets/svg';
 import {moderateScale} from 'react-native-size-matters';
-import {Bubbles, Button, CustomTexts, SubHeading} from '../components';
+import {Bubbles, Button, CustomTexts, Loader, SubHeading} from '../components';
 import {colors, fonts} from '../constants';
 import { AdminServices } from '../services';
 import { ScrollView } from 'react-native-gesture-handler';
+import { screenHeight } from '../constants/screenResolution';
 
 
 
 
 const TermsCondition = ({navigation}) => {
 const [description, setdescription] = useState(null)
+const [loading, setloading] = useState(false)
   useEffect(() => {
+    setloading(true)
     AdminServices.getTermsCondition().then((res)=>{
-      setdescription(res?.data?.data[0]?.description);
       
+      setdescription(res?.data?.data[0]?.description);
+      setloading(false)
     }).catch((err)=>{
       console.log(err?.response?.data);
     })
@@ -31,68 +35,78 @@ const [description, setdescription] = useState(null)
   
   
   return (
-    <ImageBackground
-      source={require('../assets/images/bg2.png')}
+    <SafeAreaView style={{ flex: 1 ,height:screenHeight}}>
+<ImageBackground
+      source={require('../assets/images/bg1.png')}
       resizeMode="stretch"
-      style={{flex: 1}}>
-      <TouchableOpacity style={styles.icon}
-      onPress={()=>{
-        navigation.goBack()
-      }}>
-        <BackSvg width={20} height={20} />
-      </TouchableOpacity>
-      <View style={{alignItems:'center'}}>
-        <SubHeading name={'Terms & Condition'} marginTop={moderateScale(30)}  />
+      style={{ flex: 1 ,height:screenHeight}}
+      >
+        {loading ? <Loader/> : null}
+        <TouchableOpacity
+          style={{ width:moderateScale(40),padding:moderateScale(10) 
+            // ,backgroundColor:colors.black
+          }}
+          onPress={() => {
+            navigation.goBack();
+          }}>
+          <BackSvg width={20} height={20} />
+        </TouchableOpacity>
+        <View style={{ alignItems: 'center' }}>
+          <SubHeading name={'Terms & Condition'} marginTop={moderateScale(10)} />
         </View>
-      <ScrollView style={styles.containerView}>
-        <Bubbles
-          width={37}
-          height={37}
-          right={moderateScale(60)}
-          top={moderateScale(540)}
-        />
-        <Bubbles
-          width={23}
-          height={23}
-          right={moderateScale(25)}
-          top={moderateScale(0)}
-        />
-        <Bubbles
-          width={48}
-          height={48}
-          right={moderateScale(130)}
-          bottom={moderateScale(370)}
-        />
-        <Bubbles
-          width={38}
-          height={38}
-          left={moderateScale(60)}
-          top={moderateScale(440)}
-        />
-        <Bubbles
-          width={22}
-          height={22}
-          left={moderateScale(130)}
-          top={moderateScale(480)}
-        />
-        <Bubbles
-          width={48}
-          height={48}
-          left={moderateScale(90)}
-          top={moderateScale(540)}
-        />
+        <ScrollView style={styles.containerView}>
           <Bubbles
-          width={23}
-          height={23}
-          left={moderateScale(220)}
-          top={moderateScale(410)}
-        />
-      
-    <CustomTexts marginTop={moderateScale(20)} text={description}/>
-    <CustomTexts marginTop={moderateScale(20)}/>
-      </ScrollView>
+            width={37}
+            height={37}
+            right={moderateScale(60)}
+            top={moderateScale(400)}
+          />
+          <Bubbles
+            width={23}
+            height={23}
+            right={moderateScale(5)}
+            bottom={moderateScale(40)}
+          />
+          <Bubbles
+            width={46}
+            height={46}
+            right={moderateScale(30)}
+            top={moderateScale(40)}
+          />
+          <Bubbles
+            width={38}
+            height={38}
+            left={moderateScale(60)}
+            top={moderateScale(440)}
+          />
+          <Bubbles
+            width={22}
+            height={22}
+            left={moderateScale(130)}
+            top={moderateScale(480)}
+          />
+          <Bubbles
+            width={46}
+            height={46}
+            left={moderateScale(90)}
+            top={moderateScale(540)}
+          />
+          <Bubbles
+            width={22}
+            height={22}
+            left={moderateScale(220)}
+            top={moderateScale(610)}
+          />
+
+          <CustomTexts marginTop={moderateScale(20)} text={description} />
+          <CustomTexts marginTop={moderateScale(20)} />
+        </ScrollView>
     
+
+
+
     </ImageBackground>
+    </SafeAreaView>
   );
 };
 

@@ -4,6 +4,15 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
 
+ pod 'Firebase', :modular_headers => true
+  pod 'FirebaseCoreInternal', :modular_headers => true
+  pod 'GoogleUtilities', :modular_headers => true
+
+   pod 'FirebaseCore', :modular_headers => true
+
+   pod 'Firebase/Core'
+pod 'Firebase/Messaging'
+
 # If you are using a `react-native-flipper` your iOS build will fail when `NO_FLIPPER=1` is set.
 # because `react-native-flipper` depends on (FlipperKit,...) that will be excluded
 #
@@ -22,6 +31,7 @@ if linkage != nil
 end
 
 target 'nameThatFish' do
+  $RNFirebaseAsStaticFramework = true
   config = use_native_modules!
 
   # Flags change depending on the env values.
@@ -29,6 +39,7 @@ target 'nameThatFish' do
 
   use_react_native!(
     :path => config[:reactNativePath],
+    
     # Hermes is now enabled by default. Disable by setting this flag to false.
     # Upcoming versions of React Native may rely on get_default_flags(), but
     # we make it explicit here to aid in the React Native upgrade process.

@@ -136,7 +136,7 @@ const Settings = ({navigation}) => {
 
   const uploadProfileImg=(imageUrl)=>{
     UserServices.uploadDp({id,imageUrl}).then((res)=>{
-      // setimageUrl(res?.data?.data?.image_url);
+     getInfo()
       Alert.alert(res?.data?.message);
     }).catch((err)=>{
       console.log(err?.response,'Error');
@@ -219,7 +219,7 @@ const Settings = ({navigation}) => {
             top={moderateScale(530)}
           />
 
-          <SubHeading name={'Settings'} />
+          <SubHeading name={'Settings'} marginTop={Platform.OS==='ios' ? moderateScale(40):null} />
 
           <TouchableOpacity onPress={toggleModal} style={{...styles.imgCircle,}}>
           <View style={{position: 'relative'}}>

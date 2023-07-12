@@ -40,7 +40,7 @@ const SignIn = ({navigation}) => {
   const GirlAnimation = new Animated.Value(screenWidth + 250);
   const MobileAnimation = new Animated.Value(screenWidth + 250);
   const context = useContext(AppContext);
-  const device_token=context.fcmToken;
+  const device_token=Platform.OS==='ios'? 'XYZ': context.fcmToken;
   
   // Push Notifications ----------------------
   // https://www.youtube.com/watch?v=h_qq1Gv09ZE
@@ -244,6 +244,7 @@ messaging().onMessage(async remoteMessage => {
             placeholder={'Email Address'}
             value={email}
             setValue={e => setemail(e)}
+            autoCapitalize={'none'}
             keyboardType={'email-address'}
           />
         </View>
@@ -320,24 +321,7 @@ messaging().onMessage(async remoteMessage => {
            ...styles.socialLogins,
             transform: [{translateY: MobileAnimation}],
           }}>
-          <View
-            style={{
-              left: moderateScale(32),
-              top: moderateScale(9),
-              zIndex: 1,
-            }}>
-            <GoogleSvg width={20} height={23} />
-          </View>
-          <Button
-            text={'Sign In'}
-            backgroundColor={colors.black}
-            height={moderateScale(32)}
-            width={moderateScale(135)}
-            onPress={() => {
-              googleLogin();
-            }}
-            indicator={loading2 ? true : false}
-          />
+    
           <View
             style={{
               left: moderateScale(32),
@@ -409,11 +393,12 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    width: '90%',
+    width: '100%',
     marginLeft: 'auto',
     marginRight: 'auto',
-       borderWidth:1,
-    color:colors.white
+    justifyContent:'center',
+    //    borderWidth:1,
+    // color:colors.white
   },
 });
 export default SignIn;

@@ -165,7 +165,7 @@ const Signup = ({navigation}) => {
               borderBottomWidth: 2,
               borderColor: colors.white,
               alignItems: 'center',
-              marginTop: moderateScale(20),
+              marginTop:Platform.OS==='ios' ? moderateScale(40):moderateScale(20),
               width: '85%',
             }}>
             <CustomInput
@@ -183,13 +183,14 @@ const Signup = ({navigation}) => {
               borderBottomWidth: 2,
               borderColor: colors.white,
               alignItems: 'center',
-              marginTop: moderateScale(20),
+              marginTop:Platform.OS==='ios' ? moderateScale(30):moderateScale(20),
               width: '85%',
             }}>
             <CustomInput
               paddingLeft={moderateScale(10)}
               placeholder={'Email Address'}
               value={email}
+              autoCapitalize={'none'}
               setValue={e => setemail(e)}
               keyboardType={'email-address'}
             />
@@ -202,7 +203,7 @@ const Signup = ({navigation}) => {
               borderBottomWidth: 2,
               borderColor: borderColor,
               alignItems: 'center',
-              marginTop: moderateScale(20),
+              marginTop:Platform.OS==='ios' ? moderateScale(10):moderateScale(20),
               width: '85%',
             }}>
             <PhoneInput
@@ -245,7 +246,7 @@ const Signup = ({navigation}) => {
               borderBottomWidth: 2,
               borderColor: colors.white,
               alignItems: 'center',
-              marginTop: moderateScale(20),
+              marginTop:Platform.OS==='ios' ? moderateScale(30):moderateScale(20),
             }}>
             <CustomInput
               paddingLeft={moderateScale(10)}
@@ -274,7 +275,7 @@ const Signup = ({navigation}) => {
               borderBottomWidth: 2,
               borderColor: colors.white,
               alignItems: 'center',
-              marginTop: moderateScale(20),
+              marginTop:Platform.OS==='ios' ? moderateScale(30):moderateScale(20),
             }}>
             <CustomInput
               paddingLeft={moderateScale(10)}
@@ -311,24 +312,7 @@ const Signup = ({navigation}) => {
            ...styles.socialLogins,
             transform: [{translateY: MobileAnimation}],
           }}>
-          <View
-            style={{
-              left: moderateScale(32),
-              top: moderateScale(9),
-              zIndex: 1,
-            }}>
-            <GoogleSvg width={20} height={23} />
-          </View>
-          <Button
-            text={'Sign In'}
-            backgroundColor={colors.black}
-            height={moderateScale(32)}
-            width={moderateScale(135)}
-            onPress={() => {
-              googleLogin();
-            }}
-            indicator={loading2 ? true : false}
-          />
+         
           <View
             style={{
               left: moderateScale(32),
@@ -395,11 +379,11 @@ const styles = StyleSheet.create({
   },
   socialLogins: {
     display: 'flex',
-    width: '90%',
+    width: '100%',
     alignItems: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
-    // justifyContent: 'space-between',
+    justifyContent: 'center',
     flexDirection: 'row',
     // height:screenHeight
   },

@@ -162,6 +162,7 @@ const Home = ({navigation}) => {
 
   const deleteSearchHistory=()=>{
     HistoryAuth.deleteHistory({userToken}).then((res)=>{
+      viewHistory()
       Alert.alert(res?.data?.message);
     }).catch((err)=>{
       console.log(err?.response?.data);
@@ -203,10 +204,11 @@ const Home = ({navigation}) => {
           openGallery();
           setModalVisible(false);
         }}
-        text3={'Alert ! This App rechognize Fish Image only'}
+        text3={'Alert ! This App recognize Fish Image only'}
         isVisible={isModalVisible}
         onClose={() => setModalVisible(false)}
       />
+      <View style={{alignItems:'flex-end'}}>
       <TouchableOpacity style={styles.uploadIcon} onPress={openGallery}>
         <UploadPhotoSvg width={30} height={23} />
         <Text
@@ -218,6 +220,8 @@ const Home = ({navigation}) => {
           Upload
         </Text>
       </TouchableOpacity>
+      </View>
+     
 
       <View style={styles.mainContainer}>
         <TouchableOpacity
@@ -234,9 +238,24 @@ const Home = ({navigation}) => {
         <View style={{alignItems: 'center'}}>
           <Button onPress={openCamera} text={'Scan'} />
           {showRecentHistory ? (
-            <Text style={{...fonts.subHeadHistory, color: colors.white}}>
+          <View style={styles.flexContainer}>
+             <Text style={{...fonts.subHeadHistory, color: colors.white}}>
               Recent History
             </Text>
+              <Button
+              marginTop={moderateScale(20)}
+              marginBottom={moderateScale(0)}
+              width={moderateScale(110)}
+              onPress={() => {
+               deleteSearchHistory()
+              }}
+              text={'Delete History'}
+            />
+ 
+          </View>
+          
+           
+          
           ) : null}
         </View>
 
@@ -246,7 +265,7 @@ const Home = ({navigation}) => {
           {/* </View> */}
         </View>
         {showViewMore ? (
-          <View style={styles.flexContainer}>
+          <View style={{alignItems:'center'}}>
             <Button
               marginTop={moderateScale(10)}
               onPress={() => {
@@ -254,14 +273,7 @@ const Home = ({navigation}) => {
               }}
               text={'View More'}
             />
-            <Button
-              marginTop={moderateScale(10)}
-              width={moderateScale(110)}
-              onPress={() => {
-                deleteSearchHistory()
-              }}
-              text={'Delete History'}
-            />
+         
           </View>
         ) : null}
       </View>
@@ -291,9 +303,16 @@ const styles = StyleSheet.create({
     top: moderateScale(15),
   },
   uploadIcon: {
-    right: moderateScale(15),
+    // right: moderateScale(15),
     top: Platform.OS === 'ios' ? moderateScale(60) : moderateScale(20),
-    alignItems: 'flex-end',
+    alignItems: 'center',
+    // borderWidth:1,
+    // borderColor:colors.black,
+    marginBottom:Platform.OS==='ios'? moderateScale(20):null,
+    width:moderateScale(50),
+    // marginLeft:20,
+
+
   },
   text: {
     ...fonts.trial_head,
@@ -305,7 +324,7 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight:'auto',
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: Platform.OS==='ios'? 'column' : 'row',
     alignItems:'center',
     // borderWidth:1,
     // borderColor:colors.black,

@@ -42,7 +42,7 @@ const Slider4 = () => {
 
   const renderItem = ({item}) => {
     return (
-      <View style={{flex: 1, marginTop: moderateScale(10)}}>
+      <View style={{flex: 1, marginTop: moderateScale(20)}}>
         <item.image width={155} height={140} />
         <View style={{marginLeft: moderateScale(5), width: moderateScale(170)}}>
           <Text
@@ -82,7 +82,7 @@ const Slider4 = () => {
       <View
         style={{
           margin: moderateScale(10),
-          
+          marginTop:moderateScale(30)
           
         }}>
    

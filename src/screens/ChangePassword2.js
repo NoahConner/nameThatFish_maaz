@@ -67,7 +67,7 @@ const ChangePassword2 = ({navigation}) => {
         <WavesAnimated />
         <MainHeading
           name={'Change Password'}
-          marginTop={moderateScale(60)}
+          marginTop={moderateScale(80)}
           marginBottom={moderateScale(25)}
         />
 
@@ -78,7 +78,7 @@ const ChangePassword2 = ({navigation}) => {
             borderBottomWidth: 2,
             borderColor: colors.white,
             alignItems: 'center',
-            marginTop: moderateScale(20),
+            marginTop: moderateScale(30),
           }}>
           <CustomInput
             paddingLeft={moderateScale(10)}
@@ -106,7 +106,7 @@ const ChangePassword2 = ({navigation}) => {
             borderBottomWidth: 2,
             borderColor: colors.white,
             alignItems: 'center',
-            marginTop: moderateScale(20),
+            marginTop: moderateScale(30),
           }}>
           <CustomInput
             paddingLeft={moderateScale(10)}
@@ -133,7 +133,7 @@ const ChangePassword2 = ({navigation}) => {
             borderBottomWidth: 2,
             borderColor: colors.white,
             alignItems: 'center',
-            marginTop: moderateScale(20),
+            marginTop: moderateScale(30),
           }}>
           <CustomInput
             paddingLeft={moderateScale(10)}
