@@ -77,6 +77,7 @@ const ForgotPassword = ({navigation}) => {
               placeholder={'Email Address'}
               value={email}
               setValue={e => setemail(e)}
+              autoCapitalize={'none'}
               keyboardType={'email-address'}
             />
           </View>
