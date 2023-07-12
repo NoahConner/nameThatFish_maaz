@@ -94,6 +94,7 @@ const Settings = ({navigation}) => {
     setloading(true)
     await AsyncStorage.clear();
     context.setuserToken(null);
+    context.setFcmToken(null);
     setloading(false)
     const isSignedIn = await GoogleSignin.isSignedIn();
     if (isSignedIn) {
@@ -238,7 +239,7 @@ const Settings = ({navigation}) => {
               <ProfileSvg width={100} height={100} />
             </View>  */}
           </TouchableOpacity>
-          <Text style={{...fonts.trial_head_sub, color: colors.primary}}>
+          <Text style={{...fonts.subHeadHistory, color: colors.primary}}>
             {name}
           </Text>
         </View>
@@ -292,6 +293,7 @@ const Settings = ({navigation}) => {
             backgroundColor={colors.primary}
             marginTop={moderateScale(0)}
             indicator={loading ? true : false}
+            disabled={loading ? true : false}
           />
           <Button
             onPress={toggleModalDeleteAccount}

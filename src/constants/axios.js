@@ -8,6 +8,7 @@ export default API = {
   profile: `${baseURL}/profile`,
   changePass: `${baseURL}/change-pass`,
   sendMail: `${baseURL}/mail`,
+  OTPCheck: `${baseURL}/verify-otp`,
   forgotPassword: `${baseURL}/forgot-password`,
   deleteUser: `${baseURL}/user/`,
   updateUser: `${baseURL}/user-update`,
@@ -23,4 +24,5 @@ export default API = {
   getUrlHistory:`${baseURL}/search-history`,
   deleteHistory:`${baseURL}/delete-history`,
   uploadProfilePic:`${baseURL}/img_update`,
+  getNotifications:`${baseURL}/notifications`
 };

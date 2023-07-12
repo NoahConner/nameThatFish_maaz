@@ -25,13 +25,13 @@ const ChangePassword = ({navigation, route}) => {
   const [loading, setloading] = useState(false)
 
   const routes = route?.params;
-  let otp = routes?.OTPCode;
-  let email = routes?.email?.getEmail;
-  console.log(otp,email);
+  // let otp = routes?.OTPCode;
+  let email = routes?.email;
+  console.log(email);
   
   const onUpdatePass = () => {
     setloading(true)
-    AuthServices.forgotPass({email, otp, changePassword, confirmPassword})
+    AuthServices.forgotPass({email, changePassword, confirmPassword})
       .then(res => {
         Alert.alert(res?.data?.message);
         navigation.navigate('SignIn');
@@ -39,7 +39,7 @@ const ChangePassword = ({navigation, route}) => {
       })
       .catch(err => {
         Alert.alert(err?.response?.data?.message);
-        navigation.navigate('SignIn');
+        // navigation.navigate('SignIn');
         setloading(false)
       });
   };
@@ -120,6 +120,7 @@ const ChangePassword = ({navigation, route}) => {
           text={'Update'}
           width={moderateScale(95)}
           indicator={loading ? true : false}
+          disabled={loading ? true : false}
         />
       </ImageBackground>
     </KeyboardAvoidingView>

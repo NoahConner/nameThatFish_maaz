@@ -34,13 +34,14 @@ const PersonalInformation = ({navigation}) => {
   const [show, setShow] = useState(false);
   const [countryCode, setCountryCode] = useState(null);
   const [loading, setloading] = useState(false)
+  const [loading2, setloading2] = useState(false)
 
   useEffect(() => {
     getUserInfo()
   }, []);
 
   const getUserInfo=()=>{
-    setloading(true)
+    setloading2(true)
     UserServices.userProfile({userToken})
     .then(res => {
         setName(res?.data?.data?.name);
@@ -49,19 +50,19 @@ const PersonalInformation = ({navigation}) => {
         setAddress(res?.data?.data?.address);
         setCountryCode(res?.data?.data?.code);
         phonenum.current.setValue(res?.data?.data?.phone)
-        // context.setuserId(res?.data?.data?.id);
-        // console.log(id,'User ID');
-        
+        setloading2(false)
       })
       .catch(err => {
         Alert.alert(err,'Did not getting Information');
       });
-      setloading(false)
   }
+
   const onSave = () => {
+    setloading(true)
     UserServices.updateUserProfile({address, email, id, name, contactNumber,countryCode})
       .then(res => {
-        console.log(res?.data);
+       Alert.alert(res?.data?.messsage);
+       setloading(false)
       })
       .catch(err => {
         console.log(err?.data, 'Error');
@@ -73,7 +74,7 @@ const PersonalInformation = ({navigation}) => {
       source={require('../assets/images/bg2.png')}
       resizeMode="stretch"
       style={{flex: 1}}>
-        {loading ? <Loader/> : null}
+        {loading2 ? <Loader/> : null}
       <CountryPicker
         show={show}
         // when picker button press you will get the country object with dial code
@@ -211,8 +212,10 @@ const PersonalInformation = ({navigation}) => {
           <Button
             onPress={() => {
               onSave();
-              navigation.navigate('Settings');
+              // navigation.navigate('Settings');
             }}
+            indicator={loading ? true : false}
+            disabled={loading ? true : false}
             text={'Save'}
             backgroundColor={colors.primary}
             marginTop={moderateScale(20)}

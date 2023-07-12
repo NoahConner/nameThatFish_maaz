@@ -22,6 +22,12 @@ import {screenHeight, screenWidth} from '../constants/screenResolution';
 import WavesAnimated from '../components/WavesAnimated';
 import PhoneInput from 'react-native-phone-input';
 import {AuthServices} from '../services';
+import AppContext from '../context/AuthContext';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Signup = ({navigation}) => {
   const [fullname, setFullname] = useState(null);
@@ -39,7 +45,8 @@ const Signup = ({navigation}) => {
   const [countryCode, setCountryCode] = useState('1');
   const GirlAnimation = new Animated.Value(screenWidth + 250);
   const MobileAnimation = new Animated.Value(screenWidth + 250);
-
+  const [loading2, setloading2] = useState(false)
+  
   const phonenum = useRef();
 
   useEffect(() => {
@@ -58,6 +65,38 @@ const Signup = ({navigation}) => {
       duration: 2000,
       useNativeDriver: true,
     }).start();
+  };
+  const googleLogin = async () => {
+    setloading2(true)
+    await GoogleSignin.hasPlayServices();
+    await GoogleSignin.signIn()
+      .then(user => {
+        // storeUserToken(user?.idToken.toString());
+        const email=user?.user?.email;
+        const name=user?.user?.name;
+        const password=user?.user?.id;
+        const user_img=user?.user?.photo;
+        AuthServices.googleLogin({email,name,user_img,password,device_token}).then((res)=>{
+          storeUserToken(res?.data?.token);
+          storeUserID(res?.data?.user_id.toString())
+        }).catch((err)=>{
+          Alert.alert(err?.response?.data?.message);
+        })
+        
+      })
+      .catch(error => {
+        if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+          // user cancelled the login flow
+          Alert.alert('Cancel');
+        } else if (error.code === statusCodes.IN_PROGRESS) {
+          Alert.alert('Signin in progress'); // operation (f.e. sign in) is in progress already
+        } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+          Alert.alert('PLAY_SERVICES_NOT_AVAILABLE'); // play services not available or outdated
+        } else {
+          console.log('some other', error); // some other error happened
+        }
+        setloading2(false)
+      });
   };
 
   const onSignUp = () => {
@@ -114,7 +153,7 @@ const Signup = ({navigation}) => {
           <MainHeading
             name={'Sign Up'}
             marginTop={
-              Platform.OS === 'ios' ? moderateScale(70) : moderateScale(30)
+              Platform.OS === 'ios' ? moderateScale(90) : moderateScale(50)
             }
             marginBottom={moderateScale(10)}
           />
@@ -197,37 +236,7 @@ const Signup = ({navigation}) => {
             />
           </View>
 
-          {/* <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              borderBottomWidth: 2,
-              borderColor: colors.white,
-              alignItems: 'center',
-              marginTop: moderateScale(20),
-              width: '85%',
-            }}>
-            <TouchableOpacity
-              style={{
-                marginLeft: moderateScale(10),
-                marginTop: moderateScale(10),
-              }}
-              onPress={() => {
-                setShow(true);
-              }}>
-              <Text style={{...fonts.placeHolder, color: colors.white}}>
-                {countryCode}
-              </Text>
-            </TouchableOpacity>
-            <CustomInput
-              // paddingLeft={moderateScale(10)}
-              maxLength={10}
-              placeholder={''}
-              value={contact}
-              setValue={e => setContact(e)}
-              keyboardType={'numeric'}
-            />
-          </View> */}
+          
 
           <View
             style={{
@@ -246,6 +255,7 @@ const Signup = ({navigation}) => {
               secureTextEntry={eyeIconName}
             />
             <TouchableOpacity
+            
               onPress={() => {
                 setEyeIconName(!eyeIconName);
               }}>
@@ -292,44 +302,76 @@ const Signup = ({navigation}) => {
             marginTop={moderateScale(40)}
             width={moderateScale(95)}
             indicator={loading ? true : false}
+            disabled={loading ? true : false}
           />
 
-          {/* <Animated.View
+{Platform.OS==='ios' ? 
+          <Animated.View
+          style={{
+           ...styles.socialLogins,
+            transform: [{translateY: MobileAnimation}],
+          }}>
+          <View
             style={{
-              ...styles.socialLogins,
-              transform: [{translateY: MobileAnimation}],
+              left: moderateScale(32),
+              top: moderateScale(9),
+              zIndex: 1,
             }}>
-            <View
-              style={{
-                left: moderateScale(32),
-                top: moderateScale(9),
-                zIndex: 1,
-              }}>
-              <GoogleSvg width={20} height={23} />
-            </View>
-            <Button
-              text={'Sign In'}
-              backgroundColor={colors.black}
-              height={moderateScale(32)}
-              width={moderateScale(135)}
-            />
-            <View
-              style={{
-                left: moderateScale(32),
-                top: moderateScale(9),
-                zIndex: 1,
-                // position: 'absolute',
-              }}>
-              <AppleSvg width={20} height={23} />
-            </View>
-            <Button
-              text={'Sign In'}
-              backgroundColor={colors.black}
-              height={moderateScale(32)}
-              width={moderateScale(137)}
-              
-            />
-          </Animated.View> */}
+            <GoogleSvg width={20} height={23} />
+          </View>
+          <Button
+            text={'Sign In'}
+            backgroundColor={colors.black}
+            height={moderateScale(32)}
+            width={moderateScale(135)}
+            onPress={() => {
+              googleLogin();
+            }}
+            indicator={loading2 ? true : false}
+          />
+          <View
+            style={{
+              left: moderateScale(32),
+              top: moderateScale(9),
+              zIndex: 1,
+              // position: 'absolute',
+            }}>
+            <AppleSvg width={20} height={23} />
+          </View>
+          <Button
+            text={'Sign In'}
+            backgroundColor={colors.black}
+            height={moderateScale(32)}
+            width={moderateScale(137)}
+          />
+        </Animated.View> : 
+
+        <Animated.View
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          transform: [{translateY: MobileAnimation}],
+        }}>
+        <View
+          style={{
+            left: moderateScale(32),
+            top: moderateScale(9),
+            zIndex: 1,
+          }}>
+          <GoogleSvg width={20} height={23} />
+        </View>
+        <Button
+          text={'Sign In'}
+          backgroundColor={colors.black}
+          height={moderateScale(32)}
+          width={moderateScale(135)}
+          onPress={() => {
+            googleLogin();
+          }}
+          indicator={loading2 ? true : false}
+        />
+      </Animated.View>}
         </ImageBackground>
       </ScrollView>
     </KeyboardAvoidingView>

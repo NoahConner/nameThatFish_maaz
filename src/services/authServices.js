@@ -1,10 +1,11 @@
 import axios from 'axios';
 import {API} from '../constants';
 
-export const login = ({email, password}) => {
+export const login = ({email, password,device_token}) => {
   return axios.post(API.login, {
     email,
     password,
+    device_token
   });
 };
 
@@ -51,27 +52,33 @@ export const changePassword = ({
   );
 };
 
-export const forgotPass = ({otp, email, changePassword, confirmPassword}) => {
+export const forgotPass = ({ email, changePassword, confirmPassword}) => {
   return axios.post(API.forgotPassword, {
-    otp,
     email,
     password: changePassword,
     confirm_password: confirmPassword,
   });
 };
-
+export const checkOTPValid = ({code, email}) => {
+  return axios.post(API.OTPCheck, {
+    otp:code,
+    email,
+    
+  });
+};
 export const sendMail = ({email}) => {
   return axios.post(API.sendMail, {
     email,
   });
 };
 
-export const googleLogin = ({email,name,user_img,password}) => {
+export const googleLogin = ({email,name,user_img,password,device_token}) => {
   return axios.post(API.googleLogin, {
     name,
     email,
     user_img,
-    password
+    password,
+    device_token
   });
 };
 

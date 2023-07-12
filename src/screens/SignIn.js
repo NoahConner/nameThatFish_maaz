@@ -29,6 +29,7 @@ import {
 } from '@react-native-google-signin/google-signin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {AuthServices} from '../services';
+import messaging from '@react-native-firebase/messaging';
 
 const SignIn = ({navigation}) => {
   const [email, setemail] = useState(null);
@@ -39,6 +40,76 @@ const SignIn = ({navigation}) => {
   const GirlAnimation = new Animated.Value(screenWidth + 250);
   const MobileAnimation = new Animated.Value(screenWidth + 250);
   const context = useContext(AppContext);
+  const device_token=context.fcmToken;
+  
+  // Push Notifications ----------------------
+  // https://www.youtube.com/watch?v=h_qq1Gv09ZE
+
+
+// server Id : AAAAhQuWyok:APA91bEpRB9MyqgixB5R8ACVxVabIitHloaJS0h-pOBW_G36wlvaE2T1bAo8ZASp3hWXg2GXtgOfsC6UPxcpt_KqZypwBsZubn5dYuN2SehSQh15Gf_UYRT2PZ-41brdpTmSfM_UCBCd
+// fcm token : fvIgffUjTYKn73v0PNJlQo:APA91bE3YKqKpO9Zzo5W5bgdPam03vz-qc2uNxXvksVP80KIVZGvbPvHvBeYvyr7eQVZAB-4YuyI3kcqEqxe0DDixH_YaUlbFstFQVePPgTGbmaaq4r78uE6vVhBKPKolAG9XSij2wmL
+ async function requestUserPermission() {
+  const authStatus = await messaging().requestPermission();
+  const enabled =
+    authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+    authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+  if (enabled) {
+    console.log('Authorization status:', authStatus);
+    getFcmToken()
+  }
+}
+
+const getFcmToken = async () => {
+  let fcmToken = await AsyncStorage.getItem('fcmToken');
+  console.log('Old fcm Token:', fcmToken);
+  if (!fcmToken) {
+    try {
+      const fcmToken = await messaging().getToken();
+      if (fcmToken) {
+        // console.log('new generated fcm Token', fcmToken);
+        // await AsyncStorage.setItem('fcmToken', fcmToken);
+        storeFCMToken(fcmToken)
+      }
+    } catch (error) {
+      console.log(error, 'Error');
+    }
+  }
+};
+
+
+ const notificationService=()=>{
+
+  // Assume a message-notification contains a "type" property in the data payload of the screen to open
+
+   messaging().onNotificationOpenedApp(remoteMessage => {
+    console.log(
+      'Notification caused app to open from background state:',
+      remoteMessage.notification,
+    );
+    
+  });
+// foreGround
+
+messaging().onMessage(async remoteMessage => {
+  console.log('Foreground Notification',remoteMessage);
+});
+  // Check whether an initial notification is available
+  messaging()
+    .getInitialNotification()
+    .then(remoteMessage => {
+      if (remoteMessage) {
+        console.log(
+          'Notification caused app to open from quit state:',
+          remoteMessage.notification,
+        );
+        setInitialRoute(remoteMessage.data.type); // e.g. "Settings"
+      }
+      
+    });
+}
+// ---------------------------------push notifications---------------
+
 
   const storeUserToken = async value => {
     try {
@@ -53,6 +124,14 @@ const SignIn = ({navigation}) => {
       context.setuserId(value);
     } catch (e) {}
   };
+
+  const storeFCMToken = async value => {
+    try {
+      await AsyncStorage.setItem('@user_Fcm', value);
+      context.setFcmToken(value);
+    } catch (e) {}
+  };
+  
   const googleLogin = async () => {
     setloading2(true)
     await GoogleSignin.hasPlayServices();
@@ -63,7 +142,7 @@ const SignIn = ({navigation}) => {
         const name=user?.user?.name;
         const password=user?.user?.id;
         const user_img=user?.user?.photo;
-        AuthServices.googleLogin({email,name,user_img,password}).then((res)=>{
+        AuthServices.googleLogin({email,name,user_img,password,device_token}).then((res)=>{
           storeUserToken(res?.data?.token);
           storeUserID(res?.data?.user_id.toString())
         }).catch((err)=>{
@@ -88,7 +167,7 @@ const SignIn = ({navigation}) => {
 
   const onSignIn=()=>{
     setloading(true)
-    AuthServices.login({email, password})
+    AuthServices.login({email, password,device_token})
     .then(res => {
       // {res?.data?.message ==='User Profile' ? Alert.alert('Succesfully Login') :null }
       storeUserToken(res?.data?.token)
@@ -104,6 +183,8 @@ const SignIn = ({navigation}) => {
  
   useEffect(() => {
     startAnimations();
+    requestUserPermission()
+    notificationService()
   }, []);
 
   const startAnimations = () => {
@@ -127,13 +208,23 @@ const SignIn = ({navigation}) => {
         resizeMode="stretch"
         style={{flex: 1, alignItems: 'center'}}>
         <WavesAnimated />
+        
 
+        
+        <TouchableOpacity
+            style={styles.icon}
+            onPress={() => {
+              navigation.goBack();
+            }}>
+            <BackSvg width={20} height={20} />
+          </TouchableOpacity>
+         
         <MainHeading
           name={'Sign In'}
           marginTop={
             Platform.OS === 'ios' ? moderateScale(110) : moderateScale(60)
           }
-          marginBottom={moderateScale(10)}
+          marginBottom={moderateScale(40)}
         />
 
         <View
@@ -176,6 +267,11 @@ const SignIn = ({navigation}) => {
             secureTextEntry={eyeIconName}
           />
           <TouchableOpacity
+          style={{
+            // borderWidth:1,borderColor:'#000',
+          padding:moderateScale(5),
+          marginLeft:moderateScale(20)}}
+          
             onPress={() => {
               setEyeIconName(!eyeIconName);
             }}>
@@ -192,6 +288,8 @@ const SignIn = ({navigation}) => {
           text={'Log in'}
           width={moderateScale(95)}
           indicator={loading ? true : false}
+          disabled={loading ? true : false}
+          // disabled={true}
         />
         <TouchableOpacity
           onPress={() => {
@@ -204,7 +302,7 @@ const SignIn = ({navigation}) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={{marginTop: moderateScale(80)}}
+          style={{marginTop: moderateScale(120)}}
           onPress={() => {
             navigation.navigate('Signup');
           }}>
@@ -284,7 +382,7 @@ const SignIn = ({navigation}) => {
         />
       </Animated.View>}
         
-        
+      
       </ImageBackground>
     </KeyboardAvoidingView>
   );
@@ -295,6 +393,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: moderateScale(15),
     top: moderateScale(15),
+    padding:moderateScale(10),
     // borderWidth:1,
     // color:colors.white
   },
