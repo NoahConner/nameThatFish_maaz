@@ -40,13 +40,26 @@ const AppContainer = () => {
       
     }
   };
+  const getFcmToken = async () => {
+    const value = await AsyncStorage.getItem('@user_Fcm');
+    if (value !== null) {
+     context.setFcmToken(value);
+     
+    } else {
+      context.setFcmToken(null);
+      
+    }
+  };
+
   const getUserDetails = async () => {
     await getUserToken();
     await getUserId();
+    await getFcmToken();
   }; 
   useEffect(() => {
-    requestUserPermission();
-    notificationService();
+    // requestUserPermission();
+    // notificationService();
+    console.log(context.fcmToken,'Fcm Device Token');
      getUserDetails()
      
     setTimeout(() => {

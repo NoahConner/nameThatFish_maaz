@@ -52,15 +52,20 @@ export const changePassword = ({
   );
 };
 
-export const forgotPass = ({otp, email, changePassword, confirmPassword}) => {
+export const forgotPass = ({ email, changePassword, confirmPassword}) => {
   return axios.post(API.forgotPassword, {
-    otp,
     email,
     password: changePassword,
     confirm_password: confirmPassword,
   });
 };
-
+export const checkOTPValid = ({code, email}) => {
+  return axios.post(API.OTPCheck, {
+    otp:code,
+    email,
+    
+  });
+};
 export const sendMail = ({email}) => {
   return axios.post(API.sendMail, {
     email,

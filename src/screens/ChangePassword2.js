@@ -160,6 +160,7 @@ const ChangePassword2 = ({navigation}) => {
           text={'Update'}
           width={moderateScale(95)}
           indicator={loading ? true : false}
+          disabled={loading ? true : false}
         />
       </ImageBackground>
     </KeyboardAvoidingView>

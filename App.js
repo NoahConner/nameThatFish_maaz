@@ -5,15 +5,15 @@ import AppContainer from './src/navigation';
 const App = () => {
   const [userToken, setuserToken] = useState(null);
   const [userId, setuserId] = useState(null);
-  const [deviceToken, setDeviceToken] = useState(null);
+  const [fcmToken, setFcmToken] = useState(null);
 
   const userSettings = {
     userToken,
     setuserToken,
     userId,
     setuserId,
-    deviceToken,
-    setDeviceToken,
+    fcmToken,
+    setFcmToken,
   };
 
   return (

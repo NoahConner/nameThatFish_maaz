@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Keyboard,
+  Alert,
 } from 'react-native';
 import React, {useContext, useEffect, useState} from 'react';
 import {BackSvg} from '../assets/svg';
@@ -13,25 +14,32 @@ import {Bubbles, Button, SubHeading} from '../components';
 import {colors, fonts} from '../constants';
 import {TextInput} from 'react-native-gesture-handler';
 import {screenHeight} from '../constants/screenResolution';
-import { UserServices } from '../services';
+import {UserServices} from '../services';
 import AppContext from '../context/AuthContext';
 
 const Help = ({navigation}) => {
   const context = useContext(AppContext);
   const userToken = context.userToken;
   const [helpQuery, setHelpQuery] = useState(null);
-
+  const [loading, setloading] = useState(false);
   // useEffect(() => {
   //   console.log(userToken,'Token Help');
   // }, [])
-  
-  const onSend=()=>{
-    UserServices.userSupport({helpQuery,userToken}).then((res)=>{
-      console.log(res?.data);
-    }).catch((err)=>{
-      console.log(err?.response?.data);
-    })
-  }
+
+  const onSend = () => {
+    {
+      helpQuery !== null
+        ? UserServices.userSupport({helpQuery, userToken})
+            .then(res => {
+              Alert.alert(res?.data?.message);
+              setHelpQuery(null);
+            })
+            .catch(err => {
+              console.log(err?.response?.data);
+            })
+        : Alert.alert('Kindly Fill Field Input');
+    }
+  };
   return (
     <ImageBackground
       source={require('../assets/images/bg1.png')}
@@ -96,9 +104,11 @@ const Help = ({navigation}) => {
         <Button
           onPress={() => {
             Keyboard.dismiss();
-            onSend()
-            navigation.navigate('Settings');
+            onSend();
+            // navigation.navigate('Settings');
           }}
+          indicator={loading ? true : false}
+          disabled={loading ? true : false}
           text={'Send'}
           backgroundColor={colors.primary}
           marginTop={moderateScale(20)}

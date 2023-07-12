@@ -41,6 +41,7 @@ const SignIn = ({navigation}) => {
   const MobileAnimation = new Animated.Value(screenWidth + 250);
   const context = useContext(AppContext);
   const device_token=context.fcmToken;
+  
   // Push Notifications ----------------------
   // https://www.youtube.com/watch?v=h_qq1Gv09ZE
 
@@ -207,13 +208,23 @@ messaging().onMessage(async remoteMessage => {
         resizeMode="stretch"
         style={{flex: 1, alignItems: 'center'}}>
         <WavesAnimated />
+        
 
+        
+        <TouchableOpacity
+            style={styles.icon}
+            onPress={() => {
+              navigation.goBack();
+            }}>
+            <BackSvg width={20} height={20} />
+          </TouchableOpacity>
+         
         <MainHeading
           name={'Sign In'}
           marginTop={
             Platform.OS === 'ios' ? moderateScale(110) : moderateScale(60)
           }
-          marginBottom={moderateScale(10)}
+          marginBottom={moderateScale(40)}
         />
 
         <View
@@ -223,7 +234,7 @@ messaging().onMessage(async remoteMessage => {
             borderBottomWidth: 2,
             borderColor: colors.white,
             alignItems: 'center',
-            marginTop: moderateScale(30),
+            marginTop: moderateScale(20),
             // width:'80%',
           }}>
           <EmailSvg width={15} height={15} />
@@ -233,7 +244,6 @@ messaging().onMessage(async remoteMessage => {
             placeholder={'Email Address'}
             value={email}
             setValue={e => setemail(e)}
-            autoCapitalize={'none'}
             keyboardType={'email-address'}
           />
         </View>
@@ -245,7 +255,7 @@ messaging().onMessage(async remoteMessage => {
             borderBottomWidth: 2,
             borderColor: colors.white,
             alignItems: 'center',
-            marginTop: moderateScale(30),
+            marginTop: moderateScale(20),
             width: '85%',
           }}>
           <PasswordSvg width={15} height={15} />
@@ -257,6 +267,11 @@ messaging().onMessage(async remoteMessage => {
             secureTextEntry={eyeIconName}
           />
           <TouchableOpacity
+          style={{
+            // borderWidth:1,borderColor:'#000',
+          padding:moderateScale(5),
+          marginLeft:moderateScale(20)}}
+          
             onPress={() => {
               setEyeIconName(!eyeIconName);
             }}>
@@ -273,6 +288,8 @@ messaging().onMessage(async remoteMessage => {
           text={'Log in'}
           width={moderateScale(95)}
           indicator={loading ? true : false}
+          disabled={loading ? true : false}
+          // disabled={true}
         />
         <TouchableOpacity
           onPress={() => {
@@ -285,7 +302,7 @@ messaging().onMessage(async remoteMessage => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={{marginTop: moderateScale(80)}}
+          style={{marginTop: moderateScale(120)}}
           onPress={() => {
             navigation.navigate('Signup');
           }}>
@@ -300,21 +317,18 @@ messaging().onMessage(async remoteMessage => {
           {Platform.OS==='ios' ? 
           <Animated.View
           style={{
-          //  ...styles.socialLogins,
-           display: 'flex',
-           flexDirection: 'row',
-           alignItems: 'center',
-           transform: [{translateY: MobileAnimation}],
+           ...styles.socialLogins,
+            transform: [{translateY: MobileAnimation}],
           }}>
-          {/* <View
+          <View
             style={{
               left: moderateScale(32),
               top: moderateScale(9),
               zIndex: 1,
             }}>
             <GoogleSvg width={20} height={23} />
-          </View> */}
-          {/* <Button
+          </View>
+          <Button
             text={'Sign In'}
             backgroundColor={colors.black}
             height={moderateScale(32)}
@@ -323,7 +337,7 @@ messaging().onMessage(async remoteMessage => {
               googleLogin();
             }}
             indicator={loading2 ? true : false}
-          /> */}
+          />
           <View
             style={{
               left: moderateScale(32),
@@ -368,7 +382,7 @@ messaging().onMessage(async remoteMessage => {
         />
       </Animated.View>}
         
-        
+      
       </ImageBackground>
     </KeyboardAvoidingView>
   );
@@ -379,6 +393,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: moderateScale(15),
     top: moderateScale(15),
+    padding:moderateScale(10),
     // borderWidth:1,
     // color:colors.white
   },
@@ -397,7 +412,7 @@ const styles = StyleSheet.create({
     width: '90%',
     marginLeft: 'auto',
     marginRight: 'auto',
-      //  borderWidth:1,
+       borderWidth:1,
     color:colors.white
   },
 });

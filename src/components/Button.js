@@ -14,11 +14,13 @@ const Button = ({
   marginBottom = moderateScale(20),
   borderRadius = 24,
   indicator=false,
+  disabled=false
 }) => {
   
   // const [indicator, setindicator] = useState(false);
   return (
     <TouchableOpacity
+    disabled={disabled}
       onPress={onPress}
       style={{
         ...styles.btnV,

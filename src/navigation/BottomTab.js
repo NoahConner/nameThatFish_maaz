@@ -31,12 +31,10 @@ const BottomTab = () => {
           height: Platform.OS === 'ios' ? moderateScale(70) : moderateScale(40),
           position:'absolute',
           borderColor:colors.primary
-          
         },
         tabBarIcon: () => {
           
           let Icon;
-
           if (route.name == 'SettingStack') {
             // focused ? (Icon = FocusedChatSvg) : (Icon = MessageSvg);
             Icon=SettingSvg

@@ -10,7 +10,6 @@ const StackNavigation = () => {
     <Stack.Navigator
       initialRouteName="HomeScreen"
       screenOptions={{headerShown: false}}>
-        
       <Stack.Screen name="HomeScreen" component={BottomTab} />
       <Stack.Screen name="SettingScreen" component={BottomTab} />
       <Stack.Screen name="SubscriptionScreen" component={BottomTab} />

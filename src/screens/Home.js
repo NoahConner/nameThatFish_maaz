@@ -8,7 +8,7 @@ import {
   TextInput,
   Platform,
   Alert,
-  Image
+  Image,
 } from 'react-native';
 import React, {useContext, useEffect, useState} from 'react';
 import {
@@ -25,9 +25,9 @@ import FlatlistHistory from '../components/FlatlistHistory';
 import {screenHeight, screenWidth} from '../constants/screenResolution';
 import WavesAnimated from '../components/WavesAnimated';
 import AppContext from '../context/AuthContext';
-import { HistoryAuth } from '../services';
-import { FlatList } from 'react-native-gesture-handler';
-import { useIsFocused } from '@react-navigation/native';
+import {HistoryAuth} from '../services';
+import {FlatList} from 'react-native-gesture-handler';
+import {useIsFocused} from '@react-navigation/native';
 
 const axios = require('axios').default;
 
@@ -39,8 +39,8 @@ const Home = ({navigation}) => {
   const [History, setHistory] = useState(null);
   const [imgUri, setImgUri] = useState(null);
   const [loading, setloading] = useState(false);
-  const [showViewMore, setshowViewMore] = useState(false)
-  const [showRecentHistory, setshowRecentHistory] = useState(true)
+  const [showViewMore, setshowViewMore] = useState(false);
+  const [showRecentHistory, setshowRecentHistory] = useState(true);
   const [fishExist, setFishExist] = useState();
   const [isModalVisible, setModalVisible] = useState(false);
   const isFocused = useIsFocused();
@@ -84,10 +84,10 @@ const Home = ({navigation}) => {
 
   useEffect(() => {
     cleanImagePicker();
-    viewHistory()
-    console.log(userToken,'userToken');
-    console.log(id,'user IDD');
-    console.log(device_token,'device_token');
+    viewHistory();
+    console.log(userToken, 'userToken');
+    console.log(id, 'user IDD');
+    console.log(device_token, 'device_token');
   }, [isFocused]);
   const getLabel = base64 => {
     const apiKey = 'AIzaSyDEWD5MLAof7UnDMH5mVf9Fpwr_dLtH5X0';
@@ -137,37 +137,51 @@ const Home = ({navigation}) => {
         }
       });
   };
- 
- const viewHistory=()=>{
-  // setloading(true)
-  HistoryAuth.getImgUrlhistory({userToken})
-  .then(res => {
-    let recentHistory=res?.data?.history.slice(0,9);
-    setHistory(recentHistory);
-    recentHistory.length == 9 ? setshowViewMore(true): setshowViewMore(false)
-    recentHistory.length == 0 ? setshowRecentHistory(false): setshowRecentHistory(true)
-    console.log(recentHistory.length);
+
+  const viewHistory = () => {
+    setloading(true)
+    HistoryAuth.getImgUrlhistory({userToken})
+      .then(res => {
+        let recentHistory = res?.data?.history.slice(0, 9);
+        setHistory(recentHistory);
+        setloading(false)
+        recentHistory.length == 9
+          ? setshowViewMore(true)
+          : setshowViewMore(false);
+        recentHistory.length == 0
+          ? setshowRecentHistory(false)
+          : setshowRecentHistory(true);
+        console.log(recentHistory.length);
+      })
+
+      .catch(err => {
+        console.log(err?.response?.data);
+      });
+    
+  };
+
+  const deleteSearchHistory=()=>{
+    HistoryAuth.deleteHistory({userToken}).then((res)=>{
+      Alert.alert(res?.data?.message);
+    }).catch((err)=>{
+      console.log(err?.response?.data);
     })
-
-  .catch(err => {
-    console.log(err?.response?.data);
-  });
-// setloading(false)
-}
-
-const renderItem = ({item}) => {
-  return (
-    <TouchableOpacity style={styles.container} onPress={()=>{
-      navigation.navigate('ResultHistory',{getImgUrl: item?.img_url})
-    }}>
-      <Image
-        source={{uri: item?.img_url}}
-        resizeMode="contain"
-        style={{width: '100%', height: '100%',borderRadius:15}}
-      />
-    </TouchableOpacity>
-  );
-};
+  }
+  const renderItem = ({item}) => {
+    return (
+      <TouchableOpacity
+        style={styles.container}
+        onPress={() => {
+          navigation.navigate('ResultHistory', {getImgUrl: item?.img_url});
+        }}>
+        <Image
+          source={{uri: item?.img_url}}
+          resizeMode="contain"
+          style={{width: '100%', height: '100%', borderRadius: 15}}
+        />
+      </TouchableOpacity>
+    );
+  };
 
   return (
     <ImageBackground
@@ -217,29 +231,39 @@ const renderItem = ({item}) => {
           onPress={openCamera}>
           <ScannerSvg width={110} height={110} />
         </TouchableOpacity>
-        <View style={{alignItems:'center'}}>
+        <View style={{alignItems: 'center'}}>
           <Button onPress={openCamera} text={'Scan'} />
-          {showRecentHistory ? <Text style={{...fonts.subHeadHistory, color: colors.white}}>
-            Recent History
-          </Text>  : null}
-          
-        </View> 
-        
-        <View style={{width: screenWidth, padding: '5%'}}>
-        {/* {/ <View style={{alignItems: 'center'}}> /} */}
-          <FlatList renderItem={renderItem} data={History} numColumns={3} />
-        {/* {/ </View> /} */}
+          {showRecentHistory ? (
+            <Text style={{...fonts.subHeadHistory, color: colors.white}}>
+              Recent History
+            </Text>
+          ) : null}
         </View>
-        {showViewMore ?  <View style={{alignItems:'center'}}>
-          <Button
-            marginTop={moderateScale(10)}
-            onPress={() => {
-              navigation.navigate('History');
-            }}
-            text={'View More'}
-          />
-        </View> : null }
-       
+
+        <View style={{width: screenWidth, padding: '5%'}}>
+          {/* <View style={{alignItems: 'center'}}> */}
+          <FlatList renderItem={renderItem} data={History} numColumns={3} />
+          {/* </View> */}
+        </View>
+        {showViewMore ? (
+          <View style={styles.flexContainer}>
+            <Button
+              marginTop={moderateScale(10)}
+              onPress={() => {
+                navigation.navigate('History');
+              }}
+              text={'View More'}
+            />
+            <Button
+              marginTop={moderateScale(10)}
+              width={moderateScale(110)}
+              onPress={() => {
+                deleteSearchHistory()
+              }}
+              text={'Delete History'}
+            />
+          </View>
+        ) : null}
       </View>
     </ImageBackground>
   );
@@ -275,6 +299,17 @@ const styles = StyleSheet.create({
     ...fonts.trial_head,
     color: colors.white,
     width: moderateScale(290),
+  },
+  flexContainer: {
+    width: screenWidth - 40,
+    marginLeft: 'auto',
+    marginRight:'auto',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems:'center',
+    // borderWidth:1,
+    // borderColor:colors.black,
+    justifyContent:'space-evenly'
   },
 });
 export default Home;
