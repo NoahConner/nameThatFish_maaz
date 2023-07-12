@@ -223,7 +223,7 @@ messaging().onMessage(async remoteMessage => {
             borderBottomWidth: 2,
             borderColor: colors.white,
             alignItems: 'center',
-            marginTop: moderateScale(20),
+            marginTop: moderateScale(30),
             // width:'80%',
           }}>
           <EmailSvg width={15} height={15} />
@@ -233,6 +233,7 @@ messaging().onMessage(async remoteMessage => {
             placeholder={'Email Address'}
             value={email}
             setValue={e => setemail(e)}
+            autoCapitalize={'none'}
             keyboardType={'email-address'}
           />
         </View>
@@ -244,7 +245,7 @@ messaging().onMessage(async remoteMessage => {
             borderBottomWidth: 2,
             borderColor: colors.white,
             alignItems: 'center',
-            marginTop: moderateScale(20),
+            marginTop: moderateScale(30),
             width: '85%',
           }}>
           <PasswordSvg width={15} height={15} />

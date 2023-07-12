@@ -126,7 +126,7 @@ const Signup = ({navigation}) => {
               borderBottomWidth: 2,
               borderColor: colors.white,
               alignItems: 'center',
-              marginTop: moderateScale(20),
+              marginTop: moderateScale(30),
               width: '85%',
             }}>
             <CustomInput
@@ -144,7 +144,7 @@ const Signup = ({navigation}) => {
               borderBottomWidth: 2,
               borderColor: colors.white,
               alignItems: 'center',
-              marginTop: moderateScale(20),
+              marginTop: moderateScale(30),
               width: '85%',
             }}>
             <CustomInput
@@ -153,6 +153,7 @@ const Signup = ({navigation}) => {
               value={email}
               setValue={e => setemail(e)}
               keyboardType={'email-address'}
+              autoCapitalize={'none'}
             />
           </View>
 
@@ -163,7 +164,7 @@ const Signup = ({navigation}) => {
               borderBottomWidth: 2,
               borderColor: borderColor,
               alignItems: 'center',
-              marginTop: moderateScale(20),
+              marginTop:Platform.OS==="ios" ? moderateScale(10):moderateScale(20),
               width: '85%',
             }}>
             <PhoneInput
@@ -204,7 +205,7 @@ const Signup = ({navigation}) => {
               borderBottomWidth: 2,
               borderColor: colors.white,
               alignItems: 'center',
-              marginTop: moderateScale(20),
+              marginTop: moderateScale(30),
               width: '85%',
             }}>
             <TouchableOpacity
@@ -236,7 +237,7 @@ const Signup = ({navigation}) => {
               borderBottomWidth: 2,
               borderColor: colors.white,
               alignItems: 'center',
-              marginTop: moderateScale(20),
+              marginTop: moderateScale(30),
             }}>
             <CustomInput
               paddingLeft={moderateScale(10)}
@@ -264,7 +265,7 @@ const Signup = ({navigation}) => {
               borderBottomWidth: 2,
               borderColor: colors.white,
               alignItems: 'center',
-              marginTop: moderateScale(20),
+              marginTop: moderateScale(30),
             }}>
             <CustomInput
               paddingLeft={moderateScale(10)}
@@ -293,43 +294,76 @@ const Signup = ({navigation}) => {
             width={moderateScale(95)}
             indicator={loading ? true : false}
           />
-
-          {/* <Animated.View
+{Platform.OS==='ios' ? 
+          <Animated.View
+          style={{
+          //  ...styles.socialLogins,
+           display: 'flex',
+           flexDirection: 'row',
+           alignItems: 'center',
+           transform: [{translateY: MobileAnimation}],
+          }}>
+          {/* <View
             style={{
-              ...styles.socialLogins,
-              transform: [{translateY: MobileAnimation}],
+              left: moderateScale(32),
+              top: moderateScale(9),
+              zIndex: 1,
             }}>
-            <View
-              style={{
-                left: moderateScale(32),
-                top: moderateScale(9),
-                zIndex: 1,
-              }}>
-              <GoogleSvg width={20} height={23} />
-            </View>
-            <Button
-              text={'Sign In'}
-              backgroundColor={colors.black}
-              height={moderateScale(32)}
-              width={moderateScale(135)}
-            />
-            <View
-              style={{
-                left: moderateScale(32),
-                top: moderateScale(9),
-                zIndex: 1,
-                // position: 'absolute',
-              }}>
-              <AppleSvg width={20} height={23} />
-            </View>
-            <Button
-              text={'Sign In'}
-              backgroundColor={colors.black}
-              height={moderateScale(32)}
-              width={moderateScale(137)}
-              
-            />
-          </Animated.View> */}
+            <GoogleSvg width={20} height={23} />
+          </View> */}
+          {/* <Button
+            text={'Sign In'}
+            backgroundColor={colors.black}
+            height={moderateScale(32)}
+            width={moderateScale(135)}
+            onPress={() => {
+              googleLogin();
+            }}
+            indicator={loading2 ? true : false}
+          /> */}
+          <View
+            style={{
+              left: moderateScale(32),
+              top: moderateScale(9),
+              zIndex: 1,
+              // position: 'absolute',
+            }}>
+            <AppleSvg width={20} height={23} />
+          </View>
+          <Button
+            text={'Sign In'}
+            backgroundColor={colors.black}
+            height={moderateScale(32)}
+            width={moderateScale(137)}
+          />
+        </Animated.View> : 
+
+        <Animated.View
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          transform: [{translateY: MobileAnimation}],
+        }}>
+        <View
+          style={{
+            left: moderateScale(32),
+            top: moderateScale(9),
+            zIndex: 1,
+          }}>
+          <GoogleSvg width={20} height={23} />
+        </View>
+        <Button
+          text={'Sign In'}
+          backgroundColor={colors.black}
+          height={moderateScale(32)}
+          width={moderateScale(135)}
+          // onPress={() => {
+          //   googleLogin();
+          // }}
+          // indicator={loading2 ? true : false}
+        />
+      </Animated.View>}
         </ImageBackground>
       </ScrollView>
     </KeyboardAvoidingView>
