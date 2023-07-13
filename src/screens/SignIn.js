@@ -258,9 +258,12 @@ messaging().onMessage(async remoteMessage => {
             alignItems: 'center',
             marginTop: moderateScale(20),
             width: '85%',
+            
+            
           }}>
           <PasswordSvg width={15} height={15} />
           <CustomInput
+          
             paddingLeft={moderateScale(10)}
             placeholder={'Password'}
             value={password}
@@ -376,7 +379,7 @@ const styles = StyleSheet.create({
   icon: {
     position: 'absolute',
     left: moderateScale(15),
-    top: moderateScale(15),
+    top: moderateScale(45),
     padding:moderateScale(10),
     // borderWidth:1,
     // color:colors.white

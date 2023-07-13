@@ -87,7 +87,7 @@ const Result = ({navigation, route}) => {
           engine: 'google_lens',
           url: `${imgUrl}`,
           api_key:
-            '47c98884803f6b91e27bcdcb180c8d557e96b9cd0598605fbbd9ac74368f5d8c',
+            'abc4a7286c361910a689bd3bddc9f1f1bea6ca1b06cffc10911802d178e44fe1',
         },
       })
       .then(res => {
