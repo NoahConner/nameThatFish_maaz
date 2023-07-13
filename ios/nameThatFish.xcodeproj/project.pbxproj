@@ -11,8 +11,12 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+<<<<<<< HEAD
 		2A6B366F2A5EA46800AAD43D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A6B366E2A5EA46800AAD43D /* GoogleService-Info.plist */; };
 		391FBAA9BEAA03E2F0EE2E3C /* libPods-nameThatFish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CACC265262F2FB19457916FB /* libPods-nameThatFish.a */; };
+=======
+		2A08C9232A4C035D00534E1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A08C9222A4C035C00534E1E /* GoogleService-Info.plist */; };
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 		5706D56E2A28676800B2821A /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5706D56D2A28676800B2821A /* BootSplash.storyboard */; };
 		5706D59C2A286F4400B2821A /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5706D5912A286F4300B2821A /* Poppins-Bold.ttf */; };
 		5706D59D2A286F4400B2821A /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5706D5922A286F4300B2821A /* OFL.txt */; };
@@ -25,8 +29,13 @@
 		5706D5A42A286F4400B2821A /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5706D5992A286F4400B2821A /* Montserrat-Medium.ttf */; };
 		5706D5A52A286F4400B2821A /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5706D59A2A286F4400B2821A /* Montserrat-SemiBold.ttf */; };
 		5706D5A62A286F4400B2821A /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5706D59B2A286F4400B2821A /* Poppins-Regular.ttf */; };
+<<<<<<< HEAD
 		682FA777E5863BBAB7C0D85F /* libPods-nameThatFish-nameThatFishTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2D126F61702A432CACD35D /* libPods-nameThatFish-nameThatFishTests.a */; };
+=======
+		6D9F1FDE941D2C391FF466A0 /* libPods-nameThatFish-nameThatFishTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F36AFD69CC51E89A5440A46C /* libPods-nameThatFish-nameThatFishTests.a */; };
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		C8B12B55B68749E6A5DE41F2 /* libPods-nameThatFish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5FF5F0D19B15CDF83C914F9 /* libPods-nameThatFish.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,11 +61,17 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = nameThatFish/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = nameThatFish/main.m; sourceTree = "<group>"; };
 		153D553E2A744B4BB5D4EADD /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-SemiBold.ttf"; path = "../src/assets/fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		15F7E17F9D9DD7763B7C3077 /* Pods-nameThatFish-nameThatFishTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nameThatFish-nameThatFishTests.debug.xcconfig"; path = "Target Support Files/Pods-nameThatFish-nameThatFishTests/Pods-nameThatFish-nameThatFishTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2692D3D5502CD2CFD2739855 /* Pods-nameThatFish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nameThatFish.release.xcconfig"; path = "Target Support Files/Pods-nameThatFish/Pods-nameThatFish.release.xcconfig"; sourceTree = "<group>"; };
 		2A6B366E2A5EA46800AAD43D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "nameThatFish/GoogleService-Info.plist"; sourceTree = "<group>"; };
+=======
+		2A08C9222A4C035C00534E1E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2AA6ECFE2A4B21B8002E2500 /* nameThatFish.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = nameThatFish.entitlements; path = nameThatFish/nameThatFish.entitlements; sourceTree = "<group>"; };
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 		2ADD4CE677CC4DE29979A2F9 /* AkayaKanadaka-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AkayaKanadaka-Regular.ttf"; path = "../src/assets/fonts/AkayaKanadaka-Regular.ttf"; sourceTree = "<group>"; };
 		2B759EB1A8F44D6D99729A62 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Bold.ttf"; path = "../src/assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		4F90D80D3AC44257DCC46F37 /* Pods-nameThatFish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nameThatFish.debug.xcconfig"; path = "Target Support Files/Pods-nameThatFish/Pods-nameThatFish.debug.xcconfig"; sourceTree = "<group>"; };
 		5706D56D2A28676800B2821A /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = nameThatFish/BootSplash.storyboard; sourceTree = "<group>"; };
 		5706D5912A286F4300B2821A /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Bold.ttf"; path = "../../maaz fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		5706D5922A286F4300B2821A /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = OFL.txt; path = "../../maaz fonts/OFL.txt"; sourceTree = "<group>"; };
@@ -69,18 +84,33 @@
 		5706D5992A286F4400B2821A /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Medium.ttf"; path = "../../maaz fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		5706D59A2A286F4400B2821A /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-SemiBold.ttf"; path = "../../maaz fonts/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		5706D59B2A286F4400B2821A /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Regular.ttf"; path = "../../maaz fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		5D478B569BA328853DB0BE41 /* Pods-nameThatFish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nameThatFish.debug.xcconfig"; path = "Target Support Files/Pods-nameThatFish/Pods-nameThatFish.debug.xcconfig"; sourceTree = "<group>"; };
+=======
+		69C82AC015ECC2760AE21558 /* Pods-nameThatFish-nameThatFishTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nameThatFish-nameThatFishTests.release.xcconfig"; path = "Target Support Files/Pods-nameThatFish-nameThatFishTests/Pods-nameThatFish-nameThatFishTests.release.xcconfig"; sourceTree = "<group>"; };
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 		6FC3916955DF4735A9EAC974 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Regular.ttf"; path = "../src/assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = nameThatFish/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87ED61E5D7DA466C8752AA39 /* OFL.txt */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OFL.txt; path = ../src/assets/fonts/OFL.txt; sourceTree = "<group>"; };
 		A5C809BB9A764D9BA86AEC98 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Bold.ttf"; path = "../src/assets/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		A5E4E1D71A59475681EE1216 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-SemiBold.ttf"; path = "../src/assets/fonts/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		CACC265262F2FB19457916FB /* libPods-nameThatFish.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nameThatFish.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCE675CFE95454CB5286F7C /* Poppins-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Light.ttf"; path = "../src/assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; };
 		D35E2275C1F0447A8B7CDFDB /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Regular.ttf"; path = "../src/assets/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		DC8D6D059767472BB0FA1E2E /* Poppins-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Medium.ttf"; path = "../src/assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		DD2D126F61702A432CACD35D /* libPods-nameThatFish-nameThatFishTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nameThatFish-nameThatFishTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+=======
+		CAA6DC4FE717A0BC9403C989 /* Pods-nameThatFish-nameThatFishTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nameThatFish-nameThatFishTests.debug.xcconfig"; path = "Target Support Files/Pods-nameThatFish-nameThatFishTests/Pods-nameThatFish-nameThatFishTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CDCE675CFE95454CB5286F7C /* Poppins-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Light.ttf"; path = "../src/assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; };
+		D35E2275C1F0447A8B7CDFDB /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Regular.ttf"; path = "../src/assets/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		DC8D6D059767472BB0FA1E2E /* Poppins-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Medium.ttf"; path = "../src/assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		E1D519080D2BED4BA67F6054 /* Pods-nameThatFish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nameThatFish.release.xcconfig"; path = "Target Support Files/Pods-nameThatFish/Pods-nameThatFish.release.xcconfig"; sourceTree = "<group>"; };
+		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F36AFD69CC51E89A5440A46C /* libPods-nameThatFish-nameThatFishTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nameThatFish-nameThatFishTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5FF5F0D19B15CDF83C914F9 /* libPods-nameThatFish.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nameThatFish.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +118,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				682FA777E5863BBAB7C0D85F /* libPods-nameThatFish-nameThatFishTests.a in Frameworks */,
+=======
+				6D9F1FDE941D2C391FF466A0 /* libPods-nameThatFish-nameThatFishTests.a in Frameworks */,
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +130,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				391FBAA9BEAA03E2F0EE2E3C /* libPods-nameThatFish.a in Frameworks */,
+=======
+				C8B12B55B68749E6A5DE41F2 /* libPods-nameThatFish.a in Frameworks */,
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,7 +161,12 @@
 		13B07FAE1A68108700A75B9A /* nameThatFish */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				2A6B366E2A5EA46800AAD43D /* GoogleService-Info.plist */,
+=======
+				2A08C9222A4C035C00534E1E /* GoogleService-Info.plist */,
+				2AA6ECFE2A4B21B8002E2500 /* nameThatFish.entitlements */,
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 				5706D5962A286F4300B2821A /* AkayaKanadaka-Regular.ttf */,
 				5706D5942A286F4300B2821A /* Montserrat-Bold.ttf */,
 				5706D5992A286F4400B2821A /* Montserrat-Medium.ttf */,
@@ -150,8 +193,13 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
+<<<<<<< HEAD
 				CACC265262F2FB19457916FB /* libPods-nameThatFish.a */,
 				DD2D126F61702A432CACD35D /* libPods-nameThatFish-nameThatFishTests.a */,
+=======
+				F5FF5F0D19B15CDF83C914F9 /* libPods-nameThatFish.a */,
+				F36AFD69CC51E89A5440A46C /* libPods-nameThatFish-nameThatFishTests.a */,
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -209,10 +257,17 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				5D478B569BA328853DB0BE41 /* Pods-nameThatFish.debug.xcconfig */,
 				2692D3D5502CD2CFD2739855 /* Pods-nameThatFish.release.xcconfig */,
 				15F7E17F9D9DD7763B7C3077 /* Pods-nameThatFish-nameThatFishTests.debug.xcconfig */,
 				0A755ECA2A476C4EE41CD24E /* Pods-nameThatFish-nameThatFishTests.release.xcconfig */,
+=======
+				4F90D80D3AC44257DCC46F37 /* Pods-nameThatFish.debug.xcconfig */,
+				E1D519080D2BED4BA67F6054 /* Pods-nameThatFish.release.xcconfig */,
+				CAA6DC4FE717A0BC9403C989 /* Pods-nameThatFish-nameThatFishTests.debug.xcconfig */,
+				69C82AC015ECC2760AE21558 /* Pods-nameThatFish-nameThatFishTests.release.xcconfig */,
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -224,12 +279,21 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "nameThatFishTests" */;
 			buildPhases = (
+<<<<<<< HEAD
 				24AA35884220D2C653B1FFBB /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
 				BB19C187B1E24DB951FCC818 /* [CP] Embed Pods Frameworks */,
 				CFFCAC465C7429F6DC587372 /* [CP] Copy Pods Resources */,
+=======
+				4122653F2523C04B6CB6FE00 /* [CP] Check Pods Manifest.lock */,
+				00E356EA1AD99517003FC87E /* Sources */,
+				00E356EB1AD99517003FC87E /* Frameworks */,
+				00E356EC1AD99517003FC87E /* Resources */,
+				DEFD2CA7A787665A663E91A9 /* [CP] Embed Pods Frameworks */,
+				D0A4C96FF3A9E67BA91ED07A /* [CP] Copy Pods Resources */,
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 			);
 			buildRules = (
 			);
@@ -245,15 +309,25 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "nameThatFish" */;
 			buildPhases = (
+<<<<<<< HEAD
 				AC39B0814D1DD3234BC30749 /* [CP] Check Pods Manifest.lock */,
+=======
+				5D04D28C6FEE7A415B7D0C16 /* [CP] Check Pods Manifest.lock */,
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+<<<<<<< HEAD
 				8492B5184C950B00D1450E62 /* [CP] Embed Pods Frameworks */,
 				71E3D0F723F4E37F27A972AC /* [CP] Copy Pods Resources */,
 				AD6FA25786CB850D22F4263D /* [CP-User] [RNFB] Core Configuration */,
+=======
+				D8F5E64710862B6213106A2B /* [CP] Embed Pods Frameworks */,
+				C8294F45F1F82A1F7E221831 /* [CP] Copy Pods Resources */,
+				C52F5FFE61992D1B3FC893A9 /* [CP-User] [RNFB] Core Configuration */,
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 			);
 			buildRules = (
 			);
@@ -314,7 +388,11 @@
 			files = (
 				5706D59E2A286F4400B2821A /* Montserrat-Regular.ttf in Resources */,
 				5706D5A22A286F4400B2821A /* Poppins-Light.ttf in Resources */,
+<<<<<<< HEAD
 				2A6B366F2A5EA46800AAD43D /* GoogleService-Info.plist in Resources */,
+=======
+				2A08C9232A4C035D00534E1E /* GoogleService-Info.plist in Resources */,
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 				5706D5A52A286F4400B2821A /* Montserrat-SemiBold.ttf in Resources */,
 				5706D5A32A286F4400B2821A /* Poppins-SemiBold.ttf in Resources */,
 				5706D5A12A286F4400B2821A /* AkayaKanadaka-Regular.ttf in Resources */,
@@ -349,7 +427,11 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
+<<<<<<< HEAD
 		24AA35884220D2C653B1FFBB /* [CP] Check Pods Manifest.lock */ = {
+=======
+		4122653F2523C04B6CB6FE00 /* [CP] Check Pods Manifest.lock */ = {
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -371,7 +453,46 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+<<<<<<< HEAD
 		71E3D0F723F4E37F27A972AC /* [CP] Copy Pods Resources */ = {
+=======
+		5D04D28C6FEE7A415B7D0C16 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-nameThatFish-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C52F5FFE61992D1B3FC893A9 /* [CP-User] [RNFB] Core Configuration */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "[CP-User] [RNFB] Core Configuration";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/usr/bin/env bash\n#\n# Copyright (c) 2016-present Invertase Limited & Contributors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this library except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#   http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\nset -e\n\n_MAX_LOOKUPS=2;\n_SEARCH_RESULT=''\n_RN_ROOT_EXISTS=''\n_CURRENT_LOOKUPS=1\n_JSON_ROOT=\"'react-native'\"\n_JSON_FILE_NAME='firebase.json'\n_JSON_OUTPUT_BASE64='e30=' # { }\n_CURRENT_SEARCH_DIR=${PROJECT_DIR}\n_PLIST_BUDDY=/usr/libexec/PlistBuddy\n_TARGET_PLIST=\"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n_DSYM_PLIST=\"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist\"\n\n# plist arrays\n_PLIST_ENTRY_KEYS=()\n_PLIST_ENTRY_TYPES=()\n_PLIST_ENTRY_VALUES=()\n\nfunction setPlistValue {\n  echo \"info:      setting plist entry '$1' of type '$2' in file '$4'\"\n  ${_PLIST_BUDDY} -c \"Add :$1 $2 '$3'\" $4 || echo \"info:      '$1' already exists\"\n}\n\nfunction getFirebaseJsonKeyValue () {\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    ruby -Ku -e \"require 'rubygems';require 'json'; output=JSON.parse('$1'); puts output[$_JSON_ROOT]['$2']\"\n  else\n    echo \"\"\n  fi;\n}\n\nfunction jsonBoolToYesNo () {\n  if [[ $1 == \"false\" ]]; then\n    echo \"NO\"\n  elif [[ $1 == \"true\" ]]; then\n    echo \"YES\"\n  else echo \"NO\"\n  fi\n}\n\necho \"info: -> RNFB build script started\"\necho \"info: 1) Locating ${_JSON_FILE_NAME} file:\"\n\nif [[ -z ${_CURRENT_SEARCH_DIR} ]]; then\n  _CURRENT_SEARCH_DIR=$(pwd)\nfi;\n\nwhile true; do\n  _CURRENT_SEARCH_DIR=$(dirname \"$_CURRENT_SEARCH_DIR\")\n  if [[ \"$_CURRENT_SEARCH_DIR\" == \"/\" ]] || [[ ${_CURRENT_LOOKUPS} -gt ${_MAX_LOOKUPS} ]]; then break; fi;\n  echo \"info:      ($_CURRENT_LOOKUPS of $_MAX_LOOKUPS) Searching in '$_CURRENT_SEARCH_DIR' for a ${_JSON_FILE_NAME} file.\"\n  _SEARCH_RESULT=$(find \"$_CURRENT_SEARCH_DIR\" -maxdepth 2 -name ${_JSON_FILE_NAME} -print | /usr/bin/head -n 1)\n  if [[ ${_SEARCH_RESULT} ]]; then\n    echo \"info:      ${_JSON_FILE_NAME} found at $_SEARCH_RESULT\"\n    break;\n  fi;\n  _CURRENT_LOOKUPS=$((_CURRENT_LOOKUPS+1))\ndone\n\nif [[ ${_SEARCH_RESULT} ]]; then\n  _JSON_OUTPUT_RAW=$(cat \"${_SEARCH_RESULT}\")\n  _RN_ROOT_EXISTS=$(ruby -Ku -e \"require 'rubygems';require 'json'; output=JSON.parse('$_JSON_OUTPUT_RAW'); puts output[$_JSON_ROOT]\" || echo '')\n\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    if ! python3 --version >/dev/null 2>&1; then echo \"python3 not found, firebase.json file processing error.\" && exit 1; fi\n    _JSON_OUTPUT_BASE64=$(python3 -c 'import json,sys,base64;print(base64.b64encode(bytes(json.dumps(json.loads(open('\"'${_SEARCH_RESULT}'\"', '\"'rb'\"').read())['${_JSON_ROOT}']), '\"'utf-8'\"')).decode())' || echo \"e30=\")\n  fi\n\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n\n  # config.app_data_collection_default_enabled\n  _APP_DATA_COLLECTION_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_data_collection_default_enabled\")\n  if [[ $_APP_DATA_COLLECTION_ENABLED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseDataCollectionDefaultEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_DATA_COLLECTION_ENABLED\")\")\n  fi\n\n  # config.analytics_auto_collection_enabled\n  _ANALYTICS_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_auto_collection_enabled\")\n  if [[ $_ANALYTICS_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_COLLECTION\")\")\n  fi\n\n  # config.analytics_collection_deactivated\n  _ANALYTICS_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_collection_deactivated\")\n  if [[ $_ANALYTICS_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_DEACTIVATED\")\")\n  fi\n\n  # config.analytics_idfv_collection_enabled\n  _ANALYTICS_IDFV_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_idfv_collection_enabled\")\n  if [[ $_ANALYTICS_IDFV_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_IDFV_COLLECTION\")\")\n  fi\n\n  # config.analytics_default_allow_ad_personalization_signals\n  _ANALYTICS_PERSONALIZATION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_personalization_signals\")\n  if [[ $_ANALYTICS_PERSONALIZATION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_PERSONALIZATION\")\")\n  fi\n\n  # config.analytics_registration_with_ad_network_enabled\n  _ANALYTICS_REGISTRATION_WITH_AD_NETWORK=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_registration_with_ad_network_enabled\")\n  if [[ $_ANALYTICS_REGISTRATION_WITH_AD_NETWORK ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_REGISTRATION_WITH_AD_NETWORK_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_REGISTRATION_WITH_AD_NETWORK\")\")\n  fi\n\n  # config.google_analytics_automatic_screen_reporting_enabled\n  _ANALYTICS_AUTO_SCREEN_REPORTING=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_automatic_screen_reporting_enabled\")\n  if [[ $_ANALYTICS_AUTO_SCREEN_REPORTING ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAutomaticScreenReportingEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_SCREEN_REPORTING\")\")\n  fi\n\n  # config.perf_auto_collection_enabled\n  _PERF_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_auto_collection_enabled\")\n  if [[ $_PERF_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_enabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_AUTO_COLLECTION\")\")\n  fi\n\n  # config.perf_collection_deactivated\n  _PERF_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_collection_deactivated\")\n  if [[ $_PERF_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_deactivated\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_DEACTIVATED\")\")\n  fi\n\n  # config.messaging_auto_init_enabled\n  _MESSAGING_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"messaging_auto_init_enabled\")\n  if [[ $_MESSAGING_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseMessagingAutoInitEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_MESSAGING_AUTO_INIT\")\")\n  fi\n\n  # config.in_app_messaging_auto_colllection_enabled\n  _FIAM_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"in_app_messaging_auto_collection_enabled\")\n  if [[ $_FIAM_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseInAppMessagingAutomaticDataCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_FIAM_AUTO_INIT\")\")\n  fi\n\n  # config.app_check_token_auto_refresh\n  _APP_CHECK_TOKEN_AUTO_REFRESH=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_check_token_auto_refresh\")\n  if [[ $_APP_CHECK_TOKEN_AUTO_REFRESH ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAppCheckTokenAutoRefreshEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_CHECK_TOKEN_AUTO_REFRESH\")\")\n  fi\n\n  # config.crashlytics_disable_auto_disabler - undocumented for now - mainly for debugging, document if becomes useful\n  _CRASHLYTICS_AUTO_DISABLE_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"crashlytics_disable_auto_disabler\")\n  if [[ $_CRASHLYTICS_AUTO_DISABLE_ENABLED == \"true\" ]]; then\n    echo \"Disabled Crashlytics auto disabler.\" # do nothing\n  else\n    _PLIST_ENTRY_KEYS+=(\"FirebaseCrashlyticsCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"NO\")\n  fi\nelse\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n  echo \"warning:   A firebase.json file was not found, whilst this file is optional it is recommended to include it to configure firebase services in React Native Firebase.\"\nfi;\n\necho \"info: 2) Injecting Info.plist entries: \"\n\n# Log out the keys we're adding\nfor i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n  echo \"    ->  $i) ${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\"\ndone\n\nfor plist in \"${_TARGET_PLIST}\" \"${_DSYM_PLIST}\" ; do\n  if [[ -f \"${plist}\" ]]; then\n\n    # paths with spaces break the call to setPlistValue. temporarily modify\n    # the shell internal field separator variable (IFS), which normally\n    # includes spaces, to consist only of line breaks\n    oldifs=$IFS\n    IFS=\"\n\"\n\n    for i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n      setPlistValue \"${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\" \"${plist}\"\n    done\n\n    # restore the original internal field separator value\n    IFS=$oldifs\n  else\n    echo \"warning:   A Info.plist build output file was not found (${plist})\"\n  fi\ndone\n\necho \"info: <- RNFB build script finished\"\n";
+		};
+		C8294F45F1F82A1F7E221831 /* [CP] Copy Pods Resources */ = {
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -388,6 +509,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-nameThatFish/Pods-nameThatFish-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+<<<<<<< HEAD
 		8492B5184C950B00D1450E62 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -458,6 +580,9 @@
 			showEnvVarsInLog = 0;
 		};
 		CFFCAC465C7429F6DC587372 /* [CP] Copy Pods Resources */ = {
+=======
+		D0A4C96FF3A9E67BA91ED07A /* [CP] Copy Pods Resources */ = {
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -472,6 +597,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-nameThatFish-nameThatFishTests/Pods-nameThatFish-nameThatFishTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8F5E64710862B6213106A2B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-nameThatFish/Pods-nameThatFish-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-nameThatFish/Pods-nameThatFish-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-nameThatFish/Pods-nameThatFish-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DEFD2CA7A787665A663E91A9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-nameThatFish-nameThatFishTests/Pods-nameThatFish-nameThatFishTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-nameThatFish-nameThatFishTests/Pods-nameThatFish-nameThatFishTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-nameThatFish-nameThatFishTests/Pods-nameThatFish-nameThatFishTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -526,7 +685,11 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
+<<<<<<< HEAD
 			baseConfigurationReference = 15F7E17F9D9DD7763B7C3077 /* Pods-nameThatFish-nameThatFishTests.debug.xcconfig */;
+=======
+			baseConfigurationReference = CAA6DC4FE717A0BC9403C989 /* Pods-nameThatFish-nameThatFishTests.debug.xcconfig */;
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -553,7 +716,11 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
+<<<<<<< HEAD
 			baseConfigurationReference = 0A755ECA2A476C4EE41CD24E /* Pods-nameThatFish-nameThatFishTests.release.xcconfig */;
+=======
+			baseConfigurationReference = 69C82AC015ECC2760AE21558 /* Pods-nameThatFish-nameThatFishTests.release.xcconfig */;
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -577,10 +744,15 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+<<<<<<< HEAD
 			baseConfigurationReference = 5D478B569BA328853DB0BE41 /* Pods-nameThatFish.debug.xcconfig */;
+=======
+			baseConfigurationReference = 4F90D80D3AC44257DCC46F37 /* Pods-nameThatFish.debug.xcconfig */;
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = nameThatFish/nameThatFish.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4BAA94W5H2;
 				ENABLE_BITCODE = NO;
@@ -605,10 +777,15 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+<<<<<<< HEAD
 			baseConfigurationReference = 2692D3D5502CD2CFD2739855 /* Pods-nameThatFish.release.xcconfig */;
+=======
+			baseConfigurationReference = E1D519080D2BED4BA67F6054 /* Pods-nameThatFish.release.xcconfig */;
+>>>>>>> d46641fd59bbbf06793ca0267caa3770a01d01bb
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = nameThatFish/nameThatFish.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4BAA94W5H2;
 				INFOPLIST_FILE = nameThatFish/Info.plist;
